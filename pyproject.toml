@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hypecheck"
+version = "0.1.0"
+description = "CLI tool to investigate hyped AI/crypto projects and generate trust reports"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "HypeCheck Contributors" }]
+license = { text = "MIT" }
+keywords = ["osint", "crypto", "ai", "investigation", "cli"]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Environment :: Console",
+]
+dependencies = [
+  "beautifulsoup4>=4.12.0",
+  "click>=8.1.0",
+  "httpx>=0.27.0",
+  "openai>=1.40.0",
+  "rich>=13.7.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+]
+
+[project.scripts]
+hypecheck = "src.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

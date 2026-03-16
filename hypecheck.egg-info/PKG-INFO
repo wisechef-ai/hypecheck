@@ -1,0 +1,92 @@
+Metadata-Version: 2.4
+Name: hypecheck
+Version: 0.1.0
+Summary: CLI tool to investigate hyped AI/crypto projects and generate trust reports
+Author: HypeCheck Contributors
+License: MIT
+Keywords: osint,crypto,ai,investigation,cli
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Environment :: Console
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: beautifulsoup4>=4.12.0
+Requires-Dist: click>=8.1.0
+Requires-Dist: httpx>=0.27.0
+Requires-Dist: openai>=1.40.0
+Requires-Dist: rich>=13.7.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0.0; extra == "dev"
+Dynamic: license-file
+
+# HypeCheck
+
+HypeCheck is an open-source CLI that investigates hyped AI/crypto projects on social media and produces trust reports.
+
+## Features
+
+- 7-stage investigation pipeline:
+  - intake
+  - scrape
+  - network
+  - code_audit
+  - verify_claims
+  - timeline
+  - report
+- X scraping via syndication API + fxtwitter for individual posts
+- GitHub repository analysis via public REST API (optional `GITHUB_TOKEN` support)
+- Polymarket wallet/profile checks via public Gamma/Data APIs
+- Optional OpenAI-compatible LLM synthesis (`OPENAI_API_KEY`)
+- Works without LLM for baseline analysis
+
+## Installation
+
+```bash
+pip install -e .
+```
+
+## Usage
+
+```bash
+hypecheck <url>
+hypecheck <url> --full
+hypecheck <url> --json
+hypecheck report <report-id>
+```
+
+Examples:
+
+```bash
+hypecheck https://x.com/zostaff/status/2033209676918145231
+hypecheck https://github.com/openai/openai-python --json
+hypecheck report 20260316T153000Z_abc1234567.json
+```
+
+Reports are saved to `.hypecheck/reports/` by default.
+
+## Environment Variables
+
+```bash
+OPENAI_API_KEY=
+OPENAI_BASE_URL=
+OPENAI_MODEL=gpt-4o-mini
+GITHUB_TOKEN=
+HYPECHECK_TIMEOUT=20
+HYPECHECK_REPORT_DIR=.hypecheck/reports
+```
+
+## Notes
+
+- X post scraping uses:
+  - `https://api.fxtwitter.com/status/{tweet_id}`
+  - `https://syndication.twitter.com/srv/timeline-profile/screen-name/{username}`
+- GitHub scraping uses `https://api.github.com`
+- Polymarket uses:
+  - `https://gamma-api.polymarket.com/`
+  - `https://data-api.polymarket.com/`
+
+## License
+
+MIT

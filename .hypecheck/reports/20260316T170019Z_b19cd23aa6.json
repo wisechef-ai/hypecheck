@@ -1,0 +1,50 @@
+{
+  "url": "https://x.com/zostaff/status/2033209676918145231",
+  "verdict": "SUSPICIOUS",
+  "trust_score": 63,
+  "summary": "```json\n{\n  \"summary\": {\n    \"risks\": \"The project presents multiple risks, including lack of transparency, insufficient backing evidence for profit claims, and an unexplored codebase, as no repository data is available. The growth claims of $5,000 turning into $50,000 appear unverifiable and unsubstantiated.\",\n    \"confidence\": \"The overall trust score is 63, indicating a moderately suspicious outlook. The project's claims have not been rigorously verified, and the code audit scored 50, labeling its risk as unknown.\",\n    \"evidence\": \"Key evidence includes the profit claim made via social media, with no independent verification of success or wallet tracking. The lack of repository data further undermines confidence in the project's legitimacy. There are 13 detected profit claims but discrepancies in providing supporting evidence.\"\n  }\n}\n```",
+  "stages": {
+    "code_audit": {
+      "risk": "unknown",
+      "score": 50,
+      "findings": [
+        "No repository data available"
+      ]
+    },
+    "claims": {
+      "score": 30,
+      "claims": [
+        "$5",
+        "$50",
+        "$4",
+        "25%",
+        "2%",
+        "79%",
+        "4%",
+        "$6,400",
+        "34%",
+        "$6,500",
+        "$6,600",
+        "17%",
+        "$100"
+      ],
+      "discrepancies": [
+        "Profit claims present, but no wallet/profile evidence could be retrieved"
+      ]
+    },
+    "network": {
+      "coordination": 5,
+      "shared_groups": []
+    },
+    "timeline": {
+      "clustering": 0,
+      "seed_post": null,
+      "amplification_window_hours": null
+    }
+  },
+  "evidence": [
+    "No repository data available",
+    "Detected 13 potential profit/performance claim(s)"
+  ],
+  "generated_at": "2026-03-16T17:00:19.007618+00:00"
+}
