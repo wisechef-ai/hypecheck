@@ -38,12 +38,12 @@ def _render_human(report: dict) -> None:
 
 
 @click.command(name="check")
-@click.argument("url")
+@click.argument("urls", nargs=-1, required=True)
 @click.option("--full", "full", is_flag=True, help="Include full raw stage output.")
 @click.option("--json", "as_json", is_flag=True, help="Emit machine-readable JSON.")
-def check_command(url: str, full: bool, as_json: bool) -> None:
-    """Quick check: hypecheck <url> [--full] [--json]."""
-    report = run_pipeline(url=url, full=full)
+def check_command(urls: tuple[str, ...], full: bool, as_json: bool) -> None:
+    """Quick check: hypecheck <url> [<url> ...] [--full] [--json]."""
+    report = run_pipeline(urls=list(urls), full=full)
     if as_json:
         click.echo(json.dumps(report, indent=2, ensure_ascii=True))
         return
@@ -69,7 +69,7 @@ def main() -> None:
     """
     argv = sys.argv[1:]
     if not argv:
-        click.echo("Usage: hypecheck <url> [--full] [--json] | hypecheck report <report-id> [--json]")
+        click.echo("Usage: hypecheck <url> [<url> ...] [--full] [--json] | hypecheck report <report-id> [--json]")
         raise SystemExit(2)
 
     if argv[0] == "report":

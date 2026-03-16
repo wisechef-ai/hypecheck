@@ -85,6 +85,7 @@ async def _scrape_website(client: httpx.AsyncClient, url: str) -> dict[str, Any]
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")
     return {
+        "url": url,
         "title": (soup.title.string.strip() if soup.title and soup.title.string else ""),
         "text": soup.get_text(" ", strip=True)[:6000],
         "links": [a.get("href") for a in soup.find_all("a", href=True)[:100]],

@@ -30,11 +30,18 @@ def run(
     claims: dict[str, Any],
     timeline: dict[str, Any],
 ) -> dict[str, Any]:
+    code_audit_score = code_audit.get("score")
+    if code_audit.get("risk") == "unknown":
+        code_audit_score = 50
+    elif code_audit_score is None:
+        code_audit_score = 50
+
     trust_score = compute_trust_score(
-        code_audit_score=code_audit.get("score", 50),
+        code_audit_score=code_audit_score,
         claims_verification_score=claims.get("claims_verified", 50),
         coordination_score=max(network.get("coordination_likelihood", 0), timeline.get("coordination_score", 0)),
         clustering_score=timeline.get("clustering_score", 0),
+        red_flags_count=len(claims.get("unverifiable_claims_over_100k", [])),
     )
 
     verdict = verdict_from_score(trust_score)

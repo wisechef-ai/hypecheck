@@ -10,6 +10,7 @@ def compute_trust_score(
     claims_verification_score: float,
     coordination_score: float,
     clustering_score: float,
+    red_flags_count: int = 0,
 ) -> int:
     # Formula defined in SPEC.md
     score = (
@@ -18,12 +19,13 @@ def compute_trust_score(
         + 0.20 * (100 - coordination_score)
         + 0.20 * (100 - clustering_score)
     )
+    score -= 5 * max(0, red_flags_count)
     return clamp_score(score)
 
 
 def verdict_from_score(score: int) -> str:
-    if score >= 70:
+    if score >= 75:
         return "LEGIT"
-    if score >= 40:
+    if score >= 35:
         return "SUSPICIOUS"
     return "LIKELY_HYPE"

@@ -24,4 +24,26 @@ def test_scoring_formula():
         clustering_score=90,
     )
     assert score == 39
-    assert verdict_from_score(score) == "LIKELY_HYPE"
+    assert verdict_from_score(score) == "SUSPICIOUS"
+
+
+def test_scoring_red_flags_penalty_and_thresholds():
+    base_score = compute_trust_score(
+        code_audit_score=100,
+        claims_verification_score=100,
+        coordination_score=0,
+        clustering_score=0,
+    )
+    penalized_score = compute_trust_score(
+        code_audit_score=100,
+        claims_verification_score=100,
+        coordination_score=0,
+        clustering_score=0,
+        red_flags_count=6,
+    )
+
+    assert base_score == 100
+    assert penalized_score == 70
+    assert verdict_from_score(base_score) == "LEGIT"
+    assert verdict_from_score(penalized_score) == "SUSPICIOUS"
+    assert verdict_from_score(34) == "LIKELY_HYPE"

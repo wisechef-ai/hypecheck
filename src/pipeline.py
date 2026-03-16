@@ -11,18 +11,66 @@ from src.config import settings
 from src.stages import code_audit, intake, network, report, scrape, timeline, verify_claims
 
 
-async def run_pipeline_async(url: str, full: bool = False) -> dict[str, Any]:
-    intake_out = intake.run(url)
-    scrape_out = await scrape.run(intake_out)
+def _merge_scrape_outputs(scrape_outputs: list[dict[str, Any]]) -> dict[str, Any]:
+    merged: dict[str, Any] = {
+        "source_type": "multi" if len(scrape_outputs) > 1 else (scrape_outputs[0].get("source_type") if scrape_outputs else None),
+        "x": {"posts": [], "accounts": {}},
+        "github": {"repo": None},
+        "website": {"pages": []},
+        "polymarket": {"profiles": []},
+    }
+
+    seen_post_ids: set[str] = set()
+    seen_website_urls: set[str] = set()
+
+    for out in scrape_outputs:
+        x_data = out.get("x", {})
+        for post in x_data.get("posts", []):
+            pid = str(post.get("id") or "")
+            if pid and pid in seen_post_ids:
+                continue
+            if pid:
+                seen_post_ids.add(pid)
+            merged["x"]["posts"].append(post)
+
+        for author, account in x_data.get("accounts", {}).items():
+            merged["x"]["accounts"].setdefault(author, account)
+
+        repo = out.get("github", {}).get("repo")
+        if repo and merged["github"]["repo"] is None:
+            merged["github"]["repo"] = repo
+
+        website = out.get("website")
+        if isinstance(website, dict) and website:
+            page_url = website.get("url")
+            if page_url and page_url in seen_website_urls:
+                continue
+            if page_url:
+                seen_website_urls.add(page_url)
+            merged["website"]["pages"].append(website)
+
+        profile = out.get("polymarket", {}).get("profile")
+        if profile:
+            merged["polymarket"]["profiles"].append(profile)
+
+    return merged
+
+
+async def run_pipeline_async(urls: list[str], full: bool = False) -> dict[str, Any]:
+    intake_outputs = [intake.run(url) for url in urls]
+    scrape_outputs = [await scrape.run(intake_out) for intake_out in intake_outputs]
+    scrape_out = _merge_scrape_outputs(scrape_outputs)
 
     network_out = network.run(scrape_out)
     code_out = code_audit.run(scrape_out)
     claims_out = await verify_claims.run(scrape_out)
     timeline_out = timeline.run(scrape_out)
 
+    display_url = urls[0] if len(urls) == 1 else ", ".join(urls)
+
     final = report.run(
-        url=url,
-        intake=intake_out,
+        url=display_url,
+        intake={"sources": intake_outputs},
         scrape=scrape_out,
         network=network_out,
         code_audit=code_out,
@@ -32,8 +80,9 @@ async def run_pipeline_async(url: str, full: bool = False) -> dict[str, Any]:
 
     if full:
         final["full_stage_output"] = {
-            "intake": intake_out,
-            "scrape": scrape_out,
+            "intake": intake_outputs,
+            "scrape": scrape_outputs,
+            "scrape_merged": scrape_out,
             "network": network_out,
             "code_audit": code_out,
             "claims": claims_out,
@@ -44,8 +93,8 @@ async def run_pipeline_async(url: str, full: bool = False) -> dict[str, Any]:
     return final
 
 
-def run_pipeline(url: str, full: bool = False) -> dict[str, Any]:
-    return asyncio.run(run_pipeline_async(url=url, full=full))
+def run_pipeline(urls: list[str], full: bool = False) -> dict[str, Any]:
+    return asyncio.run(run_pipeline_async(urls=urls, full=full))
 
 
 def _report_filename(payload: dict[str, Any]) -> str:
