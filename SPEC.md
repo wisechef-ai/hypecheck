@@ -109,7 +109,7 @@ hypecheck/
 ### Environment Variables
 ```
 # Optional - enables LLM report synthesis
-OPENAI_API_KEY=sk-...
+OPENAI_API_KEY=your-key-here
 
 # Optional - higher GitHub API rate limits
 GITHUB_TOKEN=ghp_...
