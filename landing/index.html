@@ -5,6 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HypeCheck — AI-Powered Hype Investigation Tool | WiseChef</title>
 <meta name="description" content="Paste any tweet, GitHub repo, or project URL. Get an instant trust report backed by network analysis, code audits, and claim verification.">
+
+<!-- OG tags for social sharing -->
+<meta property="og:title" content="HypeCheck — AI Hype Detection That Actually Works">
+<meta property="og:description" content="Paste any URL. Get an instant trust score backed by network analysis, code audits, and claim verification. Free.">
+<meta property="og:url" content="https://wisechef.ai/hypecheck">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://wisechef.ai/hypecheck/og-image.png">
+<meta property="og:site_name" content="WiseChef">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HypeCheck — AI Hype Detection That Actually Works">
+<meta name="twitter:description" content="Paste any URL. Get an instant trust score backed by network analysis, code audits, and claim verification.">
+<meta name="twitter:image" content="https://wisechef.ai/hypecheck/og-image.png">
+
+<link rel="canonical" href="https://wisechef.ai/hypecheck">
+
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;--text:#e5e5e5;--dim:#888;--green:#22c55e;--yellow:#eab308;--red:#ef4444;--blue:#3b82f6;--accent:#22c55e;--radius:12px;--font:Inter,-apple-system,BlinkMacSystemFont,system-ui,sans-serif}
@@ -12,10 +29,17 @@ body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:
 a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 .container{max-width:900px;margin:0 auto;padding:0 24px}
 
+/* Nav */
+.nav{padding:16px 24px;border-bottom:1px solid #1a1a1a;display:flex;align-items:center;justify-content:space-between;max-width:900px;margin:0 auto}
+.nav-brand{font-weight:700;font-size:1.1rem;color:var(--text)}
+.nav-brand span{color:var(--accent)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:0.9rem;color:var(--dim);transition:color .15s}.nav-links a:hover{color:var(--text);text-decoration:none}
+
 /* Hero */
 .hero{text-align:center;padding:80px 0 40px}
 .hero h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px}
-.hero h1 span{background:linear-gradient(135deg,var(--green),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1 span{background:linear-gradient(135deg,var(--green),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero .subtitle{font-size:1.25rem;color:var(--dim);max-width:600px;margin:0 auto 40px}
 .badge{display:inline-block;background:var(--bg3);border:1px solid #333;border-radius:20px;padding:4px 16px;font-size:0.85rem;color:var(--dim);margin-bottom:20px}
 
@@ -31,6 +55,11 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 .check-btn:disabled{opacity:.4;cursor:not-allowed}
 .check-hint{text-align:center;color:var(--dim);font-size:0.85rem;margin-top:10px}
 
+/* Mode toggle */
+.mode-toggle{display:flex;gap:8px;margin-bottom:16px}
+.mode-btn{padding:8px 16px;border:1px solid #333;border-radius:8px;background:var(--bg);color:var(--dim);font-size:0.85rem;cursor:pointer;transition:all .15s}
+.mode-btn.active{border-color:var(--accent);color:var(--accent);background:rgba(34,197,94,0.08)}
+
 /* Results */
 .results{display:none;margin-top:32px;animation:fadeIn .3s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -41,7 +70,14 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 .trust-score{font-size:4rem;font-weight:800;line-height:1}
 .trust-score.legit{color:var(--green)}.trust-score.suspicious{color:var(--yellow)}.trust-score.likely_hype{color:var(--red)}
 .trust-label{color:var(--dim);font-size:0.9rem;margin-top:4px}
-.summary-text{margin-top:20px;color:var(--dim);font-size:0.95rem;text-align:left;line-height:1.7}
+
+/* Analysis note */
+.analysis-note{margin-top:12px;padding:10px 16px;background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);border-radius:8px;font-size:0.85rem;color:var(--blue);display:none}
+
+/* Summary */
+.summary-box{margin-top:24px;background:var(--bg2);border-radius:var(--radius);padding:24px;text-align:left}
+.summary-box h3{font-size:1rem;margin-bottom:12px;color:var(--text)}
+.summary-text{color:var(--dim);font-size:0.95rem;line-height:1.7}
 
 /* Stage Scores */
 .stages{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:24px}
@@ -49,26 +85,40 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 .stage-name{font-size:0.8rem;color:var(--dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px}
 .stage-value{font-size:1.8rem;font-weight:700}
 .stage-value.good{color:var(--green)}.stage-value.mid{color:var(--yellow)}.stage-value.bad{color:var(--red)}
+.stage-desc{font-size:0.75rem;color:var(--dim);margin-top:4px}
 
 /* Evidence */
 .evidence{margin-top:24px;background:var(--bg2);border-radius:8px;padding:20px}
 .evidence h3{font-size:0.95rem;margin-bottom:12px}
 .evidence ul{list-style:none;padding:0}
-.evidence li{padding:6px 0;color:var(--dim);font-size:0.9rem;border-bottom:1px solid #1a1a1a}
+.evidence li{padding:8px 0;color:var(--dim);font-size:0.9rem;border-bottom:1px solid #1a1a1a;line-height:1.5}
 .evidence li::before{content:"⚠️ ";margin-right:4px}
+.evidence li.positive::before{content:"✅ "}
 .evidence li:last-child{border-bottom:none}
 
 /* Error */
-.error-msg{margin-top:16px;padding:16px;background:#1c0a0a;border:1px solid #ef4444;border-radius:8px;color:var(--red);display:none}
+.error-msg{margin-top:16px;padding:16px;background:#1c0a0a;border:1px solid var(--red);border-radius:8px;color:var(--red);display:none}
 
 /* How It Works */
 .how{padding:60px 0}
-.how h2{text-align:center;font-size:2rem;margin-bottom:40px}
+.how h2{text-align:center;font-size:2rem;margin-bottom:12px}
+.how .how-sub{text-align:center;color:var(--dim);margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto}
 .pipeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
-.pipe-stage{background:var(--bg2);border-radius:var(--radius);padding:24px;text-align:center}
+.pipe-stage{background:var(--bg2);border-radius:var(--radius);padding:24px;text-align:center;border:1px solid #222;transition:border-color .2s}
+.pipe-stage:hover{border-color:#333}
 .pipe-stage .num{font-size:2rem;font-weight:800;color:var(--accent);margin-bottom:8px}
 .pipe-stage h3{font-size:1rem;margin-bottom:6px}
-.pipe-stage p{color:var(--dim);font-size:0.85rem}
+.pipe-stage p{color:var(--dim);font-size:0.85rem;line-height:1.5}
+
+/* Scoring */
+.scoring{padding:40px 0;border-top:1px solid #1a1a1a}
+.scoring h2{text-align:center;font-size:1.5rem;margin-bottom:24px}
+.scoring-formula{background:var(--bg2);border:1px solid #222;border-radius:var(--radius);padding:24px;max-width:600px;margin:0 auto;font-family:monospace;font-size:0.9rem;line-height:2}
+.scoring-formula .weight{color:var(--accent);font-weight:700}
+.scoring-formula .label{color:var(--dim)}
+.scoring-legend{max-width:600px;margin:16px auto 0;display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.scoring-legend span{font-size:0.85rem;display:flex;align-items:center;gap:6px}
+.scoring-legend .dot{width:12px;height:12px;border-radius:50%;display:inline-block}
 
 /* Case Study */
 .case{padding:60px 0;border-top:1px solid #1a1a1a}
@@ -78,12 +128,24 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 .case-card .case-score{font-size:3rem;font-weight:800;color:var(--red);text-align:center}
 .case-card .case-verdict{text-align:center;color:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;font-size:0.85rem;margin-bottom:16px}
 .case-findings{list-style:none;padding:0}
-.case-findings li{padding:8px 0;border-bottom:1px solid #1a1a1a;font-size:0.95rem;color:var(--dim)}
+.case-findings li{padding:8px 0;border-bottom:1px solid #1a1a1a;font-size:0.95rem;color:var(--dim);line-height:1.5}
 .case-findings li strong{color:var(--text)}
+.case-cta{text-align:center;margin-top:20px}
+.case-cta a{display:inline-block;padding:10px 24px;background:var(--bg3);border:1px solid #333;border-radius:8px;color:var(--text);font-size:0.9rem;font-weight:600;transition:all .15s}
+.case-cta a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+
+/* Use Cases */
+.use-cases{padding:60px 0;border-top:1px solid #1a1a1a}
+.use-cases h2{text-align:center;font-size:2rem;margin-bottom:32px}
+.use-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;max-width:800px;margin:0 auto}
+.use-card{background:var(--bg2);border:1px solid #222;border-radius:var(--radius);padding:24px}
+.use-card h3{font-size:1rem;margin-bottom:8px}
+.use-card p{color:var(--dim);font-size:0.9rem;line-height:1.5}
 
 /* Pricing */
 .pricing{padding:60px 0;border-top:1px solid #1a1a1a}
-.pricing h2{text-align:center;font-size:2rem;margin-bottom:40px}
+.pricing h2{text-align:center;font-size:2rem;margin-bottom:12px}
+.pricing .pricing-sub{text-align:center;color:var(--dim);margin-bottom:40px}
 .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;max-width:800px;margin:0 auto}
 .plan{background:var(--bg2);border:1px solid #222;border-radius:var(--radius);padding:32px;text-align:center}
 .plan.featured{border-color:var(--accent);position:relative}
@@ -95,8 +157,15 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 .plan ul{list-style:none;text-align:left;padding:0}
 .plan li{padding:6px 0;font-size:0.9rem;color:var(--dim)}
 .plan li::before{content:"✓ ";color:var(--green)}
-.plan-btn{display:inline-block;margin-top:20px;padding:10px 28px;border-radius:8px;font-weight:600;font-size:0.95rem;border:none;cursor:pointer;transition:opacity .15s}
-.plan-btn.primary{background:var(--accent);color:#000}.plan-btn.secondary{background:var(--bg3);color:var(--text);border:1px solid #333}
+.plan-btn{display:inline-block;margin-top:20px;padding:10px 28px;border-radius:8px;font-weight:600;font-size:0.95rem;border:none;cursor:pointer;transition:all .15s;text-decoration:none}
+.plan-btn.primary{background:var(--accent);color:#000}.plan-btn.primary:hover{opacity:.9}
+.plan-btn.secondary{background:var(--bg3);color:var(--text);border:1px solid #333}.plan-btn.secondary:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Open Source */
+.open-source{padding:60px 0;border-top:1px solid #1a1a1a;text-align:center}
+.open-source h2{font-size:1.5rem;margin-bottom:12px}
+.open-source p{color:var(--dim);max-width:600px;margin:0 auto 20px;font-size:0.95rem}
+.open-source code{background:var(--bg3);padding:8px 16px;border-radius:8px;font-size:0.9rem;display:inline-block}
 
 /* Footer */
 footer{padding:40px 0;border-top:1px solid #1a1a1a;text-align:center;color:var(--dim);font-size:0.85rem}
@@ -108,27 +177,51 @@ footer a{color:var(--dim)}footer a:hover{color:var(--text)}
 .spinner{display:inline-block;width:20px;height:20px;border:3px solid #333;border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:8px}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-@media(max-width:600px){.hero{padding:60px 0 30px}.check-box{padding:20px}.plans{grid-template-columns:1fr}}
+/* Progress bar */
+.progress-bar{display:none;margin-top:16px;height:4px;background:var(--bg3);border-radius:4px;overflow:hidden}
+.progress-bar.active{display:block}
+.progress-fill{height:100%;background:var(--accent);border-radius:4px;width:0;transition:width 0.5s ease}
+.progress-text{text-align:center;margin-top:8px;font-size:0.85rem;color:var(--dim)}
+
+@media(max-width:600px){.hero{padding:60px 0 30px}.check-box{padding:20px}.plans{grid-template-columns:1fr}.nav-links{display:none}}
 </style>
 </head>
 <body>
+
+<!-- Nav -->
+<nav class="nav">
+  <a class="nav-brand" href="/hypecheck">🛡️ <span>HypeCheck</span></a>
+  <ul class="nav-links">
+    <li><a href="#check">Try It</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#case-study">Case Study</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="https://github.com/wisechef-ai/hypecheck">GitHub</a></li>
+  </ul>
+</nav>
 
 <div class="container">
 
 <!-- Hero -->
 <section class="hero">
-  <div class="badge">🔍 Open Source OSINT Tool</div>
+  <div class="badge">🔍 Open Source · 7-Stage AI Investigation Pipeline</div>
   <h1>🛡️ <span>HypeCheck</span></h1>
-  <p class="subtitle">Paste any tweet, GitHub repo, or project URL. Get an instant trust report backed by network analysis, code audits, and claim verification.</p>
+  <p class="subtitle">Paste any URL — tweet, GitHub repo, Polymarket wallet. Get an instant trust report backed by network analysis, code audits, and claim verification.</p>
 </section>
 
 <!-- Check Form -->
 <section class="check-section" id="check">
   <div class="check-box">
-    <label>Paste URLs to investigate <span style="color:var(--dim);font-weight:400">(one per line)</span></label>
-    <textarea id="urlInput" placeholder="Paste at least 3 tweet URLs for campaign analysis:&#10;https://x.com/account1/status/123...&#10;https://x.com/account2/status/456...&#10;https://x.com/account3/status/789...&#10;&#10;Optionally add a GitHub repo URL too" rows="5"></textarea>
-    <button class="check-btn" id="checkBtn" onclick="runCheck()">🔍 Investigate Campaign</button>
-    <p class="check-hint">Free: 3 investigations/day · Minimum 3 tweet URLs required · No signup needed</p>
+    <label>Paste URLs to investigate</label>
+    <div class="mode-toggle">
+      <button class="mode-btn active" onclick="setMode('single')" id="modeSingle">Single URL</button>
+      <button class="mode-btn" onclick="setMode('campaign')" id="modeCampaign">Campaign Analysis (3+ URLs)</button>
+    </div>
+    <textarea id="urlInput" placeholder="https://x.com/someone/status/123456789..." rows="3"></textarea>
+    <button class="check-btn" id="checkBtn" onclick="runCheck()">🔍 Investigate</button>
+    <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+    <p class="progress-text" id="progressText" style="display:none"></p>
+    <p class="check-hint">Free: 3 investigations/day · No signup needed · Results in ~30 seconds</p>
   </div>
 
   <div class="error-msg" id="errorMsg"></div>
@@ -140,51 +233,103 @@ footer a{color:var(--dim)}footer a:hover{color:var(--text)}
       <div class="trust-label">Trust Score out of 100</div>
     </div>
 
+    <div class="analysis-note" id="analysisNote"></div>
+
     <div class="stages" id="stagesGrid"></div>
+
+    <div class="summary-box" id="summaryBox" style="display:none">
+      <h3>📋 Analysis Summary</h3>
+      <div class="summary-text" id="summaryText"></div>
+    </div>
 
     <div class="evidence" id="evidenceBox" style="display:none">
       <h3>🔎 Evidence Found</h3>
       <ul id="evidenceList"></ul>
     </div>
-
-    <div class="summary-text" id="summaryText"></div>
   </div>
 </section>
 
 <!-- How It Works -->
-<section class="how">
+<section class="how" id="how-it-works">
   <h2>How It Works</h2>
+  <p class="how-sub">Seven automated stages analyze claims, code, coordination patterns, and timelines — then synthesize a trust score with evidence.</p>
   <div class="pipeline">
-    <div class="pipe-stage"><div class="num">1</div><h3>Intake</h3><p>Classify URLs — tweets, repos, wallets, websites</p></div>
-    <div class="pipe-stage"><div class="num">2</div><h3>Scrape</h3><p>Pull post data, repo metadata, wallet profiles</p></div>
-    <div class="pipe-stage"><div class="num">3</div><h3>Network Map</h3><p>Find coordinated accounts, shared groups, mutual amplification</p></div>
-    <div class="pipe-stage"><div class="num">4</div><h3>Code Audit</h3><p>Check for malicious deps, wallet drainers, API key exfil</p></div>
-    <div class="pipe-stage"><div class="num">5</div><h3>Claim Verify</h3><p>Extract profit claims, cross-reference with on-chain data</p></div>
-    <div class="pipe-stage"><div class="num">6</div><h3>Timeline</h3><p>Detect seed→amplification→hype posting patterns</p></div>
-    <div class="pipe-stage"><div class="num">7</div><h3>Report</h3><p>Synthesize verdict with evidence and trust score</p></div>
+    <div class="pipe-stage"><div class="num">1</div><h3>Intake</h3><p>Classify URLs — tweets, repos, wallets, websites. Extract metadata and route to appropriate scrapers.</p></div>
+    <div class="pipe-stage"><div class="num">2</div><h3>Scrape</h3><p>Pull post data via fxtwitter, repo metadata via GitHub API, wallet profiles from Polymarket.</p></div>
+    <div class="pipe-stage"><div class="num">3</div><h3>Network Map</h3><p>Find coordinated accounts, shared bio affiliations, mutual amplification, bare-link seed posts.</p></div>
+    <div class="pipe-stage"><div class="num">4</div><h3>Code Audit</h3><p>Scan for malicious deps, wallet drainers, postinstall hooks, API key exfiltration vectors.</p></div>
+    <div class="pipe-stage"><div class="num">5</div><h3>Claim Verify</h3><p>Extract profit claims with regex, cross-reference against on-chain wallet data and Polymarket positions.</p></div>
+    <div class="pipe-stage"><div class="num">6</div><h3>Timeline</h3><p>Detect seed→amplification→hype patterns. Find the densest posting windows and clustering anomalies.</p></div>
+    <div class="pipe-stage"><div class="num">7</div><h3>Report</h3><p>Weighted scoring formula synthesizes all stages into a trust score with verdict and evidence list.</p></div>
+  </div>
+</section>
+
+<!-- Scoring Formula -->
+<section class="scoring">
+  <h2>Transparent Scoring</h2>
+  <div class="scoring-formula">
+    Trust Score = <br>
+    &nbsp;&nbsp;<span class="weight">30%</span> <span class="label">× Code Audit Score</span><br>
+    + <span class="weight">30%</span> <span class="label">× Claims Verification Score</span><br>
+    + <span class="weight">20%</span> <span class="label">× (100 − Coordination Score)</span><br>
+    + <span class="weight">20%</span> <span class="label">× (100 − Clustering Score)</span><br>
+    − <span class="weight">5pts</span> <span class="label">× each unverifiable claim &gt;$100K</span>
+  </div>
+  <div class="scoring-legend">
+    <span><span class="dot" style="background:var(--green)"></span> 75-100: LEGIT</span>
+    <span><span class="dot" style="background:var(--yellow)"></span> 35-74: SUSPICIOUS</span>
+    <span><span class="dot" style="background:var(--red)"></span> 0-34: LIKELY HYPE</span>
   </div>
 </section>
 
 <!-- Case Study -->
 <section class="case" id="case-study">
   <h2>Real Investigation: MiroFish</h2>
-  <p class="case-sub">A viral AI project promising $1.5M Polymarket profits. Here's what HypeCheck found in 30 seconds.</p>
+  <p class="case-sub">A viral AI project with 29K GitHub stars. X posts claimed it turned $1K into $1.5M on Polymarket. Here's what HypeCheck found in 30 seconds.</p>
   <div class="case-card">
     <div class="case-score">32/100</div>
     <div class="case-verdict">🚨 Likely Hype</div>
     <ul class="case-findings">
-      <li><strong>45 profit claims</strong> detected — none independently verifiable</li>
-      <li><strong>6 unique accounts</strong> posted within a 48-hour window</li>
-      <li><strong>@zscdao group affiliation</strong> found in multiple author bios</li>
-      <li><strong>Code audit: clean</strong> — the repo itself is legitimate simulation code</li>
+      <li><strong>45 profit claims</strong> detected across 8 tweets — none independently verifiable on-chain</li>
+      <li><strong>6 unique accounts</strong> posted within a 48-hour window with near-identical framing</li>
+      <li><strong>@zscdao group affiliation</strong> found in multiple author bios — coordinated network</li>
+      <li><strong>Code audit: 100/100</strong> — the repo is a legitimate simulation/research tool (Shanda Group backed)</li>
+      <li><strong>Wallet mismatch:</strong> Cited wallets show 17K-40K+ HFT trades — inconsistent with document-analysis predictions</li>
       <li><strong>Verdict:</strong> The tool is real. The profit narrative is manufactured.</li>
     </ul>
+    <div class="case-cta">
+      <a href="#check" onclick="loadMiroFishDemo()">Try this exact investigation yourself →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Use Cases -->
+<section class="use-cases">
+  <h2>Who Uses HypeCheck</h2>
+  <div class="use-grid">
+    <div class="use-card">
+      <h3>🔍 CT Researchers</h3>
+      <p>Verify claims before amplifying. Check if that "10x return" story holds up against on-chain data and coordination analysis.</p>
+    </div>
+    <div class="use-card">
+      <h3>📰 Crypto Journalists</h3>
+      <p>Fact-check project claims at scale. Get a structured evidence report instead of manually checking bios and timelines.</p>
+    </div>
+    <div class="use-card">
+      <h3>💰 VCs & Fund Managers</h3>
+      <p>Due diligence on trending projects. Identify manufactured hype before it hits your deal pipeline.</p>
+    </div>
+    <div class="use-card">
+      <h3>🛡️ Platform Trust & Safety</h3>
+      <p>Detect coordinated inauthentic behavior. Flag campaigns with shared group affiliations and timeline clustering.</p>
+    </div>
   </div>
 </section>
 
 <!-- Pricing -->
 <section class="pricing" id="pricing">
   <h2>Pricing</h2>
+  <p class="pricing-sub">Open source CLI is free forever. Hosted API has generous free tier.</p>
   <div class="plans">
     <div class="plan">
       <h3>Free</h3>
@@ -192,39 +337,49 @@ footer a{color:var(--dim)}footer a:hover{color:var(--text)}
       <div class="price-note">forever</div>
       <ul>
         <li>3 checks per day</li>
-        <li>Basic verdict &amp; score</li>
+        <li>Full verdict &amp; trust score</li>
         <li>Stage score breakdown</li>
+        <li>Evidence list</li>
         <li>Open source CLI access</li>
       </ul>
       <a href="#check" class="plan-btn secondary">Try Now</a>
     </div>
     <div class="plan featured">
-      <h3>Pro</h3>
+      <h3>Pro API</h3>
       <div class="price">$49<span>/mo</span></div>
       <div class="price-note">for teams &amp; researchers</div>
       <ul>
-        <li>Unlimited checks</li>
-        <li>Full evidence reports</li>
-        <li>JSON API access</li>
-        <li>Batch URL processing</li>
-        <li>Export reports as PDF</li>
+        <li>Unlimited API checks</li>
+        <li>Full evidence reports with raw data</li>
+        <li>JSON API with X-API-Key auth</li>
+        <li>Batch URL processing (up to 20)</li>
+        <li>Priority pipeline access</li>
+        <li>Saved report history</li>
       </ul>
-      <a href="https://buy.stripe.com/aFa7sLd0LceLgxNfhH2kw00" class="plan-btn primary">Get Pro</a>
+      <a href="mailto:adam.krawczyk0698@gmail.com?subject=HypeCheck%20Pro%20API%20Key&body=I%27d%20like%20a%20HypeCheck%20Pro%20API%20key." class="plan-btn primary">Get Pro API Key</a>
     </div>
     <div class="plan">
       <h3>Enterprise</h3>
-      <div class="price">$199<span>/mo</span></div>
-      <div class="price-note">for crypto media &amp; VCs</div>
+      <div class="price">Custom</div>
+      <div class="price-note">for platforms &amp; funds</div>
       <ul>
         <li>Everything in Pro</li>
         <li>Webhook alerts for trending hype</li>
         <li>Custom monitoring feeds</li>
-        <li>Priority support</li>
         <li>White-label reports</li>
+        <li>Dedicated support</li>
       </ul>
-      <a href="https://buy.stripe.com/eVqfZh3qb6UrdlBfhH2kw01" class="plan-btn secondary">Get Enterprise</a>
+      <a href="mailto:adam.krawczyk0698@gmail.com?subject=HypeCheck%20Enterprise&body=Interested%20in%20HypeCheck%20Enterprise." class="plan-btn secondary">Contact Us</a>
     </div>
   </div>
+</section>
+
+<!-- Open Source -->
+<section class="open-source">
+  <h2>Open Source</h2>
+  <p>HypeCheck's investigation pipeline is MIT-licensed. Run it locally, fork it, extend it. The hosted API is a convenience layer — the intelligence is open.</p>
+  <code>pip install hypecheck</code>
+  <p style="margin-top:16px"><a href="https://github.com/wisechef-ai/hypecheck" style="color:var(--accent)">View on GitHub →</a></p>
 </section>
 
 </div>
@@ -234,7 +389,7 @@ footer a{color:var(--dim)}footer a:hover{color:var(--text)}
     <div class="footer-links">
       <a href="https://github.com/wisechef-ai/hypecheck">GitHub</a>
       <a href="https://wisechef.ai">WiseChef</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#pricing">API Pricing</a>
     </div>
     <p>Built by <a href="https://wisechef.ai">WiseChef</a> · Powered by OSINT, not opinions</p>
   </div>
@@ -242,12 +397,44 @@ footer a{color:var(--dim)}footer a:hover{color:var(--text)}
 
 <script>
 const API = '/api/hypecheck/check';
+let currentMode = 'single';
+
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('modeSingle').classList.toggle('active', mode === 'single');
+  document.getElementById('modeCampaign').classList.toggle('active', mode === 'campaign');
+  const ta = document.getElementById('urlInput');
+  if (mode === 'single') {
+    ta.placeholder = 'https://x.com/someone/status/123456789...';
+    ta.rows = 3;
+  } else {
+    ta.placeholder = 'Paste 3+ related tweet URLs (one per line):\nhttps://x.com/account1/status/123...\nhttps://x.com/account2/status/456...\nhttps://x.com/account3/status/789...\n\nOptionally add a GitHub repo URL too';
+    ta.rows = 6;
+  }
+}
+
+function loadMiroFishDemo() {
+  setMode('campaign');
+  document.getElementById('urlInput').value = [
+    'https://x.com/zostaff/status/2033209676918145231',
+    'https://x.com/adiix_official/status/2033232868391178261',
+    'https://x.com/hanakoxbt/status/2033250813355679756',
+    'https://x.com/k1rallik/status/2032837113247395992',
+    'https://x.com/0xRicker/status/2032798292128522327',
+    'https://x.com/zerqfer/status/2033265224607055948',
+    'https://github.com/666ghj/MiroFish',
+  ].join('\n');
+  document.getElementById('urlInput').scrollIntoView({ behavior: 'smooth' });
+}
 
 async function runCheck() {
   const input = document.getElementById('urlInput').value.trim();
   const btn = document.getElementById('checkBtn');
   const results = document.getElementById('results');
   const errorMsg = document.getElementById('errorMsg');
+  const progressBar = document.getElementById('progressBar');
+  const progressFill = document.getElementById('progressFill');
+  const progressText = document.getElementById('progressText');
 
   if (!input) return;
 
@@ -260,12 +447,32 @@ async function runCheck() {
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span> Investigating...';
 
+  // Show progress
+  progressBar.classList.add('active');
+  progressText.style.display = 'block';
+  let progress = 0;
+  const stages = ['Classifying URLs...', 'Scraping data...', 'Mapping network...', 'Auditing code...', 'Verifying claims...', 'Analyzing timeline...', 'Generating report...'];
+  let stageIdx = 0;
+  progressText.textContent = stages[0];
+  const progressInterval = setInterval(() => {
+    progress = Math.min(progress + 2 + Math.random() * 3, 90);
+    progressFill.style.width = progress + '%';
+    if (progress > (stageIdx + 1) * 12 && stageIdx < stages.length - 1) {
+      stageIdx++;
+      progressText.textContent = stages[stageIdx];
+    }
+  }, 300);
+
   try {
     const resp = await fetch(API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ urls, full: false }),
     });
+
+    clearInterval(progressInterval);
+    progressFill.style.width = '100%';
+    progressText.textContent = 'Done!';
 
     if (resp.status === 429) {
       const data = await resp.json();
@@ -274,16 +481,25 @@ async function runCheck() {
       return;
     }
 
-    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    if (!resp.ok) {
+      const data = await resp.json().catch(() => ({}));
+      throw new Error(data.detail || `HTTP ${resp.status}`);
+    }
 
     const data = await resp.json();
     renderResults(data);
   } catch (err) {
-    errorMsg.textContent = 'Something went wrong: ' + err.message;
+    clearInterval(progressInterval);
+    errorMsg.textContent = err.message || 'Something went wrong';
     errorMsg.style.display = 'block';
   } finally {
+    setTimeout(() => {
+      progressBar.classList.remove('active');
+      progressText.style.display = 'none';
+      progressFill.style.width = '0';
+    }, 1000);
     btn.disabled = false;
-    btn.textContent = '🔍 Check Now';
+    btn.textContent = '🔍 Investigate';
   }
 }
 
@@ -295,7 +511,9 @@ function renderResults(data) {
   const stagesGrid = document.getElementById('stagesGrid');
   const evidenceBox = document.getElementById('evidenceBox');
   const evidenceList = document.getElementById('evidenceList');
+  const summaryBox = document.getElementById('summaryBox');
   const summaryText = document.getElementById('summaryText');
+  const analysisNote = document.getElementById('analysisNote');
 
   const verdict = (data.verdict || 'UNKNOWN').toLowerCase().replace(' ', '_');
   const trustScore = data.trust_score || 0;
@@ -317,63 +535,84 @@ function renderResults(data) {
     if (current >= target) clearInterval(interval);
   }, 25);
 
+  // Analysis mode note
+  if (data.note) {
+    analysisNote.textContent = '💡 ' + data.note;
+    analysisNote.style.display = 'block';
+  } else {
+    analysisNote.style.display = 'none';
+  }
+
   // Stages
   const stages = data.stages || {};
   stagesGrid.innerHTML = '';
-  const stageNames = {
-    code_audit: { label: 'Code Audit', key: 'score' },
-    claims: { label: 'Claims Verified', key: 'score' },
-    network: { label: 'Network Coordination', key: 'coordination_likelihood' },
-    timeline: { label: 'Timeline Clustering', key: 'clustering_score' },
-  };
-  for (const [k, meta] of Object.entries(stageNames)) {
-    const stageData = stages[k] || {};
-    let val = stageData[meta.key];
-    if (val === undefined || val === null) val = stageData.risk || stageData.score || '-';
+  const stageConfig = [
+    { key: 'code_audit', label: 'Code Audit', field: 'score', desc: 'Dependency & pattern safety' },
+    { key: 'claims', label: 'Claims', field: 'score', desc: 'Profit claim verification' },
+    { key: 'network', label: 'Network', field: 'coordination', desc: 'Coordination likelihood' },
+    { key: 'timeline', label: 'Timeline', field: 'clustering', desc: 'Posting pattern analysis' },
+  ];
+  for (const cfg of stageConfig) {
+    const stageData = stages[cfg.key] || {};
+    let val = stageData[cfg.field];
+    if (val === undefined || val === null) val = '-';
     const numVal = typeof val === 'number' ? val : -1;
-    const cls = numVal >= 70 ? 'good' : numVal >= 40 ? 'mid' : numVal >= 0 ? 'bad' : '';
-    stagesGrid.innerHTML += `<div class="stage"><div class="stage-name">${meta.label}</div><div class="stage-value ${cls}">${val}</div></div>`;
-  }
-
-  // Evidence
-  const evidence = [];
-  if (stages.claims?.claims?.length) evidence.push(`Detected ${stages.claims.claims.length} profit/performance claims`);
-  if (stages.network?.shared_groups?.length) evidence.push(`Shared group affiliations: ${stages.network.shared_groups.join(', ')}`);
-  if (stages.timeline?.unique_authors_48h > 3) evidence.push(`${stages.timeline.unique_authors_48h} accounts posted within 48h`);
-  if (stages.code_audit?.risk === 'low') evidence.push('Code audit: no malicious patterns detected');
-  if (stages.code_audit?.risk === 'unknown') evidence.push('No repository found for code audit');
-  const stageEvidence = data.evidence || [];
-  stageEvidence.forEach(e => { if (typeof e === 'string') evidence.push(e); });
-
-  if (evidence.length > 0) {
-    evidenceBox.style.display = 'block';
-    evidenceList.innerHTML = evidence.map(e => `<li>${e}</li>`).join('');
-  } else {
-    evidenceBox.style.display = 'none';
+    // For network and timeline, high = bad (coordination)
+    const inverted = cfg.key === 'network' || cfg.key === 'timeline';
+    let cls;
+    if (numVal < 0) cls = '';
+    else if (inverted) cls = numVal <= 30 ? 'good' : numVal <= 60 ? 'mid' : 'bad';
+    else cls = numVal >= 70 ? 'good' : numVal >= 40 ? 'mid' : 'bad';
+    const display = typeof val === 'number' ? val + '/100' : val;
+    stagesGrid.innerHTML += `<div class="stage"><div class="stage-name">${cfg.label}</div><div class="stage-value ${cls}">${display}</div><div class="stage-desc">${cfg.desc}</div></div>`;
   }
 
   // Summary
   const summary = data.summary;
   if (summary && typeof summary === 'object') {
-    const text = summary.risks || summary.risk || summary.evidence || summary.conclusion || JSON.stringify(summary);
-    summaryText.innerHTML = '<strong>Analysis:</strong> ' + (typeof text === 'string' ? text : JSON.stringify(text));
-  } else if (typeof summary === 'string') {
-    try {
-      const parsed = JSON.parse(summary.replace(/```json\n?|```/g, ''));
-      const risk = parsed.risk_summary?.risks || parsed.risks || parsed.summary?.risks || summary;
-      summaryText.innerHTML = '<strong>Analysis:</strong> ' + (Array.isArray(risk) ? risk.join(' ') : risk);
-    } catch {
-      summaryText.innerHTML = '<strong>Analysis:</strong> ' + summary.replace(/```json\n?|```/g, '').slice(0, 500);
+    const parts = [];
+    if (summary.risk_summary) parts.push(typeof summary.risk_summary === 'string' ? summary.risk_summary : (summary.risk_summary.risks || JSON.stringify(summary.risk_summary)));
+    if (summary.conclusion) parts.push(summary.conclusion);
+    if (summary.risks && !summary.risk_summary) parts.push(typeof summary.risks === 'string' ? summary.risks : summary.risks.join(' '));
+    if (parts.length) {
+      summaryText.textContent = parts.join(' ');
+      summaryBox.style.display = 'block';
+    } else {
+      summaryBox.style.display = 'none';
     }
+  } else if (typeof summary === 'string' && summary.length > 10) {
+    summaryText.textContent = summary.replace(/```(?:json)?\s*/g, '').replace(/```/g, '').trim().slice(0, 800);
+    summaryBox.style.display = 'block';
+  } else {
+    summaryBox.style.display = 'none';
+  }
+
+  // Evidence
+  const evidence = [];
+  if (stages.claims?.claims?.length) evidence.push({ text: `Detected ${stages.claims.claims.length} profit/performance claims`, positive: false });
+  if (stages.claims?.discrepancies?.length) stages.claims.discrepancies.forEach(d => evidence.push({ text: d, positive: false }));
+  if (stages.network?.shared_groups?.length) evidence.push({ text: `Shared group affiliations: ${stages.network.shared_groups.join(', ')}`, positive: false });
+  if (stages.timeline?.clustering > 80) evidence.push({ text: `High timeline clustering (${stages.timeline.clustering}/100) — dense posting window detected`, positive: false });
+  if (stages.code_audit?.risk === 'low') evidence.push({ text: 'Code audit: no malicious patterns detected', positive: true });
+  if (stages.code_audit?.risk === 'unknown') evidence.push({ text: 'No repository found — code audit skipped', positive: false });
+  if (stages.code_audit?.risk === 'high' || stages.code_audit?.risk === 'critical') evidence.push({ text: `Code audit: ${stages.code_audit.risk} risk — ${(stages.code_audit.findings || []).join('; ')}`, positive: false });
+  const apiEvidence = data.evidence || [];
+  apiEvidence.forEach(e => { if (typeof e === 'string' && !evidence.find(x => x.text === e)) evidence.push({ text: e, positive: e.includes('No obvious') }); });
+
+  if (evidence.length > 0) {
+    evidenceBox.style.display = 'block';
+    evidenceList.innerHTML = evidence.map(e => `<li class="${e.positive ? 'positive' : ''}">${e.text}</li>`).join('');
+  } else {
+    evidenceBox.style.display = 'none';
   }
 
   results.style.display = 'block';
   results.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// Allow Enter in textarea to not submit (shift+enter for newlines)
+// Enter key handling
 document.getElementById('urlInput').addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' && !e.shiftKey && !e.target.value.includes('\n')) {
+  if (e.key === 'Enter' && !e.shiftKey && currentMode === 'single') {
     e.preventDefault();
     runCheck();
   }
