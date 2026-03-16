@@ -104,6 +104,22 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 /* Error */
 .error-msg{margin-top:16px;padding:16px;background:#1c0a0a;border:1px solid var(--red);border-radius:8px;color:var(--red);display:none}
 
+/* Paid banner */
+.paid-banner{margin-top:16px;padding:14px 20px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);border-radius:8px;color:var(--green);font-size:0.95rem;text-align:center}
+
+/* Upgrade box */
+.upgrade-box{margin-top:24px;background:linear-gradient(135deg,#111 0%,#1a1a2e 100%);border:2px dashed #333;border-radius:var(--radius);padding:32px;text-align:center}
+.upgrade-lock{font-size:3rem;margin-bottom:12px}
+.upgrade-box h3{font-size:1.3rem;margin-bottom:8px}
+.upgrade-box p{color:var(--dim);margin-bottom:16px}
+.upgrade-box ul{list-style:none;text-align:left;max-width:400px;margin:0 auto 24px;padding:0}
+.upgrade-box li{padding:6px 0;font-size:0.95rem;color:var(--text)}
+.upgrade-btns{display:flex;flex-direction:column;gap:12px;align-items:center}
+.upgrade-btns .plan-btn{min-width:280px;text-align:center;text-decoration:none}
+
+/* Report link */
+.report-link{text-align:center;margin-top:16px}
+
 /* How It Works */
 .how{padding:60px 0}
 .how h2{text-align:center;font-size:2rem;margin-bottom:12px}
@@ -233,6 +249,7 @@ footer a{color:var(--dim)}footer a:hover{color:var(--text)}
   </div>
 
   <div class="error-msg" id="errorMsg"></div>
+  <div class="paid-banner" id="paidBanner" style="display:none"></div>
 
   <div class="results" id="results">
     <div class="verdict-card" id="verdictCard">
@@ -244,6 +261,25 @@ footer a{color:var(--dim)}footer a:hover{color:var(--text)}
     <div class="analysis-note" id="analysisNote"></div>
 
     <div class="stages" id="stagesGrid"></div>
+
+    <!-- Upgrade CTA for free tier -->
+    <div class="upgrade-box" id="upgradeBox" style="display:none">
+      <div class="upgrade-lock">🔒</div>
+      <h3>Full Report Locked</h3>
+      <p>You got the verdict and scores. The full report includes:</p>
+      <ul>
+        <li>📋 Detailed AI-written analysis summary</li>
+        <li>🔎 All evidence with source links</li>
+        <li>🕸️ Network map with group affiliations</li>
+        <li>📊 Claim-by-claim verification breakdown</li>
+        <li>📅 Timeline visualization</li>
+        <li>🔗 Permanent shareable report link</li>
+      </ul>
+      <div class="upgrade-btns">
+        <a href="https://buy.stripe.com/14AcN52m7emTftJd9z2kw03" class="plan-btn primary">Unlock Full Report — $5</a>
+        <a href="https://buy.stripe.com/7sY8wP1i33If2GXd9z2kw02" class="plan-btn secondary">Or go Pro — $49/mo unlimited</a>
+      </div>
+    </div>
 
     <div class="summary-box" id="summaryBox" style="display:none">
       <h3>📋 Analysis Summary</h3>
@@ -419,6 +455,29 @@ footer a{color:var(--dim)}footer a:hover{color:var(--text)}
 <script>
 const API = '/api/hypecheck/check';
 let currentMode = 'campaign';
+let lastUrls = [];
+
+// Check for Stripe redirect
+(function checkStripeReturn() {
+  const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get('session_id');
+  if (sessionId) {
+    localStorage.setItem('hc_session_id', sessionId);
+    window.history.replaceState({}, '', '/hypecheck');
+    document.getElementById('paidBanner').style.display = 'block';
+    document.getElementById('paidBanner').innerHTML = '✅ Payment received! You have report credits. Run your investigation below — you\'ll get the full report with all evidence.';
+  }
+  // Check for existing session
+  const existing = localStorage.getItem('hc_session_id');
+  if (existing) {
+    fetch('/api/hypecheck/credits/' + existing).then(r => r.json()).then(d => {
+      if (d.valid) {
+        document.getElementById('paidBanner').style.display = 'block';
+        document.getElementById('paidBanner').innerHTML = '🔓 You have ' + (d.credits - d.used) + ' full report credit(s) remaining. Run your investigation below.';
+      }
+    }).catch(() => {});
+  }
+})();
 
 function setMode(mode) {
   currentMode = mode;
@@ -466,35 +525,53 @@ async function runCheck() {
 
   const urls = input.split('\n').map(u => u.trim()).filter(Boolean);
   if (urls.length === 0) return;
+  lastUrls = urls;
 
-  // Reset
   results.style.display = 'none';
   errorMsg.style.display = 'none';
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span> Investigating...';
 
-  // Show progress
   progressBar.classList.add('active');
   progressText.style.display = 'block';
   let progress = 0;
-  const stages = ['Classifying URLs...', 'Scraping data...', 'Mapping network...', 'Auditing code...', 'Verifying claims...', 'Analyzing timeline...', 'Generating report...'];
+  const stageNames = ['Classifying URLs...', 'Scraping data...', 'Mapping network...', 'Auditing code...', 'Verifying claims...', 'Analyzing timeline...', 'Generating report...'];
   let stageIdx = 0;
-  progressText.textContent = stages[0];
+  progressText.textContent = stageNames[0];
   const progressInterval = setInterval(() => {
     progress = Math.min(progress + 2 + Math.random() * 3, 90);
     progressFill.style.width = progress + '%';
-    if (progress > (stageIdx + 1) * 12 && stageIdx < stages.length - 1) {
+    if (progress > (stageIdx + 1) * 12 && stageIdx < stageNames.length - 1) {
       stageIdx++;
-      progressText.textContent = stages[stageIdx];
+      progressText.textContent = stageNames[stageIdx];
     }
   }, 300);
 
+  // Check if user has report credits
+  const sessionId = localStorage.getItem('hc_session_id');
+  let useCredit = false;
+  if (sessionId) {
+    try {
+      const cred = await fetch('/api/hypecheck/credits/' + sessionId).then(r => r.json());
+      if (cred.valid) useCredit = true;
+    } catch {}
+  }
+
   try {
-    const resp = await fetch(API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ urls, full: false }),
-    });
+    let resp;
+    if (useCredit) {
+      resp = await fetch('/api/hypecheck/check/report', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session_id: sessionId, urls }),
+      });
+    } else {
+      resp = await fetch(API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ urls, full: false }),
+      });
+    }
 
     clearInterval(progressInterval);
     progressFill.style.width = '100%';
@@ -506,7 +583,6 @@ async function runCheck() {
       errorMsg.style.display = 'block';
       return;
     }
-
     if (!resp.ok) {
       const data = await resp.json().catch(() => ({}));
       throw new Error(data.detail || `HTTP ${resp.status}`);
@@ -540,9 +616,11 @@ function renderResults(data) {
   const summaryBox = document.getElementById('summaryBox');
   const summaryText = document.getElementById('summaryText');
   const analysisNote = document.getElementById('analysisNote');
+  const upgradeBox = document.getElementById('upgradeBox');
 
   const verdict = (data.verdict || 'UNKNOWN').toLowerCase().replace(' ', '_');
   const trustScore = data.trust_score || 0;
+  const isFree = data.tier === 'free';
 
   // Verdict card
   card.className = 'verdict-card ' + verdict;
@@ -561,7 +639,7 @@ function renderResults(data) {
     if (current >= target) clearInterval(interval);
   }, 25);
 
-  // Analysis mode note
+  // Analysis note
   if (data.note) {
     analysisNote.textContent = '💡 ' + data.note;
     analysisNote.style.display = 'block';
@@ -569,7 +647,7 @@ function renderResults(data) {
     analysisNote.style.display = 'none';
   }
 
-  // Stages
+  // Stages — show scores for all tiers, but mark limited for free
   const stages = data.stages || {};
   stagesGrid.innerHTML = '';
   const stageConfig = [
@@ -580,10 +658,8 @@ function renderResults(data) {
   ];
   for (const cfg of stageConfig) {
     const stageData = stages[cfg.key] || {};
-    let val = stageData[cfg.field];
-    if (val === undefined || val === null) val = '-';
+    let val = stageData[cfg.field] ?? stageData.score ?? '-';
     const numVal = typeof val === 'number' ? val : -1;
-    // For network and timeline, high = bad (coordination)
     const inverted = cfg.key === 'network' || cfg.key === 'timeline';
     let cls;
     if (numVal < 0) cls = '';
@@ -593,43 +669,53 @@ function renderResults(data) {
     stagesGrid.innerHTML += `<div class="stage"><div class="stage-name">${cfg.label}</div><div class="stage-value ${cls}">${display}</div><div class="stage-desc">${cfg.desc}</div></div>`;
   }
 
-  // Summary
-  const summary = data.summary;
-  if (summary && typeof summary === 'object') {
-    const parts = [];
-    if (summary.risk_summary) parts.push(typeof summary.risk_summary === 'string' ? summary.risk_summary : (summary.risk_summary.risks || JSON.stringify(summary.risk_summary)));
-    if (summary.conclusion) parts.push(summary.conclusion);
-    if (summary.risks && !summary.risk_summary) parts.push(typeof summary.risks === 'string' ? summary.risks : summary.risks.join(' '));
-    if (parts.length) {
-      summaryText.textContent = parts.join(' ');
-      summaryBox.style.display = 'block';
-    } else {
-      summaryBox.style.display = 'none';
-    }
-  } else if (typeof summary === 'string' && summary.length > 10) {
-    summaryText.textContent = summary.replace(/```(?:json)?\s*/g, '').replace(/```/g, '').trim().slice(0, 800);
-    summaryBox.style.display = 'block';
-  } else {
+  // Show/hide based on tier
+  if (isFree) {
+    // Hide evidence + summary for free tier
     summaryBox.style.display = 'none';
-  }
-
-  // Evidence
-  const evidence = [];
-  if (stages.claims?.claims?.length) evidence.push({ text: `Detected ${stages.claims.claims.length} profit/performance claims`, positive: false });
-  if (stages.claims?.discrepancies?.length) stages.claims.discrepancies.forEach(d => evidence.push({ text: d, positive: false }));
-  if (stages.network?.shared_groups?.length) evidence.push({ text: `Shared group affiliations: ${stages.network.shared_groups.join(', ')}`, positive: false });
-  if (stages.timeline?.clustering > 80) evidence.push({ text: `High timeline clustering (${stages.timeline.clustering}/100) — dense posting window detected`, positive: false });
-  if (stages.code_audit?.risk === 'low') evidence.push({ text: 'Code audit: no malicious patterns detected', positive: true });
-  if (stages.code_audit?.risk === 'unknown') evidence.push({ text: 'No repository found — code audit skipped', positive: false });
-  if (stages.code_audit?.risk === 'high' || stages.code_audit?.risk === 'critical') evidence.push({ text: `Code audit: ${stages.code_audit.risk} risk — ${(stages.code_audit.findings || []).join('; ')}`, positive: false });
-  const apiEvidence = data.evidence || [];
-  apiEvidence.forEach(e => { if (typeof e === 'string' && !evidence.find(x => x.text === e)) evidence.push({ text: e, positive: e.includes('No obvious') }); });
-
-  if (evidence.length > 0) {
-    evidenceBox.style.display = 'block';
-    evidenceList.innerHTML = evidence.map(e => `<li class="${e.positive ? 'positive' : ''}">${e.text}</li>`).join('');
-  } else {
     evidenceBox.style.display = 'none';
+    upgradeBox.style.display = 'block';
+  } else {
+    upgradeBox.style.display = 'none';
+
+    // Summary
+    const summary = data.summary;
+    if (summary && typeof summary === 'object') {
+      const parts = [];
+      if (summary.risk_summary) parts.push(typeof summary.risk_summary === 'string' ? summary.risk_summary : (summary.risk_summary.risks || JSON.stringify(summary.risk_summary)));
+      if (summary.conclusion) parts.push(summary.conclusion);
+      if (summary.risks && !summary.risk_summary) parts.push(typeof summary.risks === 'string' ? summary.risks : summary.risks.join(' '));
+      if (parts.length) {
+        summaryText.textContent = parts.join(' ');
+        summaryBox.style.display = 'block';
+      } else { summaryBox.style.display = 'none'; }
+    } else if (typeof summary === 'string' && summary.length > 10) {
+      summaryText.textContent = summary.replace(/```(?:json)?\s*/g, '').replace(/```/g, '').trim().slice(0, 800);
+      summaryBox.style.display = 'block';
+    } else { summaryBox.style.display = 'none'; }
+
+    // Evidence
+    const evidence = [];
+    if (stages.claims?.claims?.length) evidence.push({ text: `Detected ${stages.claims.claims.length} profit/performance claims`, positive: false });
+    if (stages.claims?.discrepancies?.length) stages.claims.discrepancies.forEach(d => evidence.push({ text: d, positive: false }));
+    if (stages.network?.shared_groups?.length) evidence.push({ text: `Shared group affiliations: ${stages.network.shared_groups.join(', ')}`, positive: false });
+    if (stages.timeline?.clustering > 80) evidence.push({ text: `High timeline clustering (${stages.timeline.clustering}/100) — dense posting window detected`, positive: false });
+    if (stages.code_audit?.risk === 'low') evidence.push({ text: 'Code audit: no malicious patterns detected', positive: true });
+    if (stages.code_audit?.risk === 'unknown') evidence.push({ text: 'No repository found — code audit skipped', positive: false });
+    const apiEvidence = data.evidence || [];
+    apiEvidence.forEach(e => { if (typeof e === 'string' && !evidence.find(x => x.text === e)) evidence.push({ text: e, positive: e.includes('No obvious') }); });
+    if (evidence.length > 0) {
+      evidenceBox.style.display = 'block';
+      evidenceList.innerHTML = evidence.map(e => `<li class="${e.positive ? 'positive' : ''}">${e.text}</li>`).join('');
+    } else { evidenceBox.style.display = 'none'; }
+
+    // Report link
+    if (data.report_id) {
+      const reportLink = document.createElement('div');
+      reportLink.className = 'report-link';
+      reportLink.innerHTML = `<a href="/api/hypecheck/report/${data.report_id}" target="_blank" class="plan-btn primary" style="margin-top:16px;display:inline-block">📄 View Full Report (saved) →</a>`;
+      evidenceBox.after(reportLink);
+    }
   }
 
   results.style.display = 'block';
