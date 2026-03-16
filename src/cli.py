@@ -43,6 +43,14 @@ def _render_human(report: dict) -> None:
 @click.option("--json", "as_json", is_flag=True, help="Emit machine-readable JSON.")
 def check_command(urls: tuple[str, ...], full: bool, as_json: bool) -> None:
     """Quick check: hypecheck <url> [<url> ...] [--full] [--json]."""
+    tweet_urls = [u for u in urls if "x.com/" in u or "twitter.com/" in u]
+    non_tweet = [u for u in urls if u not in tweet_urls]
+    if len(tweet_urls) < 3 and not non_tweet:
+        console.print(
+            "[red]⚠ Minimum 3 tweet URLs required for campaign analysis.[/red]\n"
+            "Single tweets can't reveal coordination patterns — paste the full thread."
+        )
+        raise SystemExit(1)
     report = run_pipeline(urls=list(urls), full=full)
     if as_json:
         click.echo(json.dumps(report, indent=2, ensure_ascii=True))

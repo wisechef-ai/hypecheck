@@ -13,7 +13,7 @@ from pydantic import BaseModel
 
 from src.pipeline import run_pipeline_async, load_report
 
-app = FastAPI(title="HypeCheck API", version="0.2.0")
+app = FastAPI(title="HypeCheck API", version="0.2.0", root_path="/api/hypecheck")
 
 app.add_middleware(
     CORSMiddleware,
@@ -57,18 +57,30 @@ class CheckRequest(BaseModel):
     full: bool = False
 
 
-# --- Endpoints ---
+# --- Endpoints (dual-mounted: direct + behind Express proxy) ---
 @app.get("/api/hypecheck/health")
+@app.get("/health")
 async def health():
     return {"status": "ok", "version": "0.2.0"}
 
 
 @app.post("/api/hypecheck/check")
+@app.post("/check")
 async def check(body: CheckRequest, request: Request):
     if not body.urls:
         raise HTTPException(400, "At least one URL required")
     if len(body.urls) > 20:
         raise HTTPException(400, "Max 20 URLs per request")
+
+    # Count tweet URLs — need at least 3 for meaningful campaign analysis
+    tweet_count = sum(1 for u in body.urls if "x.com/" in u or "twitter.com/" in u)
+    non_tweet = [u for u in body.urls if "x.com/" not in u and "twitter.com/" not in u]
+    if tweet_count < 3 and not non_tweet:
+        raise HTTPException(
+            400,
+            "Minimum 3 tweet URLs required for campaign analysis. "
+            "Single tweets can't reveal coordination patterns — paste the full thread.",
+        )
 
     if not _check_rate_limit(request):
         return JSONResponse(
@@ -87,6 +99,7 @@ async def check(body: CheckRequest, request: Request):
 
 
 @app.get("/api/hypecheck/report/{report_id}")
+@app.get("/report/{report_id}")
 async def get_report(report_id: str):
     try:
         return load_report(report_id)

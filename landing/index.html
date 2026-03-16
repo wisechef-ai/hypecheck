@@ -126,9 +126,9 @@ footer a{color:var(--dim)}footer a:hover{color:var(--text)}
 <section class="check-section" id="check">
   <div class="check-box">
     <label>Paste URLs to investigate <span style="color:var(--dim);font-weight:400">(one per line)</span></label>
-    <textarea id="urlInput" placeholder="https://x.com/someone/status/123456789...&#10;https://github.com/org/repo" rows="3"></textarea>
-    <button class="check-btn" id="checkBtn" onclick="runCheck()">🔍 Check Now</button>
-    <p class="check-hint">Free: 3 checks/day · No signup required</p>
+    <textarea id="urlInput" placeholder="Paste at least 3 tweet URLs for campaign analysis:&#10;https://x.com/account1/status/123...&#10;https://x.com/account2/status/456...&#10;https://x.com/account3/status/789...&#10;&#10;Optionally add a GitHub repo URL too" rows="5"></textarea>
+    <button class="check-btn" id="checkBtn" onclick="runCheck()">🔍 Investigate Campaign</button>
+    <p class="check-hint">Free: 3 investigations/day · Minimum 3 tweet URLs required · No signup needed</p>
   </div>
 
   <div class="error-msg" id="errorMsg"></div>
