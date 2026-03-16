@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HypeCheck — AI-Powered Hype Investigation Tool | WiseChef</title>
+<meta name="description" content="Paste any tweet, GitHub repo, or project URL. Get an instant trust report backed by network analysis, code audits, and claim verification.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0a;--bg2:#111;--bg3:#1a1a1a;--text:#e5e5e5;--dim:#888;--green:#22c55e;--yellow:#eab308;--red:#ef4444;--blue:#3b82f6;--accent:#22c55e;--radius:12px;--font:Inter,-apple-system,BlinkMacSystemFont,system-ui,sans-serif}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:900px;margin:0 auto;padding:0 24px}
+
+/* Hero */
+.hero{text-align:center;padding:80px 0 40px}
+.hero h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:8px}
+.hero h1 span{background:linear-gradient(135deg,var(--green),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero .subtitle{font-size:1.25rem;color:var(--dim);max-width:600px;margin:0 auto 40px}
+.badge{display:inline-block;background:var(--bg3);border:1px solid #333;border-radius:20px;padding:4px 16px;font-size:0.85rem;color:var(--dim);margin-bottom:20px}
+
+/* Check Form */
+.check-section{padding:0 0 60px}
+.check-box{background:var(--bg2);border:1px solid #222;border-radius:var(--radius);padding:32px;max-width:700px;margin:0 auto}
+.check-box label{display:block;font-weight:600;margin-bottom:12px;font-size:1.1rem}
+.check-box textarea{width:100%;background:var(--bg);border:1px solid #333;border-radius:8px;color:var(--text);padding:14px;font-size:1rem;font-family:var(--font);resize:vertical;min-height:80px}
+.check-box textarea:focus{outline:none;border-color:var(--accent)}
+.check-box textarea::placeholder{color:#555}
+.check-btn{display:block;width:100%;margin-top:16px;padding:14px;background:var(--accent);color:#000;font-size:1.1rem;font-weight:700;border:none;border-radius:8px;cursor:pointer;transition:opacity .15s}
+.check-btn:hover{opacity:.9}
+.check-btn:disabled{opacity:.4;cursor:not-allowed}
+.check-hint{text-align:center;color:var(--dim);font-size:0.85rem;margin-top:10px}
+
+/* Results */
+.results{display:none;margin-top:32px;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.verdict-card{background:var(--bg3);border-radius:var(--radius);padding:32px;text-align:center;border:2px solid #333}
+.verdict-card.legit{border-color:var(--green)}.verdict-card.suspicious{border-color:var(--yellow)}.verdict-card.likely_hype{border-color:var(--red)}
+.verdict-label{font-size:0.85rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:700;margin-bottom:4px}
+.verdict-label.legit{color:var(--green)}.verdict-label.suspicious{color:var(--yellow)}.verdict-label.likely_hype{color:var(--red)}
+.trust-score{font-size:4rem;font-weight:800;line-height:1}
+.trust-score.legit{color:var(--green)}.trust-score.suspicious{color:var(--yellow)}.trust-score.likely_hype{color:var(--red)}
+.trust-label{color:var(--dim);font-size:0.9rem;margin-top:4px}
+.summary-text{margin-top:20px;color:var(--dim);font-size:0.95rem;text-align:left;line-height:1.7}
+
+/* Stage Scores */
+.stages{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:24px}
+.stage{background:var(--bg2);border-radius:8px;padding:16px;text-align:center}
+.stage-name{font-size:0.8rem;color:var(--dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px}
+.stage-value{font-size:1.8rem;font-weight:700}
+.stage-value.good{color:var(--green)}.stage-value.mid{color:var(--yellow)}.stage-value.bad{color:var(--red)}
+
+/* Evidence */
+.evidence{margin-top:24px;background:var(--bg2);border-radius:8px;padding:20px}
+.evidence h3{font-size:0.95rem;margin-bottom:12px}
+.evidence ul{list-style:none;padding:0}
+.evidence li{padding:6px 0;color:var(--dim);font-size:0.9rem;border-bottom:1px solid #1a1a1a}
+.evidence li::before{content:"⚠️ ";margin-right:4px}
+.evidence li:last-child{border-bottom:none}
+
+/* Error */
+.error-msg{margin-top:16px;padding:16px;background:#1c0a0a;border:1px solid #ef4444;border-radius:8px;color:var(--red);display:none}
+
+/* How It Works */
+.how{padding:60px 0}
+.how h2{text-align:center;font-size:2rem;margin-bottom:40px}
+.pipeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.pipe-stage{background:var(--bg2);border-radius:var(--radius);padding:24px;text-align:center}
+.pipe-stage .num{font-size:2rem;font-weight:800;color:var(--accent);margin-bottom:8px}
+.pipe-stage h3{font-size:1rem;margin-bottom:6px}
+.pipe-stage p{color:var(--dim);font-size:0.85rem}
+
+/* Case Study */
+.case{padding:60px 0;border-top:1px solid #1a1a1a}
+.case h2{text-align:center;font-size:2rem;margin-bottom:12px}
+.case .case-sub{text-align:center;color:var(--dim);margin-bottom:32px;font-size:1.05rem}
+.case-card{background:var(--bg2);border:2px solid var(--red);border-radius:var(--radius);padding:32px;max-width:600px;margin:0 auto}
+.case-card .case-score{font-size:3rem;font-weight:800;color:var(--red);text-align:center}
+.case-card .case-verdict{text-align:center;color:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:0.1em;font-size:0.85rem;margin-bottom:16px}
+.case-findings{list-style:none;padding:0}
+.case-findings li{padding:8px 0;border-bottom:1px solid #1a1a1a;font-size:0.95rem;color:var(--dim)}
+.case-findings li strong{color:var(--text)}
+
+/* Pricing */
+.pricing{padding:60px 0;border-top:1px solid #1a1a1a}
+.pricing h2{text-align:center;font-size:2rem;margin-bottom:40px}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;max-width:800px;margin:0 auto}
+.plan{background:var(--bg2);border:1px solid #222;border-radius:var(--radius);padding:32px;text-align:center}
+.plan.featured{border-color:var(--accent);position:relative}
+.plan.featured::after{content:"POPULAR";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--accent);color:#000;font-size:0.7rem;font-weight:700;padding:2px 12px;border-radius:10px}
+.plan h3{font-size:1.2rem;margin-bottom:8px}
+.plan .price{font-size:2.5rem;font-weight:800;margin:12px 0 4px}
+.plan .price span{font-size:1rem;font-weight:400;color:var(--dim)}
+.plan .price-note{color:var(--dim);font-size:0.85rem;margin-bottom:20px}
+.plan ul{list-style:none;text-align:left;padding:0}
+.plan li{padding:6px 0;font-size:0.9rem;color:var(--dim)}
+.plan li::before{content:"✓ ";color:var(--green)}
+.plan-btn{display:inline-block;margin-top:20px;padding:10px 28px;border-radius:8px;font-weight:600;font-size:0.95rem;border:none;cursor:pointer;transition:opacity .15s}
+.plan-btn.primary{background:var(--accent);color:#000}.plan-btn.secondary{background:var(--bg3);color:var(--text);border:1px solid #333}
+
+/* Footer */
+footer{padding:40px 0;border-top:1px solid #1a1a1a;text-align:center;color:var(--dim);font-size:0.85rem}
+footer a{color:var(--dim)}footer a:hover{color:var(--text)}
+.footer-links{margin-bottom:12px}
+.footer-links a{margin:0 12px}
+
+/* Spinner */
+.spinner{display:inline-block;width:20px;height:20px;border:3px solid #333;border-top-color:var(--accent);border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:600px){.hero{padding:60px 0 30px}.check-box{padding:20px}.plans{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- Hero -->
+<section class="hero">
+  <div class="badge">🔍 Open Source OSINT Tool</div>
+  <h1>🛡️ <span>HypeCheck</span></h1>
+  <p class="subtitle">Paste any tweet, GitHub repo, or project URL. Get an instant trust report backed by network analysis, code audits, and claim verification.</p>
+</section>
+
+<!-- Check Form -->
+<section class="check-section" id="check">
+  <div class="check-box">
+    <label>Paste URLs to investigate <span style="color:var(--dim);font-weight:400">(one per line)</span></label>
+    <textarea id="urlInput" placeholder="https://x.com/someone/status/123456789...&#10;https://github.com/org/repo" rows="3"></textarea>
+    <button class="check-btn" id="checkBtn" onclick="runCheck()">🔍 Check Now</button>
+    <p class="check-hint">Free: 3 checks/day · No signup required</p>
+  </div>
+
+  <div class="error-msg" id="errorMsg"></div>
+
+  <div class="results" id="results">
+    <div class="verdict-card" id="verdictCard">
+      <div class="verdict-label" id="verdictLabel"></div>
+      <div class="trust-score" id="trustScore">0</div>
+      <div class="trust-label">Trust Score out of 100</div>
+    </div>
+
+    <div class="stages" id="stagesGrid"></div>
+
+    <div class="evidence" id="evidenceBox" style="display:none">
+      <h3>🔎 Evidence Found</h3>
+      <ul id="evidenceList"></ul>
+    </div>
+
+    <div class="summary-text" id="summaryText"></div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="how">
+  <h2>How It Works</h2>
+  <div class="pipeline">
+    <div class="pipe-stage"><div class="num">1</div><h3>Intake</h3><p>Classify URLs — tweets, repos, wallets, websites</p></div>
+    <div class="pipe-stage"><div class="num">2</div><h3>Scrape</h3><p>Pull post data, repo metadata, wallet profiles</p></div>
+    <div class="pipe-stage"><div class="num">3</div><h3>Network Map</h3><p>Find coordinated accounts, shared groups, mutual amplification</p></div>
+    <div class="pipe-stage"><div class="num">4</div><h3>Code Audit</h3><p>Check for malicious deps, wallet drainers, API key exfil</p></div>
+    <div class="pipe-stage"><div class="num">5</div><h3>Claim Verify</h3><p>Extract profit claims, cross-reference with on-chain data</p></div>
+    <div class="pipe-stage"><div class="num">6</div><h3>Timeline</h3><p>Detect seed→amplification→hype posting patterns</p></div>
+    <div class="pipe-stage"><div class="num">7</div><h3>Report</h3><p>Synthesize verdict with evidence and trust score</p></div>
+  </div>
+</section>
+
+<!-- Case Study -->
+<section class="case" id="case-study">
+  <h2>Real Investigation: MiroFish</h2>
+  <p class="case-sub">A viral AI project promising $1.5M Polymarket profits. Here's what HypeCheck found in 30 seconds.</p>
+  <div class="case-card">
+    <div class="case-score">32/100</div>
+    <div class="case-verdict">🚨 Likely Hype</div>
+    <ul class="case-findings">
+      <li><strong>45 profit claims</strong> detected — none independently verifiable</li>
+      <li><strong>6 unique accounts</strong> posted within a 48-hour window</li>
+      <li><strong>@zscdao group affiliation</strong> found in multiple author bios</li>
+      <li><strong>Code audit: clean</strong> — the repo itself is legitimate simulation code</li>
+      <li><strong>Verdict:</strong> The tool is real. The profit narrative is manufactured.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="pricing" id="pricing">
+  <h2>Pricing</h2>
+  <div class="plans">
+    <div class="plan">
+      <h3>Free</h3>
+      <div class="price">$0</div>
+      <div class="price-note">forever</div>
+      <ul>
+        <li>3 checks per day</li>
+        <li>Basic verdict &amp; score</li>
+        <li>Stage score breakdown</li>
+        <li>Open source CLI access</li>
+      </ul>
+      <a href="#check" class="plan-btn secondary">Try Now</a>
+    </div>
+    <div class="plan featured">
+      <h3>Pro</h3>
+      <div class="price">$49<span>/mo</span></div>
+      <div class="price-note">for teams &amp; researchers</div>
+      <ul>
+        <li>Unlimited checks</li>
+        <li>Full evidence reports</li>
+        <li>JSON API access</li>
+        <li>Batch URL processing</li>
+        <li>Export reports as PDF</li>
+      </ul>
+      <a href="mailto:adam.krawczyk0698@gmail.com?subject=HypeCheck%20Pro" class="plan-btn primary">Get Pro</a>
+    </div>
+    <div class="plan">
+      <h3>Enterprise</h3>
+      <div class="price">$199<span>/mo</span></div>
+      <div class="price-note">for crypto media &amp; VCs</div>
+      <ul>
+        <li>Everything in Pro</li>
+        <li>Webhook alerts for trending hype</li>
+        <li>Custom monitoring feeds</li>
+        <li>Priority support</li>
+        <li>White-label reports</li>
+      </ul>
+      <a href="mailto:adam.krawczyk0698@gmail.com?subject=HypeCheck%20Enterprise" class="plan-btn secondary">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="https://github.com/wisechef-ai/hypecheck">GitHub</a>
+      <a href="https://wisechef.ai">WiseChef</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <p>Built by <a href="https://wisechef.ai">WiseChef</a> · Powered by OSINT, not opinions</p>
+  </div>
+</footer>
+
+<script>
+const API = '/api/hypecheck/check';
+
+async function runCheck() {
+  const input = document.getElementById('urlInput').value.trim();
+  const btn = document.getElementById('checkBtn');
+  const results = document.getElementById('results');
+  const errorMsg = document.getElementById('errorMsg');
+
+  if (!input) return;
+
+  const urls = input.split('\n').map(u => u.trim()).filter(Boolean);
+  if (urls.length === 0) return;
+
+  // Reset
+  results.style.display = 'none';
+  errorMsg.style.display = 'none';
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Investigating...';
+
+  try {
+    const resp = await fetch(API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ urls, full: false }),
+    });
+
+    if (resp.status === 429) {
+      const data = await resp.json();
+      errorMsg.textContent = data.error || 'Rate limit exceeded. Try again tomorrow or upgrade to Pro.';
+      errorMsg.style.display = 'block';
+      return;
+    }
+
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+
+    const data = await resp.json();
+    renderResults(data);
+  } catch (err) {
+    errorMsg.textContent = 'Something went wrong: ' + err.message;
+    errorMsg.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = '🔍 Check Now';
+  }
+}
+
+function renderResults(data) {
+  const results = document.getElementById('results');
+  const card = document.getElementById('verdictCard');
+  const label = document.getElementById('verdictLabel');
+  const score = document.getElementById('trustScore');
+  const stagesGrid = document.getElementById('stagesGrid');
+  const evidenceBox = document.getElementById('evidenceBox');
+  const evidenceList = document.getElementById('evidenceList');
+  const summaryText = document.getElementById('summaryText');
+
+  const verdict = (data.verdict || 'UNKNOWN').toLowerCase().replace(' ', '_');
+  const trustScore = data.trust_score || 0;
+
+  // Verdict card
+  card.className = 'verdict-card ' + verdict;
+  label.className = 'verdict-label ' + verdict;
+  label.textContent = (data.verdict || 'UNKNOWN').replace('_', ' ');
+  score.className = 'trust-score ' + verdict;
+
+  // Animate score
+  let current = 0;
+  const target = trustScore;
+  const step = Math.max(1, Math.floor(target / 30));
+  score.textContent = '0';
+  const interval = setInterval(() => {
+    current = Math.min(current + step, target);
+    score.textContent = current;
+    if (current >= target) clearInterval(interval);
+  }, 25);
+
+  // Stages
+  const stages = data.stages || {};
+  stagesGrid.innerHTML = '';
+  const stageNames = {
+    code_audit: { label: 'Code Audit', key: 'score' },
+    claims: { label: 'Claims Verified', key: 'score' },
+    network: { label: 'Network Coordination', key: 'coordination_likelihood' },
+    timeline: { label: 'Timeline Clustering', key: 'clustering_score' },
+  };
+  for (const [k, meta] of Object.entries(stageNames)) {
+    const stageData = stages[k] || {};
+    let val = stageData[meta.key];
+    if (val === undefined || val === null) val = stageData.risk || stageData.score || '-';
+    const numVal = typeof val === 'number' ? val : -1;
+    const cls = numVal >= 70 ? 'good' : numVal >= 40 ? 'mid' : numVal >= 0 ? 'bad' : '';
+    stagesGrid.innerHTML += `<div class="stage"><div class="stage-name">${meta.label}</div><div class="stage-value ${cls}">${val}</div></div>`;
+  }
+
+  // Evidence
+  const evidence = [];
+  if (stages.claims?.claims?.length) evidence.push(`Detected ${stages.claims.claims.length} profit/performance claims`);
+  if (stages.network?.shared_groups?.length) evidence.push(`Shared group affiliations: ${stages.network.shared_groups.join(', ')}`);
+  if (stages.timeline?.unique_authors_48h > 3) evidence.push(`${stages.timeline.unique_authors_48h} accounts posted within 48h`);
+  if (stages.code_audit?.risk === 'low') evidence.push('Code audit: no malicious patterns detected');
+  if (stages.code_audit?.risk === 'unknown') evidence.push('No repository found for code audit');
+  const stageEvidence = data.evidence || [];
+  stageEvidence.forEach(e => { if (typeof e === 'string') evidence.push(e); });
+
+  if (evidence.length > 0) {
+    evidenceBox.style.display = 'block';
+    evidenceList.innerHTML = evidence.map(e => `<li>${e}</li>`).join('');
+  } else {
+    evidenceBox.style.display = 'none';
+  }
+
+  // Summary
+  const summary = data.summary;
+  if (summary && typeof summary === 'object') {
+    const text = summary.risks || summary.risk || summary.evidence || summary.conclusion || JSON.stringify(summary);
+    summaryText.innerHTML = '<strong>Analysis:</strong> ' + (typeof text === 'string' ? text : JSON.stringify(text));
+  } else if (typeof summary === 'string') {
+    try {
+      const parsed = JSON.parse(summary.replace(/```json\n?|```/g, ''));
+      const risk = parsed.risk_summary?.risks || parsed.risks || parsed.summary?.risks || summary;
+      summaryText.innerHTML = '<strong>Analysis:</strong> ' + (Array.isArray(risk) ? risk.join(' ') : risk);
+    } catch {
+      summaryText.innerHTML = '<strong>Analysis:</strong> ' + summary.replace(/```json\n?|```/g, '').slice(0, 500);
+    }
+  }
+
+  results.style.display = 'block';
+  results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Allow Enter in textarea to not submit (shift+enter for newlines)
+document.getElementById('urlInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && !e.shiftKey && !e.target.value.includes('\n')) {
+    e.preventDefault();
+    runCheck();
+  }
+});
+</script>
+
+</body>
+</html>
