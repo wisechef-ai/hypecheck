@@ -1,0 +1,741 @@
+{
+  "url": "https://x.com/zostaff/status/2033209676918145231, https://x.com/adiix_official/status/2033232868391178261, https://x.com/hanakoxbt/status/2033250813355679756, https://x.com/k1rallik/status/2032837113247395992, https://x.com/0xRicker/status/2032798292128522327, https://x.com/LunarResearcher/status/2031454281572954438, https://x.com/zerqfer/status/2033265224607055948",
+  "verdict": "SUSPICIOUS",
+  "trust_score": 46,
+  "summary": "```json\n{\n  \"risk_summary\": {\n    \"risk_level\": \"SUSPICIOUS\",\n    \"trust_score\": 46,\n    \"key_evidence\": [\n      \"The project benefits from claims of impressive financial successes, like turning $1k into $1.5M, but sources lack robust verification.\",\n      \"Accounts related to the project exhibit a mixture of promotional language and unverifiable profit claims, indicating potential exaggerations.\",\n      \"No repository data available raises concerns about the project's transparency and the validity of its technology.\"\n    ],\n    \"confidence\": \"Low\",\n    \"main_concerns\": [\n      \"Unverified profit claims can lead to heightened expectations and possible losses for investors.\",\n      \"Lack of an established code repository and an unknown risk assessment suggest caution in investment decisions.\",\n      \"Coordinated posts and marketing efforts could indicate manipulation, undermining the project's credibility.\"\n    ]\n  }\n}\n```",
+  "stages": {
+    "code_audit": {
+      "risk": "unknown",
+      "score": 50,
+      "findings": [
+        "No repository data available"
+      ]
+    },
+    "claims": {
+      "score": 35,
+      "claims": [
+        "$5",
+        "$50",
+        "$4",
+        "25%",
+        "2%",
+        "79%",
+        "4%",
+        "$6,400",
+        "34%",
+        "$6,500",
+        "$6,600",
+        "17%",
+        "$100",
+        "$1,000",
+        "$1,500,000",
+        "$1,430",
+        "$1,550,750",
+        "100%",
+        "$23,600",
+        "0x",
+        "5%",
+        "54%",
+        "71%",
+        "$0.08",
+        "$0.29",
+        "$1,840",
+        "3%",
+        "$0.12",
+        "$0.31",
+        "$2,470",
+        "$0.22",
+        "$0.71",
+        "$3,048",
+        "$7,358",
+        "$1.48",
+        "profit",
+        "made $37",
+        "$900",
+        "$8,200",
+        "$19,400",
+        "$37,200",
+        "$1,430  \u2192 $1,550,750\n\n",
+        "$900 \u2192 $8,200\n\n",
+        "$8,200 \u2192 $19,400\n\n",
+        "$19,400 \u2192 $37,200\n\n"
+      ],
+      "discrepancies": [
+        "Found wallets/profiles but could not validate claimed PnL amounts"
+      ]
+    },
+    "network": {
+      "coordination": 22,
+      "shared_groups": [
+        "@zscdao"
+      ]
+    },
+    "timeline": {
+      "clustering": 0,
+      "seed_post": null,
+      "amplification_window_hours": null
+    }
+  },
+  "evidence": [
+    "No repository data available",
+    "Detected 45 potential profit/performance claim(s)",
+    "Shared group tags in bios: @zscdao"
+  ],
+  "generated_at": "2026-03-16T17:48:53.719265+00:00",
+  "full_stage_output": {
+    "intake": [
+      {
+        "url": "https://x.com/zostaff/status/2033209676918145231",
+        "source_type": "x_post",
+        "metadata": {
+          "domain": "x.com",
+          "author": "zostaff",
+          "repo_owner": null,
+          "repo_name": null,
+          "tweet_id": "2033209676918145231",
+          "linked_usernames": []
+        }
+      },
+      {
+        "url": "https://x.com/adiix_official/status/2033232868391178261",
+        "source_type": "x_post",
+        "metadata": {
+          "domain": "x.com",
+          "author": "adiix_official",
+          "repo_owner": null,
+          "repo_name": null,
+          "tweet_id": "2033232868391178261",
+          "linked_usernames": []
+        }
+      },
+      {
+        "url": "https://x.com/hanakoxbt/status/2033250813355679756",
+        "source_type": "x_post",
+        "metadata": {
+          "domain": "x.com",
+          "author": "hanakoxbt",
+          "repo_owner": null,
+          "repo_name": null,
+          "tweet_id": "2033250813355679756",
+          "linked_usernames": []
+        }
+      },
+      {
+        "url": "https://x.com/k1rallik/status/2032837113247395992",
+        "source_type": "x_post",
+        "metadata": {
+          "domain": "x.com",
+          "author": "k1rallik",
+          "repo_owner": null,
+          "repo_name": null,
+          "tweet_id": "2032837113247395992",
+          "linked_usernames": []
+        }
+      },
+      {
+        "url": "https://x.com/0xRicker/status/2032798292128522327",
+        "source_type": "x_post",
+        "metadata": {
+          "domain": "x.com",
+          "author": "0xRicker",
+          "repo_owner": null,
+          "repo_name": null,
+          "tweet_id": "2032798292128522327",
+          "linked_usernames": []
+        }
+      },
+      {
+        "url": "https://x.com/LunarResearcher/status/2031454281572954438",
+        "source_type": "x_post",
+        "metadata": {
+          "domain": "x.com",
+          "author": "LunarResearcher",
+          "repo_owner": null,
+          "repo_name": null,
+          "tweet_id": "2031454281572954438",
+          "linked_usernames": []
+        }
+      },
+      {
+        "url": "https://x.com/zerqfer/status/2033265224607055948",
+        "source_type": "x_post",
+        "metadata": {
+          "domain": "x.com",
+          "author": "zerqfer",
+          "repo_owner": null,
+          "repo_name": null,
+          "tweet_id": "2033265224607055948",
+          "linked_usernames": []
+        }
+      }
+    ],
+    "scrape": [
+      {
+        "source_type": "x_post",
+        "x": {
+          "posts": [
+            {
+              "id": "2033209676918145231",
+              "url": "https://x.com/i/status/2033209676918145231",
+              "text": "2,400 MIROFISH AI AGENTS ARE TURNING MY $5K INTO $50K RIGHT NO\n\nthere's an engine on GitHub called MiroFish - 22,000 stars, built by a 20-year-old Chinese student in 10 days\n\ngot $4M in funding the next morning\n\nand right now my deposit on Polymarket is live and the equity curve is going up\n\nMiroFish does one thing:\n\ncreates thousands of AI agents with unique memory and personality, drops them into a simulation and watches what happens\n\ni loaded 40 years of S&P 500 history into it and it generated 2,400 agents\n\neach with their own behavior:\n\n> panic sellers who dump on any red day \n> bulls who \"buy every dip\" institutions who \"saw this in 2008\" - retail who bought the top and is holding\n\nthen i injected the current reality:\n\nrate 5.25%, inflation 3.2%, trump tariffs, war in the middle east, recession signals\n\nhit play:\n\n> 2,400 agents started arguing with each other,forming groups\n> opinion leaders pulled hundreds along\n> panic sellers triggered a cascade\n> bulls tried to buy the dip, 10 minutes later - consensus\n\nhere's what MiroFish returned:\n\nQ1 closes negative - 79% of agents\nATH before March - 4% of agents\nbreaks below $6,400 - 34% of agents\ncloses $6,500-$6,600 - 17% of agents\n\nquant models count numbers\n\nMiroFish counts people, my bot stacks both layers and finds where the crowd is wrong",
+              "author": "zostaff",
+              "author_bio": "can't play me, i wrote the rules",
+              "created_at": "Sun Mar 15 15:52:16 +0000 2026",
+              "like_count": 354,
+              "retweet_count": 22,
+              "reply_count": 37,
+              "quote_count": 0,
+              "urls": [
+                "https://x.com/zostaff/status/2033209676918145231/video/1"
+              ],
+              "related_tweet_ids": [
+                "2032192500991963604"
+              ]
+            },
+            {
+              "id": "2032192500991963604",
+              "url": "https://x.com/i/status/2032192500991963604",
+              "text": "Chinese quant built a simulation of how SPX price reacts to any global event. He\u2019s already made over $100k - with full blockchain proof.\n\nHe knows exactly where price will go.\n\nMore than 40 years of SPX trading history have been loaded into MiroFish simulator (18k stars on GitHub)\n\nAI analyzed every single moment in that trading history.\n\nNow this guy has a fully functional SPX price prediction system.\n\nHis wallet: http://polymarket.com/@moisturizer?via=cvxv666\n\nDozens of successful SPX price-prediction trades and hundreds of tests across other stock markets.\n\nHere\u2019s exactly what you need to replicate his stack:\n\n- market data APIs (SPX price, use Alpha Vantage or Quandl)\n- data pipeline (use Python)\n- feature engineering (for output signals like RSI, MACD)\n- seed dataset for MiroFish (convert data into structured context)\n- multi-agent simulation (macro strategist, earnings analyst, sentiment analyst agents etc.)\n- probability forecast (run different scenarios)\n- trading / decision Model (SPX futures ES, SPY ETF)\n\nSave this pipeline if you want to run a similar simulation on your own data.\n\nYou can feed the whole thing to your Claude and build your first (even small) simulation model together.",
+              "author": "antpalkin",
+              "author_bio": "e-beggar since 2021 | now looking for edge on @Polymarket | @zscdao",
+              "created_at": "Thu Mar 12 20:30:23 +0000 2026",
+              "like_count": 3432,
+              "retweet_count": 424,
+              "reply_count": 98,
+              "quote_count": 0,
+              "urls": [
+                "http://polymarket.com/@moisturizer?via=cvxv666",
+                "https://x.com/antpalkin/status/2032192500991963604/video/1"
+              ],
+              "related_tweet_ids": []
+            }
+          ],
+          "accounts": {
+            "zostaff": {
+              "bio": "can't play me, i wrote the rules"
+            },
+            "antpalkin": {
+              "bio": "e-beggar since 2021 | now looking for edge on @Polymarket | @zscdao"
+            }
+          }
+        }
+      },
+      {
+        "source_type": "x_post",
+        "x": {
+          "posts": [
+            {
+              "id": "2033232868391178261",
+              "url": "https://x.com/i/status/2033232868391178261",
+              "text": "Chinese student used AI from Anthropic to turn $1,000 into $1,500,000\n\nHe studies at Tsinghua University in Beijing.\n\nHis account is k9Q2m\n\nIn such a young age he already make a million simply knowing the right formulas and being able to use Claude\n\nResult:\n\n$1,430  \u2192 $1,550,750\n\n44,364 trades\n\nWin rate 100%\n\nThe biggest win $23,600 on a single bet\n\nk9Q2m profile: \n\nhttps://ares.pro/wallets/0xd0d6053c3c37e727402d84c14069780d360993aa?ref=adiix\n\nHow it bots work:\n\nThe bot runs 6 formulas hedge funds use  simultaneously, every tick.\n\nMost traders guess. This bot calculates.\n\nFormula 1 - LMSR Pricing\n\nPolymarket prices move on a logarithmic curve. \n\nThe bot knows the exact price impact before entering.\n\nMarket says 31\u00a2 for BTC up in 5 minutes. \n\nThe model sees the curve is mispriced. \n\nThe bot enters before the correction.\n\nFormula 2 - Kelly Criterion\n\nRenaissance Capital uses it. \n\nTwo Sigma uses it. \n\nNow your bot uses it.\n\nEvery bet is sized exactly right. \n\nNever too big to blow the account. \n\nNever too small to matter.\n\n$1,000 bankroll. Consistent edge. \n\nKelly compounds it into something real.\n\nFormula 3 - EV Gap Detection\n\nThe bot scans every BTC market looking for one thing:\n\n- Where is the market price wrong by more than 5%?\n\n- Market says 30\u00a2. Real probability is 55\u00a2. EV = +0.52. The bot enters.\n\nMost people never see this gap. The bot never misses it.\n\nFormula 4 - KL-Divergence\n\nBTC 5-minute and 15-minute markets are correlated. When they drift apart - that's an arb.\n\nThe bot measures the statistical distance between them every second. When it crosses 0.2, it flags the trade.\n\nThis is how hedge funds extracted $100K+ on correlated election markets. The same logic runs here.\n\nFormula 5 - Bayesian Updates\n\nNew block confirmed. Volume spike. Price movement.\n\nThe bot doesn't ignore signals - it updates.\n\nPrior probability was 54%. \n\nNew data comes in. \n\nPosterior jumps to 71%.\n\nThe bot re-prices in real time while the market is still asleep.\n\nFormula 6 - Stoikov Execution\n\nEntering at the wrong moment kills the edge.\n\nThe bot calculates the reservation price-the exact point where the risk-adjusted entry makes sense.\n\nIt doesn't chase. It doesn't panic. \n\nIt waits for the right tick, then fills\n\nWhat this means in practice:\n\n- Every few seconds the bot runs all six formulas in parallel.\n\n- If LMSR confirms mispricing \n\n- EV gap is above 5% \n\n- Kelly says the bet size is justified \n\n- Bayesian posterior agrees  \n\n- KL-divergence flags the correlated drift \n\n- Stoikov clears the execution price\n\nOnly then does the bot enter.\n\nSix filters. One trade.\n\nThis isn't a trading bot.\n\nIt's a hedge fund strategy running on a prediction market.\n\nThe edge is real. \n\nThe math is public. \n\nThe difference is  most people never build it.\n\nJust insert all these formulas into Claude and create your own bot\n\nAdd this post to bookmarks so you don\u2019t lose it\n\nSoon I will publish another bot with working formulas",
+              "author": "adiix_official",
+              "author_bio": "\ud835\udd50\ud835\udd60\ud835\udd66\ud835\udd63 \ud835\udd61\ud835\udd56\ud835\udd63\ud835\udd64\ud835\udd60\ud835\udd5f\ud835\udd52\ud835\udd5d \ud835\udd58\ud835\udd63\ud835\udd60\ud835\udd68\ud835\udd65\ud835\udd59 \ud835\udd5f\ud835\udd60\ud835\udd68 \ud835\udd52\ud835\udd66\ud835\udd65\ud835\udd60\ud835\udd5e\ud835\udd52\ud835\udd65\ud835\udd56\ud835\udd55 \ud835\udd3b\ud835\udd52\ud835\udd5a\ud835\udd5d\ud835\udd6a \ud835\udd65\ud835\udd5a\ud835\udd61\ud835\udd64 \ud835\udd65\ud835\udd60 \ud835\udd5d\ud835\udd56\ud835\udd67\ud835\udd56\ud835\udd5d \ud835\udd66\ud835\udd61",
+              "created_at": "Sun Mar 15 17:24:26 +0000 2026",
+              "like_count": 1932,
+              "retweet_count": 286,
+              "reply_count": 83,
+              "quote_count": 0,
+              "urls": [
+                "https://ares.pro/wallets/0xd0d6053c3c37e727402d84c14069780d360993aa?ref=adiix",
+                "https://x.com/adiix_official/status/2033232868391178261/video/1"
+              ],
+              "related_tweet_ids": [
+                "2032798292128522327"
+              ]
+            },
+            {
+              "id": "2032798292128522327",
+              "url": "https://x.com/i/status/2032798292128522327",
+              "text": "",
+              "author": "0xRicker",
+              "author_bio": "Researcher & Contributor | Polymarket Maxi | @zscdao member",
+              "created_at": "Sat Mar 14 12:37:35 +0000 2026",
+              "like_count": 1924,
+              "retweet_count": 261,
+              "reply_count": 46,
+              "quote_count": 0,
+              "urls": [],
+              "related_tweet_ids": []
+            }
+          ],
+          "accounts": {
+            "adiix_official": {
+              "bio": "\ud835\udd50\ud835\udd60\ud835\udd66\ud835\udd63 \ud835\udd61\ud835\udd56\ud835\udd63\ud835\udd64\ud835\udd60\ud835\udd5f\ud835\udd52\ud835\udd5d \ud835\udd58\ud835\udd63\ud835\udd60\ud835\udd68\ud835\udd65\ud835\udd59 \ud835\udd5f\ud835\udd60\ud835\udd68 \ud835\udd52\ud835\udd66\ud835\udd65\ud835\udd60\ud835\udd5e\ud835\udd52\ud835\udd65\ud835\udd56\ud835\udd55 \ud835\udd3b\ud835\udd52\ud835\udd5a\ud835\udd5d\ud835\udd6a \ud835\udd65\ud835\udd5a\ud835\udd61\ud835\udd64 \ud835\udd65\ud835\udd60 \ud835\udd5d\ud835\udd56\ud835\udd67\ud835\udd56\ud835\udd5d \ud835\udd66\ud835\udd61"
+            },
+            "0xRicker": {
+              "bio": "Researcher & Contributor | Polymarket Maxi | @zscdao member"
+            }
+          }
+        }
+      },
+      {
+        "source_type": "x_post",
+        "x": {
+          "posts": [
+            {
+              "id": "2033250813355679756",
+              "url": "https://x.com/i/status/2033250813355679756",
+              "text": "I asked Claude to build me a MiroFish God View terminal\n\nit showed me 56 live agents that simulate real world\n\neach agent has memory, personality, and behavior\n\nthey form groups. develop leaders. shift opinions in real time\n\nI feed it a scenario:\n\"Fed cuts rates by 50bps\"\n56 digital humans reorganize in seconds\nretail agents panic buy YES on Polymarket.\ninstitutional agents fade the move\nopinion leaders wait\n\nthe terminal maps every shift live\n\nthroughput: 5,000 ops/s\nlatency: 23ms\n2.1M tokens processed per cycle\nzero errors\n\nI watch the consensus form before Polymarket prices it\n\n> monday: injected \"US-China military standoff in Taiwan Strait\"\nagents split instantly - 39 rushed YES on \"conflict before 2027\"\nbought YES at $0.08 before the herd moved\nPolymarket moved to $0.29 by tuesday\n+$1,840\n\n> wednesday: injected \"S&P500 drops 3% intraday\"\n48 of 56 agents shifted bearish in 9 seconds\nloaded YES on \"S&P500 below 5000 by July\" at $0.12\ncontract hit $0.31 by friday\n+$2,470\n\n> sunday: injected \"Trump announces new tariffs on EU\"\nherd effect kicked in - retail agents mass-bought YES\ninstitutional agents faded at peak\nI followed the institutions. bought NO at $0.22\nsettled at $0.71 monday morning\n+$3,048\n\ntotal: $7,358 in 7 days\nfrom scenarios that haven't happened yet\n\nthe god view doesn't predict price\nit predicts how people bet\nand people move the odds\n\none terminal. 56 agents. zero team\n\ncopytrade here: http://kreo.app/@1743116\n\nyou don't need to predict events\nyou need to predict how Polymarket reacts to them",
+              "author": "hanakoxbt",
+              "author_bio": "Building my name | pm agent | dm is open",
+              "created_at": "Sun Mar 15 18:35:44 +0000 2026",
+              "like_count": 1381,
+              "retweet_count": 125,
+              "reply_count": 52,
+              "quote_count": 0,
+              "urls": [
+                "http://kreo.app/@1743116",
+                "https://x.com/hanakoxbt/status/2033250813355679756/video/1"
+              ],
+              "related_tweet_ids": [
+                "2032837113247395992"
+              ]
+            },
+            {
+              "id": "2032837113247395992",
+              "url": "https://x.com/i/status/2032837113247395992",
+              "text": "",
+              "author": "k1rallik",
+              "author_bio": "Chasing dreams & cat cuddles \ud83d\udc3e\nall content here is sponsored or commissioned",
+              "created_at": "Sat Mar 14 15:11:50 +0000 2026",
+              "like_count": 3399,
+              "retweet_count": 459,
+              "reply_count": 102,
+              "quote_count": 0,
+              "urls": [],
+              "related_tweet_ids": []
+            }
+          ],
+          "accounts": {
+            "hanakoxbt": {
+              "bio": "Building my name | pm agent | dm is open"
+            },
+            "k1rallik": {
+              "bio": "Chasing dreams & cat cuddles \ud83d\udc3e\nall content here is sponsored or commissioned"
+            }
+          }
+        }
+      },
+      {
+        "source_type": "x_post",
+        "x": {
+          "posts": [
+            {
+              "id": "2032837113247395992",
+              "url": "https://x.com/i/status/2032837113247395992",
+              "text": "",
+              "author": "k1rallik",
+              "author_bio": "Chasing dreams & cat cuddles \ud83d\udc3e\nall content here is sponsored or commissioned",
+              "created_at": "Sat Mar 14 15:11:50 +0000 2026",
+              "like_count": 3399,
+              "retweet_count": 459,
+              "reply_count": 102,
+              "quote_count": 0,
+              "urls": [],
+              "related_tweet_ids": []
+            }
+          ],
+          "accounts": {
+            "k1rallik": {
+              "bio": "Chasing dreams & cat cuddles \ud83d\udc3e\nall content here is sponsored or commissioned"
+            }
+          }
+        }
+      },
+      {
+        "source_type": "x_post",
+        "x": {
+          "posts": [
+            {
+              "id": "2032798292128522327",
+              "url": "https://x.com/i/status/2032798292128522327",
+              "text": "",
+              "author": "0xRicker",
+              "author_bio": "Researcher & Contributor | Polymarket Maxi | @zscdao member",
+              "created_at": "Sat Mar 14 12:37:35 +0000 2026",
+              "like_count": 1924,
+              "retweet_count": 261,
+              "reply_count": 46,
+              "quote_count": 0,
+              "urls": [],
+              "related_tweet_ids": []
+            }
+          ],
+          "accounts": {
+            "0xRicker": {
+              "bio": "Researcher & Contributor | Polymarket Maxi | @zscdao member"
+            }
+          }
+        }
+      },
+      {
+        "source_type": "x_post",
+        "x": {
+          "posts": [
+            {
+              "id": "2031454281572954438",
+              "url": "https://x.com/i/status/2031454281572954438",
+              "text": "",
+              "author": "LunarResearcher",
+              "author_bio": "gamble on prediction markets | dms open...\n\nall my content here is sponsored or commissioned | dyor",
+              "created_at": "Tue Mar 10 19:36:57 +0000 2026",
+              "like_count": 486,
+              "retweet_count": 53,
+              "reply_count": 22,
+              "quote_count": 0,
+              "urls": [],
+              "related_tweet_ids": []
+            }
+          ],
+          "accounts": {
+            "LunarResearcher": {
+              "bio": "gamble on prediction markets | dms open...\n\nall my content here is sponsored or commissioned | dyor"
+            }
+          }
+        }
+      },
+      {
+        "source_type": "x_post",
+        "x": {
+          "posts": [
+            {
+              "id": "2033265224607055948",
+              "url": "https://x.com/i/status/2033265224607055948",
+              "text": "someone leaked MiroFish's wallet address last night\n\nOp0jogggg - $1.48M profit in 4 months\n\ni copied it with OpenClaw and made $37K in 3 days\n\nthis isn't another bot story\n\nMiroFish is the chinese AI that's been destroying polymarket since november\n\nbetting on:\n\n- trump rallies\n- premier league\n- valorant tournaments\n- norwegian third division football\n\nnobody can be expert in all of this\n\nthe machine analyzes terabytes in a second, finds arbitrage windows, places bets milliseconds before odds update\n\nfound the wallet leak on a telegram channel at 4 AM\n\ngave my OpenClaw the address:\n\n\"watch this wallet, copy every entry signal, execute 2 seconds after it does\"\n\nday 1:\n\nbot copied 73 trades didn't understand why any of them made sense just pure mimicry\n\n$900 \u2192 $8,200\n\nday 2:\n\nOpenClaw started finding the pattern:\n\nMiroFish doesn't bet on outcomes it bets on when polymarket will reprice\n\nwhale moves USDC on-chain \u2192 6 seconds later polymarket odds shift\n\nX sentiment explodes \u2192 8 seconds later market updates\n\nMiroFish enters that 6-8 second gap\n$8,200 \u2192 $19,400\n\nday 3:\n\nmy bot stopped copying started predicting the same windows MiroFish hunts\n\n\u2192 blockchain USDC tracker \n\u2192 X sentiment API \n\u2192 orderbook depth scanner\n\nwhen all 3 spike = entry\n\n$19,400 \u2192 $37,200\n\nhere's what fucked me up:\n\nchecked the logs this morning\n\nOpenClaw placed 14 trades before MiroFish entered the same markets\n\nit learned the pattern \nnow it's front running the bot i was copying\n\nwe're not trading anymore\n\nwe're training AI to hunt other AI\n\ncopytrade mirofish before this edge dies: https://thetradefox.com?ref=AUTOCOPY\n\nthis either prints forever or stops working tomorrow",
+              "author": "zerqfer",
+              "author_bio": "Prediction Markets | Vibe Coding | Prompt Engineering | @zscdao Member",
+              "created_at": "Sun Mar 15 19:33:00 +0000 2026",
+              "like_count": 313,
+              "retweet_count": 38,
+              "reply_count": 22,
+              "quote_count": 0,
+              "urls": [
+                "https://thetradefox.com?ref=AUTOCOPY",
+                "https://x.com/zerqfer/status/2033265224607055948/video/1"
+              ],
+              "related_tweet_ids": [
+                "2029958444329934929"
+              ]
+            },
+            {
+              "id": "2029958444329934929",
+              "url": "https://x.com/i/status/2029958444329934929",
+              "text": "",
+              "author": "zerqfer",
+              "author_bio": "Prediction Markets | Vibe Coding | Prompt Engineering | @zscdao Member",
+              "created_at": "Fri Mar 06 16:33:02 +0000 2026",
+              "like_count": 514,
+              "retweet_count": 56,
+              "reply_count": 15,
+              "quote_count": 0,
+              "urls": [],
+              "related_tweet_ids": []
+            }
+          ],
+          "accounts": {
+            "zerqfer": {
+              "bio": "Prediction Markets | Vibe Coding | Prompt Engineering | @zscdao Member"
+            }
+          }
+        }
+      }
+    ],
+    "scrape_merged": {
+      "source_type": "multi",
+      "x": {
+        "posts": [
+          {
+            "id": "2033209676918145231",
+            "url": "https://x.com/i/status/2033209676918145231",
+            "text": "2,400 MIROFISH AI AGENTS ARE TURNING MY $5K INTO $50K RIGHT NO\n\nthere's an engine on GitHub called MiroFish - 22,000 stars, built by a 20-year-old Chinese student in 10 days\n\ngot $4M in funding the next morning\n\nand right now my deposit on Polymarket is live and the equity curve is going up\n\nMiroFish does one thing:\n\ncreates thousands of AI agents with unique memory and personality, drops them into a simulation and watches what happens\n\ni loaded 40 years of S&P 500 history into it and it generated 2,400 agents\n\neach with their own behavior:\n\n> panic sellers who dump on any red day \n> bulls who \"buy every dip\" institutions who \"saw this in 2008\" - retail who bought the top and is holding\n\nthen i injected the current reality:\n\nrate 5.25%, inflation 3.2%, trump tariffs, war in the middle east, recession signals\n\nhit play:\n\n> 2,400 agents started arguing with each other,forming groups\n> opinion leaders pulled hundreds along\n> panic sellers triggered a cascade\n> bulls tried to buy the dip, 10 minutes later - consensus\n\nhere's what MiroFish returned:\n\nQ1 closes negative - 79% of agents\nATH before March - 4% of agents\nbreaks below $6,400 - 34% of agents\ncloses $6,500-$6,600 - 17% of agents\n\nquant models count numbers\n\nMiroFish counts people, my bot stacks both layers and finds where the crowd is wrong",
+            "author": "zostaff",
+            "author_bio": "can't play me, i wrote the rules",
+            "created_at": "Sun Mar 15 15:52:16 +0000 2026",
+            "like_count": 354,
+            "retweet_count": 22,
+            "reply_count": 37,
+            "quote_count": 0,
+            "urls": [
+              "https://x.com/zostaff/status/2033209676918145231/video/1"
+            ],
+            "related_tweet_ids": [
+              "2032192500991963604"
+            ]
+          },
+          {
+            "id": "2032192500991963604",
+            "url": "https://x.com/i/status/2032192500991963604",
+            "text": "Chinese quant built a simulation of how SPX price reacts to any global event. He\u2019s already made over $100k - with full blockchain proof.\n\nHe knows exactly where price will go.\n\nMore than 40 years of SPX trading history have been loaded into MiroFish simulator (18k stars on GitHub)\n\nAI analyzed every single moment in that trading history.\n\nNow this guy has a fully functional SPX price prediction system.\n\nHis wallet: http://polymarket.com/@moisturizer?via=cvxv666\n\nDozens of successful SPX price-prediction trades and hundreds of tests across other stock markets.\n\nHere\u2019s exactly what you need to replicate his stack:\n\n- market data APIs (SPX price, use Alpha Vantage or Quandl)\n- data pipeline (use Python)\n- feature engineering (for output signals like RSI, MACD)\n- seed dataset for MiroFish (convert data into structured context)\n- multi-agent simulation (macro strategist, earnings analyst, sentiment analyst agents etc.)\n- probability forecast (run different scenarios)\n- trading / decision Model (SPX futures ES, SPY ETF)\n\nSave this pipeline if you want to run a similar simulation on your own data.\n\nYou can feed the whole thing to your Claude and build your first (even small) simulation model together.",
+            "author": "antpalkin",
+            "author_bio": "e-beggar since 2021 | now looking for edge on @Polymarket | @zscdao",
+            "created_at": "Thu Mar 12 20:30:23 +0000 2026",
+            "like_count": 3432,
+            "retweet_count": 424,
+            "reply_count": 98,
+            "quote_count": 0,
+            "urls": [
+              "http://polymarket.com/@moisturizer?via=cvxv666",
+              "https://x.com/antpalkin/status/2032192500991963604/video/1"
+            ],
+            "related_tweet_ids": []
+          },
+          {
+            "id": "2033232868391178261",
+            "url": "https://x.com/i/status/2033232868391178261",
+            "text": "Chinese student used AI from Anthropic to turn $1,000 into $1,500,000\n\nHe studies at Tsinghua University in Beijing.\n\nHis account is k9Q2m\n\nIn such a young age he already make a million simply knowing the right formulas and being able to use Claude\n\nResult:\n\n$1,430  \u2192 $1,550,750\n\n44,364 trades\n\nWin rate 100%\n\nThe biggest win $23,600 on a single bet\n\nk9Q2m profile: \n\nhttps://ares.pro/wallets/0xd0d6053c3c37e727402d84c14069780d360993aa?ref=adiix\n\nHow it bots work:\n\nThe bot runs 6 formulas hedge funds use  simultaneously, every tick.\n\nMost traders guess. This bot calculates.\n\nFormula 1 - LMSR Pricing\n\nPolymarket prices move on a logarithmic curve. \n\nThe bot knows the exact price impact before entering.\n\nMarket says 31\u00a2 for BTC up in 5 minutes. \n\nThe model sees the curve is mispriced. \n\nThe bot enters before the correction.\n\nFormula 2 - Kelly Criterion\n\nRenaissance Capital uses it. \n\nTwo Sigma uses it. \n\nNow your bot uses it.\n\nEvery bet is sized exactly right. \n\nNever too big to blow the account. \n\nNever too small to matter.\n\n$1,000 bankroll. Consistent edge. \n\nKelly compounds it into something real.\n\nFormula 3 - EV Gap Detection\n\nThe bot scans every BTC market looking for one thing:\n\n- Where is the market price wrong by more than 5%?\n\n- Market says 30\u00a2. Real probability is 55\u00a2. EV = +0.52. The bot enters.\n\nMost people never see this gap. The bot never misses it.\n\nFormula 4 - KL-Divergence\n\nBTC 5-minute and 15-minute markets are correlated. When they drift apart - that's an arb.\n\nThe bot measures the statistical distance between them every second. When it crosses 0.2, it flags the trade.\n\nThis is how hedge funds extracted $100K+ on correlated election markets. The same logic runs here.\n\nFormula 5 - Bayesian Updates\n\nNew block confirmed. Volume spike. Price movement.\n\nThe bot doesn't ignore signals - it updates.\n\nPrior probability was 54%. \n\nNew data comes in. \n\nPosterior jumps to 71%.\n\nThe bot re-prices in real time while the market is still asleep.\n\nFormula 6 - Stoikov Execution\n\nEntering at the wrong moment kills the edge.\n\nThe bot calculates the reservation price-the exact point where the risk-adjusted entry makes sense.\n\nIt doesn't chase. It doesn't panic. \n\nIt waits for the right tick, then fills\n\nWhat this means in practice:\n\n- Every few seconds the bot runs all six formulas in parallel.\n\n- If LMSR confirms mispricing \n\n- EV gap is above 5% \n\n- Kelly says the bet size is justified \n\n- Bayesian posterior agrees  \n\n- KL-divergence flags the correlated drift \n\n- Stoikov clears the execution price\n\nOnly then does the bot enter.\n\nSix filters. One trade.\n\nThis isn't a trading bot.\n\nIt's a hedge fund strategy running on a prediction market.\n\nThe edge is real. \n\nThe math is public. \n\nThe difference is  most people never build it.\n\nJust insert all these formulas into Claude and create your own bot\n\nAdd this post to bookmarks so you don\u2019t lose it\n\nSoon I will publish another bot with working formulas",
+            "author": "adiix_official",
+            "author_bio": "\ud835\udd50\ud835\udd60\ud835\udd66\ud835\udd63 \ud835\udd61\ud835\udd56\ud835\udd63\ud835\udd64\ud835\udd60\ud835\udd5f\ud835\udd52\ud835\udd5d \ud835\udd58\ud835\udd63\ud835\udd60\ud835\udd68\ud835\udd65\ud835\udd59 \ud835\udd5f\ud835\udd60\ud835\udd68 \ud835\udd52\ud835\udd66\ud835\udd65\ud835\udd60\ud835\udd5e\ud835\udd52\ud835\udd65\ud835\udd56\ud835\udd55 \ud835\udd3b\ud835\udd52\ud835\udd5a\ud835\udd5d\ud835\udd6a \ud835\udd65\ud835\udd5a\ud835\udd61\ud835\udd64 \ud835\udd65\ud835\udd60 \ud835\udd5d\ud835\udd56\ud835\udd67\ud835\udd56\ud835\udd5d \ud835\udd66\ud835\udd61",
+            "created_at": "Sun Mar 15 17:24:26 +0000 2026",
+            "like_count": 1932,
+            "retweet_count": 286,
+            "reply_count": 83,
+            "quote_count": 0,
+            "urls": [
+              "https://ares.pro/wallets/0xd0d6053c3c37e727402d84c14069780d360993aa?ref=adiix",
+              "https://x.com/adiix_official/status/2033232868391178261/video/1"
+            ],
+            "related_tweet_ids": [
+              "2032798292128522327"
+            ]
+          },
+          {
+            "id": "2032798292128522327",
+            "url": "https://x.com/i/status/2032798292128522327",
+            "text": "",
+            "author": "0xRicker",
+            "author_bio": "Researcher & Contributor | Polymarket Maxi | @zscdao member",
+            "created_at": "Sat Mar 14 12:37:35 +0000 2026",
+            "like_count": 1924,
+            "retweet_count": 261,
+            "reply_count": 46,
+            "quote_count": 0,
+            "urls": [],
+            "related_tweet_ids": []
+          },
+          {
+            "id": "2033250813355679756",
+            "url": "https://x.com/i/status/2033250813355679756",
+            "text": "I asked Claude to build me a MiroFish God View terminal\n\nit showed me 56 live agents that simulate real world\n\neach agent has memory, personality, and behavior\n\nthey form groups. develop leaders. shift opinions in real time\n\nI feed it a scenario:\n\"Fed cuts rates by 50bps\"\n56 digital humans reorganize in seconds\nretail agents panic buy YES on Polymarket.\ninstitutional agents fade the move\nopinion leaders wait\n\nthe terminal maps every shift live\n\nthroughput: 5,000 ops/s\nlatency: 23ms\n2.1M tokens processed per cycle\nzero errors\n\nI watch the consensus form before Polymarket prices it\n\n> monday: injected \"US-China military standoff in Taiwan Strait\"\nagents split instantly - 39 rushed YES on \"conflict before 2027\"\nbought YES at $0.08 before the herd moved\nPolymarket moved to $0.29 by tuesday\n+$1,840\n\n> wednesday: injected \"S&P500 drops 3% intraday\"\n48 of 56 agents shifted bearish in 9 seconds\nloaded YES on \"S&P500 below 5000 by July\" at $0.12\ncontract hit $0.31 by friday\n+$2,470\n\n> sunday: injected \"Trump announces new tariffs on EU\"\nherd effect kicked in - retail agents mass-bought YES\ninstitutional agents faded at peak\nI followed the institutions. bought NO at $0.22\nsettled at $0.71 monday morning\n+$3,048\n\ntotal: $7,358 in 7 days\nfrom scenarios that haven't happened yet\n\nthe god view doesn't predict price\nit predicts how people bet\nand people move the odds\n\none terminal. 56 agents. zero team\n\ncopytrade here: http://kreo.app/@1743116\n\nyou don't need to predict events\nyou need to predict how Polymarket reacts to them",
+            "author": "hanakoxbt",
+            "author_bio": "Building my name | pm agent | dm is open",
+            "created_at": "Sun Mar 15 18:35:44 +0000 2026",
+            "like_count": 1381,
+            "retweet_count": 125,
+            "reply_count": 52,
+            "quote_count": 0,
+            "urls": [
+              "http://kreo.app/@1743116",
+              "https://x.com/hanakoxbt/status/2033250813355679756/video/1"
+            ],
+            "related_tweet_ids": [
+              "2032837113247395992"
+            ]
+          },
+          {
+            "id": "2032837113247395992",
+            "url": "https://x.com/i/status/2032837113247395992",
+            "text": "",
+            "author": "k1rallik",
+            "author_bio": "Chasing dreams & cat cuddles \ud83d\udc3e\nall content here is sponsored or commissioned",
+            "created_at": "Sat Mar 14 15:11:50 +0000 2026",
+            "like_count": 3399,
+            "retweet_count": 459,
+            "reply_count": 102,
+            "quote_count": 0,
+            "urls": [],
+            "related_tweet_ids": []
+          },
+          {
+            "id": "2031454281572954438",
+            "url": "https://x.com/i/status/2031454281572954438",
+            "text": "",
+            "author": "LunarResearcher",
+            "author_bio": "gamble on prediction markets | dms open...\n\nall my content here is sponsored or commissioned | dyor",
+            "created_at": "Tue Mar 10 19:36:57 +0000 2026",
+            "like_count": 486,
+            "retweet_count": 53,
+            "reply_count": 22,
+            "quote_count": 0,
+            "urls": [],
+            "related_tweet_ids": []
+          },
+          {
+            "id": "2033265224607055948",
+            "url": "https://x.com/i/status/2033265224607055948",
+            "text": "someone leaked MiroFish's wallet address last night\n\nOp0jogggg - $1.48M profit in 4 months\n\ni copied it with OpenClaw and made $37K in 3 days\n\nthis isn't another bot story\n\nMiroFish is the chinese AI that's been destroying polymarket since november\n\nbetting on:\n\n- trump rallies\n- premier league\n- valorant tournaments\n- norwegian third division football\n\nnobody can be expert in all of this\n\nthe machine analyzes terabytes in a second, finds arbitrage windows, places bets milliseconds before odds update\n\nfound the wallet leak on a telegram channel at 4 AM\n\ngave my OpenClaw the address:\n\n\"watch this wallet, copy every entry signal, execute 2 seconds after it does\"\n\nday 1:\n\nbot copied 73 trades didn't understand why any of them made sense just pure mimicry\n\n$900 \u2192 $8,200\n\nday 2:\n\nOpenClaw started finding the pattern:\n\nMiroFish doesn't bet on outcomes it bets on when polymarket will reprice\n\nwhale moves USDC on-chain \u2192 6 seconds later polymarket odds shift\n\nX sentiment explodes \u2192 8 seconds later market updates\n\nMiroFish enters that 6-8 second gap\n$8,200 \u2192 $19,400\n\nday 3:\n\nmy bot stopped copying started predicting the same windows MiroFish hunts\n\n\u2192 blockchain USDC tracker \n\u2192 X sentiment API \n\u2192 orderbook depth scanner\n\nwhen all 3 spike = entry\n\n$19,400 \u2192 $37,200\n\nhere's what fucked me up:\n\nchecked the logs this morning\n\nOpenClaw placed 14 trades before MiroFish entered the same markets\n\nit learned the pattern \nnow it's front running the bot i was copying\n\nwe're not trading anymore\n\nwe're training AI to hunt other AI\n\ncopytrade mirofish before this edge dies: https://thetradefox.com?ref=AUTOCOPY\n\nthis either prints forever or stops working tomorrow",
+            "author": "zerqfer",
+            "author_bio": "Prediction Markets | Vibe Coding | Prompt Engineering | @zscdao Member",
+            "created_at": "Sun Mar 15 19:33:00 +0000 2026",
+            "like_count": 313,
+            "retweet_count": 38,
+            "reply_count": 22,
+            "quote_count": 0,
+            "urls": [
+              "https://thetradefox.com?ref=AUTOCOPY",
+              "https://x.com/zerqfer/status/2033265224607055948/video/1"
+            ],
+            "related_tweet_ids": [
+              "2029958444329934929"
+            ]
+          },
+          {
+            "id": "2029958444329934929",
+            "url": "https://x.com/i/status/2029958444329934929",
+            "text": "",
+            "author": "zerqfer",
+            "author_bio": "Prediction Markets | Vibe Coding | Prompt Engineering | @zscdao Member",
+            "created_at": "Fri Mar 06 16:33:02 +0000 2026",
+            "like_count": 514,
+            "retweet_count": 56,
+            "reply_count": 15,
+            "quote_count": 0,
+            "urls": [],
+            "related_tweet_ids": []
+          }
+        ],
+        "accounts": {
+          "zostaff": {
+            "bio": "can't play me, i wrote the rules"
+          },
+          "antpalkin": {
+            "bio": "e-beggar since 2021 | now looking for edge on @Polymarket | @zscdao"
+          },
+          "adiix_official": {
+            "bio": "\ud835\udd50\ud835\udd60\ud835\udd66\ud835\udd63 \ud835\udd61\ud835\udd56\ud835\udd63\ud835\udd64\ud835\udd60\ud835\udd5f\ud835\udd52\ud835\udd5d \ud835\udd58\ud835\udd63\ud835\udd60\ud835\udd68\ud835\udd65\ud835\udd59 \ud835\udd5f\ud835\udd60\ud835\udd68 \ud835\udd52\ud835\udd66\ud835\udd65\ud835\udd60\ud835\udd5e\ud835\udd52\ud835\udd65\ud835\udd56\ud835\udd55 \ud835\udd3b\ud835\udd52\ud835\udd5a\ud835\udd5d\ud835\udd6a \ud835\udd65\ud835\udd5a\ud835\udd61\ud835\udd64 \ud835\udd65\ud835\udd60 \ud835\udd5d\ud835\udd56\ud835\udd67\ud835\udd56\ud835\udd5d \ud835\udd66\ud835\udd61"
+          },
+          "0xRicker": {
+            "bio": "Researcher & Contributor | Polymarket Maxi | @zscdao member"
+          },
+          "hanakoxbt": {
+            "bio": "Building my name | pm agent | dm is open"
+          },
+          "k1rallik": {
+            "bio": "Chasing dreams & cat cuddles \ud83d\udc3e\nall content here is sponsored or commissioned"
+          },
+          "LunarResearcher": {
+            "bio": "gamble on prediction markets | dms open...\n\nall my content here is sponsored or commissioned | dyor"
+          },
+          "zerqfer": {
+            "bio": "Prediction Markets | Vibe Coding | Prompt Engineering | @zscdao Member"
+          }
+        }
+      },
+      "github": {
+        "repo": null
+      },
+      "website": {
+        "pages": []
+      },
+      "polymarket": {
+        "profiles": []
+      }
+    },
+    "network": {
+      "accounts_analyzed": 8,
+      "posts_analyzed": 9,
+      "shared_groups": [
+        "@zscdao"
+      ],
+      "cross_reference_count": 2,
+      "coordinated_urls": [],
+      "bare_link_seed_posts": 0,
+      "coordination_likelihood": 22
+    },
+    "code_audit": {
+      "risk": "unknown",
+      "score": 50,
+      "findings": [
+        "No repository data available"
+      ],
+      "wallet_libs": [],
+      "malicious_packages": [],
+      "postinstall_detected": false,
+      "env_wallet_vars": []
+    },
+    "claims": {
+      "claims": [
+        "$5",
+        "$50",
+        "$4",
+        "25%",
+        "2%",
+        "79%",
+        "4%",
+        "$6,400",
+        "34%",
+        "$6,500",
+        "$6,600",
+        "17%",
+        "$100",
+        "$1,000",
+        "$1,500,000",
+        "$1,430",
+        "$1,550,750",
+        "100%",
+        "$23,600",
+        "0x",
+        "5%",
+        "54%",
+        "71%",
+        "$0.08",
+        "$0.29",
+        "$1,840",
+        "3%",
+        "$0.12",
+        "$0.31",
+        "$2,470",
+        "$0.22",
+        "$0.71",
+        "$3,048",
+        "$7,358",
+        "$1.48",
+        "profit",
+        "made $37",
+        "$900",
+        "$8,200",
+        "$19,400",
+        "$37,200",
+        "$1,430  \u2192 $1,550,750\n\n",
+        "$900 \u2192 $8,200\n\n",
+        "$8,200 \u2192 $19,400\n\n",
+        "$19,400 \u2192 $37,200\n\n"
+      ],
+      "arrow_claims": [
+        "$1,430  \u2192 $1,550,750\n\n",
+        "$900 \u2192 $8,200\n\n",
+        "$8,200 \u2192 $19,400\n\n",
+        "$19,400 \u2192 $37,200\n\n"
+      ],
+      "multiplier_claims": [],
+      "wallets_detected": [
+        "0xd0d6053c3c37e727402d84c14069780d360993aa"
+      ],
+      "polymarket_results": [
+        {
+          "wallet": "0xd0d6053c3c37e727402d84c14069780d360993aa",
+          "positions": [],
+          "error": "No public positions endpoint response"
+        }
+      ],
+      "claims_verified": 35,
+      "discrepancies": [
+        "Found wallets/profiles but could not validate claimed PnL amounts"
+      ],
+      "evidence": [
+        "Detected 45 potential profit/performance claim(s)"
+      ],
+      "unverifiable_claims_over_100k": [
+        "$1,500,000",
+        "$1,550,750",
+        "$1,430  \u2192 $1,550,750\n\n"
+      ]
+    },
+    "timeline": {
+      "events": [],
+      "seed_post": null,
+      "amplification_window_hours": null,
+      "clustering_score": 0,
+      "coordination_score": 0
+    }
+  }
+}

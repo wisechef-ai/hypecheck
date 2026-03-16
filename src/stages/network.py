@@ -37,8 +37,8 @@ def run(scrape_data: dict[str, Any]) -> dict[str, Any]:
         mentions = re.findall(r"@[A-Za-z0-9_]{1,20}", text)
         mention_edges += len(mentions)
 
-    times = sorted([_to_dt(p.get("created_at")) for p in posts if p.get("created_at")])
-    times = [t for t in times if t is not None]
+    times = [_to_dt(p.get("created_at")) for p in posts if p.get("created_at")]
+    times = sorted([t for t in times if t is not None])
     clustered_pairs = 0
     for i in range(1, len(times)):
         delta_hours = abs((times[i] - times[i - 1]).total_seconds()) / 3600

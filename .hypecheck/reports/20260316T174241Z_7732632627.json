@@ -1,0 +1,605 @@
+{
+  "url": "https://x.com/zostaff/status/2033209676918145231, https://x.com/adiix_official/status/2033232868391178261, https://x.com/hanakoxbt/status/2033250813355679756, https://x.com/k1rallik/status/2032837113247395992, https://x.com/0xRicker/status/2032798292128522327, https://x.com/LunarResearcher/status/2031454281572954438, https://x.com/zerqfer/status/2033265224607055948",
+  "verdict": "SUSPICIOUS",
+  "trust_score": 63,
+  "summary": "```json\n{\n  \"risk\": \"High potential for misinformation due to unverifiable profit claims and lack of repository data. The project's reliance on social media endorsements raises concerns about possible hype-driven manipulation.\",\n  \"confidence\": 63,\n  \"evidence\": \"Claims of significant profits from using the MiroFish AI simulation are prevalent, but supporting evidence and wallet information are minimal. The project is run by a young developer with little public profile and no clear code audit, which raises trust issues.\",\n  \"summary\": \"The MiroFish AI project has attracted attention for its purported ability to simulate trading scenarios, but there are numerous risks. Key claims regarding profitability are not substantiated with necessary evidence. Additionally, the project's author lacks a credible track record, raising further questions about its reliability. Overall, while the technology appears innovative, the lack of transparency and reliance on social media promotion leads to a 'SUSPICIOUS' trust rating.\"\n}\n```",
+  "stages": {
+    "code_audit": {
+      "risk": "unknown",
+      "score": 50,
+      "findings": [
+        "No repository data available"
+      ]
+    },
+    "claims": {
+      "score": 30,
+      "claims": [
+        "$5",
+        "$50",
+        "$4",
+        "25%",
+        "2%",
+        "79%",
+        "4%",
+        "$6,400",
+        "34%",
+        "$6,500",
+        "$6,600",
+        "17%",
+        "$100",
+        "360x",
+        "$0.08",
+        "$0.29",
+        "$1,840",
+        "3%",
+        "$0.12",
+        "$0.31",
+        "$2,470",
+        "$0.22",
+        "$0.71",
+        "$3,048",
+        "$7,358",
+        "93%",
+        "1%",
+        "$52"
+      ],
+      "discrepancies": [
+        "Profit claims present, but no wallet/profile evidence could be retrieved"
+      ]
+    },
+    "network": {
+      "coordination": 3,
+      "shared_groups": []
+    },
+    "timeline": {
+      "clustering": 0,
+      "seed_post": null,
+      "amplification_window_hours": null
+    }
+  },
+  "evidence": [
+    "No repository data available",
+    "Detected 28 potential profit/performance claim(s)"
+  ],
+  "generated_at": "2026-03-16T17:42:41.632864+00:00",
+  "full_stage_output": {
+    "intake": [
+      {
+        "url": "https://x.com/zostaff/status/2033209676918145231",
+        "source_type": "x_post",
+        "metadata": {
+          "domain": "x.com",
+          "author": "zostaff",
+          "repo_owner": null,
+          "repo_name": null,
+          "tweet_id": "2033209676918145231",
+          "linked_usernames": []
+        }
+      },
+      {
+        "url": "https://x.com/adiix_official/status/2033232868391178261",
+        "source_type": "x_post",
+        "metadata": {
+          "domain": "x.com",
+          "author": "adiix_official",
+          "repo_owner": null,
+          "repo_name": null,
+          "tweet_id": "2033232868391178261",
+          "linked_usernames": []
+        }
+      },
+      {
+        "url": "https://x.com/hanakoxbt/status/2033250813355679756",
+        "source_type": "x_post",
+        "metadata": {
+          "domain": "x.com",
+          "author": "hanakoxbt",
+          "repo_owner": null,
+          "repo_name": null,
+          "tweet_id": "2033250813355679756",
+          "linked_usernames": []
+        }
+      },
+      {
+        "url": "https://x.com/k1rallik/status/2032837113247395992",
+        "source_type": "x_post",
+        "metadata": {
+          "domain": "x.com",
+          "author": "k1rallik",
+          "repo_owner": null,
+          "repo_name": null,
+          "tweet_id": "2032837113247395992",
+          "linked_usernames": []
+        }
+      },
+      {
+        "url": "https://x.com/0xRicker/status/2032798292128522327",
+        "source_type": "x_post",
+        "metadata": {
+          "domain": "x.com",
+          "author": "0xRicker",
+          "repo_owner": null,
+          "repo_name": null,
+          "tweet_id": "2032798292128522327",
+          "linked_usernames": []
+        }
+      },
+      {
+        "url": "https://x.com/LunarResearcher/status/2031454281572954438",
+        "source_type": "x_post",
+        "metadata": {
+          "domain": "x.com",
+          "author": "LunarResearcher",
+          "repo_owner": null,
+          "repo_name": null,
+          "tweet_id": "2031454281572954438",
+          "linked_usernames": []
+        }
+      },
+      {
+        "url": "https://x.com/zerqfer/status/2033265224607055948",
+        "source_type": "x_post",
+        "metadata": {
+          "domain": "x.com",
+          "author": "zerqfer",
+          "repo_owner": null,
+          "repo_name": null,
+          "tweet_id": "2033265224607055948",
+          "linked_usernames": []
+        }
+      }
+    ],
+    "scrape": [
+      {
+        "source_type": "x_post",
+        "x": {
+          "posts": [
+            {
+              "id": "2033209676918145231",
+              "url": "https://x.com/i/status/2033209676918145231",
+              "text": "Title: zostaff on X: \"2,400 MIROFISH AI AGENTS ARE TURNING MY $5K INTO $50K RIGHT NO\n\nthere's an engine on GitHub called MiroFish - 22,000 stars, built by a 20-year-old Chinese student in 10 days\n\ngot $4M in funding the next morning\n\nand right now my deposit on Polymarket is live and the equity curve https://t.co/8TJkYohmdR\" / X\n\nURL Source: http://x.com/i/status/2033209676918145231\n\nPublished Time: Mon, 16 Mar 2026 16:59:58 GMT\n\nMarkdown Content:\nPost\n----\n\nConversation\n------------\n\n2,400 MIROFISH AI AGENTS ARE TURNING MY $5K INTO $50K RIGHT NO there's an engine on GitHub called MiroFish - 22,000 stars, built by a 20-year-old Chinese student in 10 days got $4M in funding the next morning and right now my deposit on Polymarket is live and the equity curve is going up MiroFish does one thing: creates thousands of AI agents with unique memory and personality, drops them into a simulation and watches what happens i loaded 40 years of S&P 500 history into it and it generated 2,400 agents each with their own behavior: > panic sellers who dump on any red day > bulls who \"buy every dip\" institutions who \"saw this in 2008\" - retail who bought the top and is holding then i injected the current reality: rate 5.25%, inflation 3.2%, trump tariffs, war in the middle east, recession signals hit play: > 2,400 agents started arguing with each other,forming groups > opinion leaders pulled hundreds along > panic sellers triggered a cascade > bulls tried to buy the dip, 10 minutes later - consensus here's what MiroFish returned: Q1 closes negative - 79% of agents ATH before March - 4% of agents breaks below $6,400 - 34% of agents closes $6,500-$6,600 - 17% of agents quant models count numbers MiroFish counts people, my bot stacks both layers and finds where the crowd is wrong\n\n![Image 1](https://pbs.twimg.com/amplify_video_thumb/2033209345735835649/img/ppdNaDGkCFA7jQQZ.jpg)\n\nQuote\n\ncvxv666\n\n@antpalkin\n\nMar 12\n\nChinese quant built a simulation of how SPX price reacts to any global eve",
+              "author": null,
+              "author_bio": "",
+              "created_at": null,
+              "like_count": 0,
+              "retweet_count": 0,
+              "reply_count": 0,
+              "quote_count": 0,
+              "urls": [
+                "https://t.co/8TJkYohmdR\"",
+                "http://x.com/i/status/2033209676918145231",
+                "https://pbs.twimg.com/amplify_video_thumb/2033209345735835649/img/ppdNaDGkCFA7jQQZ.jpg)",
+                "https://pbs.twimg.com/media/HDPIe6bWUAE7Zj0?format=jpg&name=360x360)](https://x.com/antpalkin/status/2032192500991963604/photo/2)"
+              ],
+              "related_tweet_ids": [
+                "2032192500991963604"
+              ]
+            },
+            {
+              "id": "2032192500991963604",
+              "url": "https://x.com/i/status/2032192500991963604",
+              "text": "Title: cvxv666 on X: \"Chinese quant built a simulation of how SPX price reacts to any global event. He\u2019s already made over $100k - with full blockchain proof.\n\nHe knows exactly where price will go.\n\nMore than 40 years of SPX trading history have been loaded into MiroFish simulator (18k stars on https://t.co/cQ25PU8ulR\" / X\n\nURL Source: http://x.com/i/status/2032192500991963604\n\nPublished Time: Mon, 16 Mar 2026 17:00:03 GMT\n\nMarkdown Content:\nPost\n----\n\nConversation\n------------\n\nChinese quant built a simulation of how SPX price reacts to any global event.He\u2019s already made over $100k - with full blockchain proof. He knows exactly where price will go. More than 40 years of SPX trading history have been loaded into MiroFish simulator(18k stars on GitHub) AI analyzed every single moment in that trading history. Now this guy has a fully functional SPX price prediction system.His wallet:[polymarket.com/@moisturizer?v](https://t.co/WNi8gbBgQJ) Dozens of successful SPX price-prediction trades and hundreds of tests across other stock markets. Here\u2019s exactly what you need to replicate his stack: - market data APIs(SPX price, use Alpha Vantage or Quandl) - data pipeline(use Python) - feature engineering(for output signals like RSI, MACD) - seed dataset for MiroFish(convert data into structured context) - multi-agent simulation(macro strategist, earnings analyst, sentiment analyst agents etc.) - probability forecast(run different scenarios) - trading / decision Model(SPX futures ES, SPY ETF)Save this pipeline if you want to run a similar simulation on your own data. You can feed the whole thing to your Claude and build your first (even small) simulation model together.\n\n0:18\n\n[![Image 1: Image](https://pbs.twimg.com/media/HDPIe6bWUAE7Zj0?format=jpg&name=360x360)](https://x.com/antpalkin/status/2032192500991963604/photo/2)",
+              "author": null,
+              "author_bio": "",
+              "created_at": null,
+              "like_count": 0,
+              "retweet_count": 0,
+              "reply_count": 0,
+              "quote_count": 0,
+              "urls": [
+                "https://t.co/cQ25PU8ulR\"",
+                "http://x.com/i/status/2032192500991963604",
+                "https://t.co/WNi8gbBgQJ)",
+                "https://pbs.twimg.com/media/HDPIe6bWUAE7Zj0?format=jpg&name=360x360)](https://x.com/antpalkin/status/2032192500991963604/photo/2)"
+              ],
+              "related_tweet_ids": []
+            }
+          ],
+          "accounts": {}
+        }
+      },
+      {
+        "source_type": "x_post",
+        "x": {
+          "posts": [
+            {
+              "id": "2033232868391178261",
+              "url": "https://x.com/i/status/2033232868391178261",
+              "text": "Title: X\n\nURL Source: http://x.com/i/status/2033232868391178261\n\nPublished Time: Mon, 16 Mar 2026 17:41:53 GMT\n\nWarning: This page maybe not yet fully loaded, consider explicitly specify a timeout.\n\nMarkdown Content:\nDon\u2019t miss what\u2019s happening\n\nPeople on X are the first to know.",
+              "author": null,
+              "author_bio": "",
+              "created_at": null,
+              "like_count": 0,
+              "retweet_count": 0,
+              "reply_count": 0,
+              "quote_count": 0,
+              "urls": [
+                "http://x.com/i/status/2033232868391178261"
+              ],
+              "related_tweet_ids": []
+            }
+          ],
+          "accounts": {}
+        }
+      },
+      {
+        "source_type": "x_post",
+        "x": {
+          "posts": [
+            {
+              "id": "2033250813355679756",
+              "url": "https://x.com/i/status/2033250813355679756",
+              "text": "Title: Hanako on X: \"I asked Claude to build me a MiroFish God View terminal\n\nit showed me 56 live agents that simulate real world\n\neach agent has memory, personality, and behavior\n\nthey form groups. develop leaders. shift opinions in real time\n\nI feed it a scenario:\n\"Fed cuts rates by 50bps\"\n56 https://t.co/wdjddcG8WC\" / X\n\nURL Source: http://x.com/i/status/2033250813355679756\n\nMarkdown Content:\nPost\n----\n\nConversation\n------------\n\nI asked Claude to build me a MiroFish God View terminal it showed me 56 live agents that simulate real world each agent has memory, personality, and behavior they form groups. develop leaders. shift opinions in real time I feed it a scenario: \"Fed cuts rates by 50bps\" 56 digital humans reorganize in seconds retail agents panic buy YES on Polymarket. institutional agents fade the move opinion leaders wait the terminal maps every shift live throughput: 5,000 ops/s latency: 23ms 2.1M tokens processed per cycle zero errors I watch the consensus form before Polymarket prices it > monday: injected \"US-China military standoff in Taiwan Strait\" agents split instantly - 39 rushed YES on \"conflict before 2027\" bought YES at $0.08 before the herd moved Polymarket moved to $0.29 by tuesday +$1,840> wednesday: injected \"S&P500 drops 3% intraday\" 48 of 56 agents shifted bearish in 9 seconds loaded YES on \"S&P500 below 5000 by July\" at $0.12 contract hit $0.31 by friday +$2,470> sunday: injected \"Trump announces new tariffs on EU\" herd effect kicked in - retail agents mass-bought YES institutional agents faded at peak I followed the institutions. bought NO at $0.22 settled at $0.71 monday morning +$3,048 total: $7,358 in 7 days from scenarios that haven't happened yet the god view doesn't predict price it predicts how people bet and people move the odds one terminal. 56 agents. zero team copytrade here:[kreo.app/@1743116](https://t.co/PTZuvewZE6) you don't need to predict events you need to predict how Polymarket reacts to them\n\n![Image 1](https://pbs",
+              "author": null,
+              "author_bio": "",
+              "created_at": null,
+              "like_count": 0,
+              "retweet_count": 0,
+              "reply_count": 0,
+              "quote_count": 0,
+              "urls": [
+                "https://t.co/wdjddcG8WC\"",
+                "http://x.com/i/status/2033250813355679756",
+                "https://t.co/PTZuvewZE6)",
+                "https://pbs.twimg.com/amplify_video_thumb/2033243805986820096/img/Npi3uHKzRn9xLAMR.jpg)",
+                "https://pbs.twimg.com/profile_images/1997705113876549632/1fIc3023_bigger.jpg)",
+                "https://pbs.twimg.com/media/HDYMd6eacAAwLGK?format=jpg&name=small)"
+              ],
+              "related_tweet_ids": []
+            }
+          ],
+          "accounts": {}
+        }
+      },
+      {
+        "source_type": "x_post",
+        "x": {
+          "posts": [
+            {
+              "id": "2032837113247395992",
+              "url": "https://x.com/i/status/2032837113247395992",
+              "text": "Title: BuBBliK on X: \"MiroFish: The God View Engine\" / X\n\nURL Source: http://x.com/i/status/2032837113247395992\n\nMarkdown Content:\nA developer in China built an AI engine that generates thousands of digital humans - each with their own personality, memory, and behavior - drops them into a virtual world, and watches them predict the future.\n\nIt's called MiroFish. It hit #1 on GitHub's global trending. The creator is 20 years old.\n\n[![Image 1: Image](https://pbs.twimg.com/media/HDYF_SBaMAAHbkq?format=png&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032818866532003840)\n\nHis name is Guo Hangjiang. Online he goes by BaiFu. Senior at Beijing University of Posts and Telecommunications. Writes Python. Obsessed with agent architectures and graph computing.\n\nLate 2025, his first project - BettaFish, a multi-agent public opinion analyzer - hit #1 on GitHub trending and pulled 20,000 stars in a week.\n\nThat's when a Chinese billionaire noticed him.\n\n[![Image 2: Image](https://pbs.twimg.com/media/HDYGrarWMAInhGS?format=jpg&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032819624769630210)\n\nChen Tianqiao. Founder of Shanda Group. Once the richest person in China. Built a gaming empire in the early 2000s, stepped away, moved to the US, and quietly transformed Shanda into a tech investment platform.\n\nHe'd been pushing a thesis he calls \"the super-individual\" - the idea that in the AI era, one person can build what used to require an entire company.\n\nGuo was the proof of concept.\n\n[![Image 3: Image](https://pbs.twimg.com/media/HDYJ2CzaMAU9jho?format=jpg&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032823105874440197)\n\nChen invited Guo as an intern. Gave him total freedom. What followed.\n\nGuo built MiroFish in 10 days using what he calls \"vibe coding\" - fast, intuitive, no over-engineering.\n\nThe night he finished, he recorded a rough demo and sent it directly to Chen's desk. Within 24 hours, Chen committed 30",
+              "author": null,
+              "author_bio": "",
+              "created_at": null,
+              "like_count": 0,
+              "retweet_count": 0,
+              "reply_count": 0,
+              "quote_count": 0,
+              "urls": [
+                "http://x.com/i/status/2032837113247395992",
+                "https://pbs.twimg.com/media/HDYF_SBaMAAHbkq?format=png&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032818866532003840)",
+                "https://pbs.twimg.com/media/HDYGrarWMAInhGS?format=jpg&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032819624769630210)",
+                "https://pbs.twimg.com/media/HDYJ2CzaMAU9jho?format=jpg&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032823105874440197)",
+                "https://pbs.twimg.com/media/HDYNIg4WMAAuzi6?format=jpg&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032826721720741888)",
+                "https://pbs.twimg.com/media/HDYNqJrXoAAN4lP?format=jpg&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032827299607846912)",
+                "https://pbs.twimg.com/media/HDYQXOEXMAAbqIv?format=png&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032830272903786496)",
+                "https://pbs.twimg.com/media/HDYQgQ7XkAIe94x?format=png&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032830428290191362)",
+                "https://pbs.twimg.com/media/HDYR2N_aMAIYvmz?format=png&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032831904970584066)",
+                "https://pbs.twimg.com/media/HDYSB7Sa4AEYNlp?format=jpg&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032832106108477441)"
+              ],
+              "related_tweet_ids": []
+            }
+          ],
+          "accounts": {}
+        }
+      },
+      {
+        "source_type": "x_post",
+        "x": {
+          "posts": [
+            {
+              "id": "2032798292128522327",
+              "url": "https://x.com/i/status/2032798292128522327",
+              "text": "Title: X\n\nURL Source: http://x.com/i/status/2032798292128522327\n\nPublished Time: Mon, 16 Mar 2026 17:42:14 GMT\n\nWarning: This page maybe not yet fully loaded, consider explicitly specify a timeout.\n\nMarkdown Content:\nDon\u2019t miss what\u2019s happening\n\nPeople on X are the first to know.",
+              "author": null,
+              "author_bio": "",
+              "created_at": null,
+              "like_count": 0,
+              "retweet_count": 0,
+              "reply_count": 0,
+              "quote_count": 0,
+              "urls": [
+                "http://x.com/i/status/2032798292128522327"
+              ],
+              "related_tweet_ids": []
+            }
+          ],
+          "accounts": {}
+        }
+      },
+      {
+        "source_type": "x_post",
+        "x": {
+          "posts": [
+            {
+              "id": "2031454281572954438",
+              "url": "https://x.com/i/status/2031454281572954438",
+              "text": "Title: Lunar on X: \"The Math That Prints Money on Polymarket - And Why 93% of Traders Never Learn It \" / X\n\nURL Source: http://x.com/i/status/2031454281572954438\n\nMarkdown Content:\nEvery day, millions of dollars flow through Polymarket. People bet on elections, wars, Fed rate cuts, celebrity drama - anything you can slap a probability on.\n\nMost of them lose.\n\nHere's the complete blueprint.\n\n*   Drop a bookmark before you start\n\n*   Bot profile with strategy: \n*   Copytrade on Polymarket with me: \n*   Join in my alpha channel with all bots: \n\nNot because prediction markets are rigged. Not because the whales are smarter. But because the average trader treats Polymarket like a casino - gut feeling, vibes, \"I just think Trump will win\" - when it's actually one of the purest mathematical systems ever built.\n\nHere's the thing nobody tells you: the entire pricing engine behind Polymarket is a single equation. And once you understand it, you stop gambling and start trading.\n\nI spent the last 6 months reverse-engineering how the top 1% of Polymarket wallets actually make money. Not the ones posting screenshots on Twitter - the ones quietly compounding. This is what I found.\n\nRegular financial markets use an order book. Buyer says \"$50.\" Seller says \"$52.\" They meet in the middle. Simple.\n\nThis works when you have millions of traders - Apple stock, Bitcoin, whatever. But what about a market asking \"Will Ecuador's president survive the impeachment vote?\" Nobody is posting bids. The spread is a mile wide. You can't trade.\n\nPrediction markets needed something different. They needed a bot - an automated market maker - that always quotes a price, always takes the other side, and never runs out of liquidity.\n\nThe answer came from a computer scientist named Robin Hanson in 2002. He called it LMSR - the Logarithmic Market Scoring Rule. It's elegant, it's beautiful, and it's the mathematical foundation under every Polymarket contract you've ever traded.\n\nInstead of matching buyers and",
+              "author": null,
+              "author_bio": "",
+              "created_at": null,
+              "like_count": 0,
+              "retweet_count": 0,
+              "reply_count": 0,
+              "quote_count": 0,
+              "urls": [
+                "http://x.com/i/status/2031454281572954438",
+                "https://pbs.twimg.com/media/HDD_QYhaMAUCoys?format=jpg&name=small)](https://x.com/LunarResearcher/article/2031454281572954438/media/2031404088869662725)",
+                "https://pbs.twimg.com/media/HDEAIrSXYAMRqUa?format=jpg&name=900x900)](https://x.com/LunarResearcher/article/2031454281572954438/media/2031405055979511811)",
+                "https://pbs.twimg.com/media/HDEAqitXYAkUHig?format=jpg&name=900x900)](https://x.com/LunarResearcher/article/2031454281572954438/media/2031405637792391177)"
+              ],
+              "related_tweet_ids": []
+            }
+          ],
+          "accounts": {}
+        }
+      },
+      {
+        "source_type": "x_post",
+        "x": {
+          "posts": [
+            {
+              "id": "2033265224607055948",
+              "url": "https://x.com/i/status/2033265224607055948",
+              "text": "Title: X\n\nURL Source: http://x.com/i/status/2033265224607055948\n\nPublished Time: Mon, 16 Mar 2026 17:42:27 GMT\n\nWarning: This page maybe not yet fully loaded, consider explicitly specify a timeout.\n\nMarkdown Content:\nDon\u2019t miss what\u2019s happening\n\nPeople on X are the first to know.",
+              "author": null,
+              "author_bio": "",
+              "created_at": null,
+              "like_count": 0,
+              "retweet_count": 0,
+              "reply_count": 0,
+              "quote_count": 0,
+              "urls": [
+                "http://x.com/i/status/2033265224607055948"
+              ],
+              "related_tweet_ids": []
+            }
+          ],
+          "accounts": {}
+        }
+      }
+    ],
+    "scrape_merged": {
+      "source_type": "multi",
+      "x": {
+        "posts": [
+          {
+            "id": "2033209676918145231",
+            "url": "https://x.com/i/status/2033209676918145231",
+            "text": "Title: zostaff on X: \"2,400 MIROFISH AI AGENTS ARE TURNING MY $5K INTO $50K RIGHT NO\n\nthere's an engine on GitHub called MiroFish - 22,000 stars, built by a 20-year-old Chinese student in 10 days\n\ngot $4M in funding the next morning\n\nand right now my deposit on Polymarket is live and the equity curve https://t.co/8TJkYohmdR\" / X\n\nURL Source: http://x.com/i/status/2033209676918145231\n\nPublished Time: Mon, 16 Mar 2026 16:59:58 GMT\n\nMarkdown Content:\nPost\n----\n\nConversation\n------------\n\n2,400 MIROFISH AI AGENTS ARE TURNING MY $5K INTO $50K RIGHT NO there's an engine on GitHub called MiroFish - 22,000 stars, built by a 20-year-old Chinese student in 10 days got $4M in funding the next morning and right now my deposit on Polymarket is live and the equity curve is going up MiroFish does one thing: creates thousands of AI agents with unique memory and personality, drops them into a simulation and watches what happens i loaded 40 years of S&P 500 history into it and it generated 2,400 agents each with their own behavior: > panic sellers who dump on any red day > bulls who \"buy every dip\" institutions who \"saw this in 2008\" - retail who bought the top and is holding then i injected the current reality: rate 5.25%, inflation 3.2%, trump tariffs, war in the middle east, recession signals hit play: > 2,400 agents started arguing with each other,forming groups > opinion leaders pulled hundreds along > panic sellers triggered a cascade > bulls tried to buy the dip, 10 minutes later - consensus here's what MiroFish returned: Q1 closes negative - 79% of agents ATH before March - 4% of agents breaks below $6,400 - 34% of agents closes $6,500-$6,600 - 17% of agents quant models count numbers MiroFish counts people, my bot stacks both layers and finds where the crowd is wrong\n\n![Image 1](https://pbs.twimg.com/amplify_video_thumb/2033209345735835649/img/ppdNaDGkCFA7jQQZ.jpg)\n\nQuote\n\ncvxv666\n\n@antpalkin\n\nMar 12\n\nChinese quant built a simulation of how SPX price reacts to any global eve",
+            "author": null,
+            "author_bio": "",
+            "created_at": null,
+            "like_count": 0,
+            "retweet_count": 0,
+            "reply_count": 0,
+            "quote_count": 0,
+            "urls": [
+              "https://t.co/8TJkYohmdR\"",
+              "http://x.com/i/status/2033209676918145231",
+              "https://pbs.twimg.com/amplify_video_thumb/2033209345735835649/img/ppdNaDGkCFA7jQQZ.jpg)",
+              "https://pbs.twimg.com/media/HDPIe6bWUAE7Zj0?format=jpg&name=360x360)](https://x.com/antpalkin/status/2032192500991963604/photo/2)"
+            ],
+            "related_tweet_ids": [
+              "2032192500991963604"
+            ]
+          },
+          {
+            "id": "2032192500991963604",
+            "url": "https://x.com/i/status/2032192500991963604",
+            "text": "Title: cvxv666 on X: \"Chinese quant built a simulation of how SPX price reacts to any global event. He\u2019s already made over $100k - with full blockchain proof.\n\nHe knows exactly where price will go.\n\nMore than 40 years of SPX trading history have been loaded into MiroFish simulator (18k stars on https://t.co/cQ25PU8ulR\" / X\n\nURL Source: http://x.com/i/status/2032192500991963604\n\nPublished Time: Mon, 16 Mar 2026 17:00:03 GMT\n\nMarkdown Content:\nPost\n----\n\nConversation\n------------\n\nChinese quant built a simulation of how SPX price reacts to any global event.He\u2019s already made over $100k - with full blockchain proof. He knows exactly where price will go. More than 40 years of SPX trading history have been loaded into MiroFish simulator(18k stars on GitHub) AI analyzed every single moment in that trading history. Now this guy has a fully functional SPX price prediction system.His wallet:[polymarket.com/@moisturizer?v](https://t.co/WNi8gbBgQJ) Dozens of successful SPX price-prediction trades and hundreds of tests across other stock markets. Here\u2019s exactly what you need to replicate his stack: - market data APIs(SPX price, use Alpha Vantage or Quandl) - data pipeline(use Python) - feature engineering(for output signals like RSI, MACD) - seed dataset for MiroFish(convert data into structured context) - multi-agent simulation(macro strategist, earnings analyst, sentiment analyst agents etc.) - probability forecast(run different scenarios) - trading / decision Model(SPX futures ES, SPY ETF)Save this pipeline if you want to run a similar simulation on your own data. You can feed the whole thing to your Claude and build your first (even small) simulation model together.\n\n0:18\n\n[![Image 1: Image](https://pbs.twimg.com/media/HDPIe6bWUAE7Zj0?format=jpg&name=360x360)](https://x.com/antpalkin/status/2032192500991963604/photo/2)",
+            "author": null,
+            "author_bio": "",
+            "created_at": null,
+            "like_count": 0,
+            "retweet_count": 0,
+            "reply_count": 0,
+            "quote_count": 0,
+            "urls": [
+              "https://t.co/cQ25PU8ulR\"",
+              "http://x.com/i/status/2032192500991963604",
+              "https://t.co/WNi8gbBgQJ)",
+              "https://pbs.twimg.com/media/HDPIe6bWUAE7Zj0?format=jpg&name=360x360)](https://x.com/antpalkin/status/2032192500991963604/photo/2)"
+            ],
+            "related_tweet_ids": []
+          },
+          {
+            "id": "2033232868391178261",
+            "url": "https://x.com/i/status/2033232868391178261",
+            "text": "Title: X\n\nURL Source: http://x.com/i/status/2033232868391178261\n\nPublished Time: Mon, 16 Mar 2026 17:41:53 GMT\n\nWarning: This page maybe not yet fully loaded, consider explicitly specify a timeout.\n\nMarkdown Content:\nDon\u2019t miss what\u2019s happening\n\nPeople on X are the first to know.",
+            "author": null,
+            "author_bio": "",
+            "created_at": null,
+            "like_count": 0,
+            "retweet_count": 0,
+            "reply_count": 0,
+            "quote_count": 0,
+            "urls": [
+              "http://x.com/i/status/2033232868391178261"
+            ],
+            "related_tweet_ids": []
+          },
+          {
+            "id": "2033250813355679756",
+            "url": "https://x.com/i/status/2033250813355679756",
+            "text": "Title: Hanako on X: \"I asked Claude to build me a MiroFish God View terminal\n\nit showed me 56 live agents that simulate real world\n\neach agent has memory, personality, and behavior\n\nthey form groups. develop leaders. shift opinions in real time\n\nI feed it a scenario:\n\"Fed cuts rates by 50bps\"\n56 https://t.co/wdjddcG8WC\" / X\n\nURL Source: http://x.com/i/status/2033250813355679756\n\nMarkdown Content:\nPost\n----\n\nConversation\n------------\n\nI asked Claude to build me a MiroFish God View terminal it showed me 56 live agents that simulate real world each agent has memory, personality, and behavior they form groups. develop leaders. shift opinions in real time I feed it a scenario: \"Fed cuts rates by 50bps\" 56 digital humans reorganize in seconds retail agents panic buy YES on Polymarket. institutional agents fade the move opinion leaders wait the terminal maps every shift live throughput: 5,000 ops/s latency: 23ms 2.1M tokens processed per cycle zero errors I watch the consensus form before Polymarket prices it > monday: injected \"US-China military standoff in Taiwan Strait\" agents split instantly - 39 rushed YES on \"conflict before 2027\" bought YES at $0.08 before the herd moved Polymarket moved to $0.29 by tuesday +$1,840> wednesday: injected \"S&P500 drops 3% intraday\" 48 of 56 agents shifted bearish in 9 seconds loaded YES on \"S&P500 below 5000 by July\" at $0.12 contract hit $0.31 by friday +$2,470> sunday: injected \"Trump announces new tariffs on EU\" herd effect kicked in - retail agents mass-bought YES institutional agents faded at peak I followed the institutions. bought NO at $0.22 settled at $0.71 monday morning +$3,048 total: $7,358 in 7 days from scenarios that haven't happened yet the god view doesn't predict price it predicts how people bet and people move the odds one terminal. 56 agents. zero team copytrade here:[kreo.app/@1743116](https://t.co/PTZuvewZE6) you don't need to predict events you need to predict how Polymarket reacts to them\n\n![Image 1](https://pbs",
+            "author": null,
+            "author_bio": "",
+            "created_at": null,
+            "like_count": 0,
+            "retweet_count": 0,
+            "reply_count": 0,
+            "quote_count": 0,
+            "urls": [
+              "https://t.co/wdjddcG8WC\"",
+              "http://x.com/i/status/2033250813355679756",
+              "https://t.co/PTZuvewZE6)",
+              "https://pbs.twimg.com/amplify_video_thumb/2033243805986820096/img/Npi3uHKzRn9xLAMR.jpg)",
+              "https://pbs.twimg.com/profile_images/1997705113876549632/1fIc3023_bigger.jpg)",
+              "https://pbs.twimg.com/media/HDYMd6eacAAwLGK?format=jpg&name=small)"
+            ],
+            "related_tweet_ids": []
+          },
+          {
+            "id": "2032837113247395992",
+            "url": "https://x.com/i/status/2032837113247395992",
+            "text": "Title: BuBBliK on X: \"MiroFish: The God View Engine\" / X\n\nURL Source: http://x.com/i/status/2032837113247395992\n\nMarkdown Content:\nA developer in China built an AI engine that generates thousands of digital humans - each with their own personality, memory, and behavior - drops them into a virtual world, and watches them predict the future.\n\nIt's called MiroFish. It hit #1 on GitHub's global trending. The creator is 20 years old.\n\n[![Image 1: Image](https://pbs.twimg.com/media/HDYF_SBaMAAHbkq?format=png&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032818866532003840)\n\nHis name is Guo Hangjiang. Online he goes by BaiFu. Senior at Beijing University of Posts and Telecommunications. Writes Python. Obsessed with agent architectures and graph computing.\n\nLate 2025, his first project - BettaFish, a multi-agent public opinion analyzer - hit #1 on GitHub trending and pulled 20,000 stars in a week.\n\nThat's when a Chinese billionaire noticed him.\n\n[![Image 2: Image](https://pbs.twimg.com/media/HDYGrarWMAInhGS?format=jpg&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032819624769630210)\n\nChen Tianqiao. Founder of Shanda Group. Once the richest person in China. Built a gaming empire in the early 2000s, stepped away, moved to the US, and quietly transformed Shanda into a tech investment platform.\n\nHe'd been pushing a thesis he calls \"the super-individual\" - the idea that in the AI era, one person can build what used to require an entire company.\n\nGuo was the proof of concept.\n\n[![Image 3: Image](https://pbs.twimg.com/media/HDYJ2CzaMAU9jho?format=jpg&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032823105874440197)\n\nChen invited Guo as an intern. Gave him total freedom. What followed.\n\nGuo built MiroFish in 10 days using what he calls \"vibe coding\" - fast, intuitive, no over-engineering.\n\nThe night he finished, he recorded a rough demo and sent it directly to Chen's desk. Within 24 hours, Chen committed 30",
+            "author": null,
+            "author_bio": "",
+            "created_at": null,
+            "like_count": 0,
+            "retweet_count": 0,
+            "reply_count": 0,
+            "quote_count": 0,
+            "urls": [
+              "http://x.com/i/status/2032837113247395992",
+              "https://pbs.twimg.com/media/HDYF_SBaMAAHbkq?format=png&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032818866532003840)",
+              "https://pbs.twimg.com/media/HDYGrarWMAInhGS?format=jpg&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032819624769630210)",
+              "https://pbs.twimg.com/media/HDYJ2CzaMAU9jho?format=jpg&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032823105874440197)",
+              "https://pbs.twimg.com/media/HDYNIg4WMAAuzi6?format=jpg&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032826721720741888)",
+              "https://pbs.twimg.com/media/HDYNqJrXoAAN4lP?format=jpg&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032827299607846912)",
+              "https://pbs.twimg.com/media/HDYQXOEXMAAbqIv?format=png&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032830272903786496)",
+              "https://pbs.twimg.com/media/HDYQgQ7XkAIe94x?format=png&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032830428290191362)",
+              "https://pbs.twimg.com/media/HDYR2N_aMAIYvmz?format=png&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032831904970584066)",
+              "https://pbs.twimg.com/media/HDYSB7Sa4AEYNlp?format=jpg&name=small)](https://x.com/k1rallik/article/2032837113247395992/media/2032832106108477441)"
+            ],
+            "related_tweet_ids": []
+          },
+          {
+            "id": "2032798292128522327",
+            "url": "https://x.com/i/status/2032798292128522327",
+            "text": "Title: X\n\nURL Source: http://x.com/i/status/2032798292128522327\n\nPublished Time: Mon, 16 Mar 2026 17:42:14 GMT\n\nWarning: This page maybe not yet fully loaded, consider explicitly specify a timeout.\n\nMarkdown Content:\nDon\u2019t miss what\u2019s happening\n\nPeople on X are the first to know.",
+            "author": null,
+            "author_bio": "",
+            "created_at": null,
+            "like_count": 0,
+            "retweet_count": 0,
+            "reply_count": 0,
+            "quote_count": 0,
+            "urls": [
+              "http://x.com/i/status/2032798292128522327"
+            ],
+            "related_tweet_ids": []
+          },
+          {
+            "id": "2031454281572954438",
+            "url": "https://x.com/i/status/2031454281572954438",
+            "text": "Title: Lunar on X: \"The Math That Prints Money on Polymarket - And Why 93% of Traders Never Learn It \" / X\n\nURL Source: http://x.com/i/status/2031454281572954438\n\nMarkdown Content:\nEvery day, millions of dollars flow through Polymarket. People bet on elections, wars, Fed rate cuts, celebrity drama - anything you can slap a probability on.\n\nMost of them lose.\n\nHere's the complete blueprint.\n\n*   Drop a bookmark before you start\n\n*   Bot profile with strategy: \n*   Copytrade on Polymarket with me: \n*   Join in my alpha channel with all bots: \n\nNot because prediction markets are rigged. Not because the whales are smarter. But because the average trader treats Polymarket like a casino - gut feeling, vibes, \"I just think Trump will win\" - when it's actually one of the purest mathematical systems ever built.\n\nHere's the thing nobody tells you: the entire pricing engine behind Polymarket is a single equation. And once you understand it, you stop gambling and start trading.\n\nI spent the last 6 months reverse-engineering how the top 1% of Polymarket wallets actually make money. Not the ones posting screenshots on Twitter - the ones quietly compounding. This is what I found.\n\nRegular financial markets use an order book. Buyer says \"$50.\" Seller says \"$52.\" They meet in the middle. Simple.\n\nThis works when you have millions of traders - Apple stock, Bitcoin, whatever. But what about a market asking \"Will Ecuador's president survive the impeachment vote?\" Nobody is posting bids. The spread is a mile wide. You can't trade.\n\nPrediction markets needed something different. They needed a bot - an automated market maker - that always quotes a price, always takes the other side, and never runs out of liquidity.\n\nThe answer came from a computer scientist named Robin Hanson in 2002. He called it LMSR - the Logarithmic Market Scoring Rule. It's elegant, it's beautiful, and it's the mathematical foundation under every Polymarket contract you've ever traded.\n\nInstead of matching buyers and",
+            "author": null,
+            "author_bio": "",
+            "created_at": null,
+            "like_count": 0,
+            "retweet_count": 0,
+            "reply_count": 0,
+            "quote_count": 0,
+            "urls": [
+              "http://x.com/i/status/2031454281572954438",
+              "https://pbs.twimg.com/media/HDD_QYhaMAUCoys?format=jpg&name=small)](https://x.com/LunarResearcher/article/2031454281572954438/media/2031404088869662725)",
+              "https://pbs.twimg.com/media/HDEAIrSXYAMRqUa?format=jpg&name=900x900)](https://x.com/LunarResearcher/article/2031454281572954438/media/2031405055979511811)",
+              "https://pbs.twimg.com/media/HDEAqitXYAkUHig?format=jpg&name=900x900)](https://x.com/LunarResearcher/article/2031454281572954438/media/2031405637792391177)"
+            ],
+            "related_tweet_ids": []
+          },
+          {
+            "id": "2033265224607055948",
+            "url": "https://x.com/i/status/2033265224607055948",
+            "text": "Title: X\n\nURL Source: http://x.com/i/status/2033265224607055948\n\nPublished Time: Mon, 16 Mar 2026 17:42:27 GMT\n\nWarning: This page maybe not yet fully loaded, consider explicitly specify a timeout.\n\nMarkdown Content:\nDon\u2019t miss what\u2019s happening\n\nPeople on X are the first to know.",
+            "author": null,
+            "author_bio": "",
+            "created_at": null,
+            "like_count": 0,
+            "retweet_count": 0,
+            "reply_count": 0,
+            "quote_count": 0,
+            "urls": [
+              "http://x.com/i/status/2033265224607055948"
+            ],
+            "related_tweet_ids": []
+          }
+        ],
+        "accounts": {}
+      },
+      "github": {
+        "repo": null
+      },
+      "website": {
+        "pages": []
+      },
+      "polymarket": {
+        "profiles": []
+      }
+    },
+    "network": {
+      "accounts_analyzed": 1,
+      "posts_analyzed": 8,
+      "shared_groups": [],
+      "cross_reference_count": 3,
+      "coordinated_urls": [],
+      "bare_link_seed_posts": 0,
+      "coordination_likelihood": 3
+    },
+    "code_audit": {
+      "risk": "unknown",
+      "score": 50,
+      "findings": [
+        "No repository data available"
+      ],
+      "wallet_libs": [],
+      "malicious_packages": [],
+      "postinstall_detected": false,
+      "env_wallet_vars": []
+    },
+    "claims": {
+      "claims": [
+        "$5",
+        "$50",
+        "$4",
+        "25%",
+        "2%",
+        "79%",
+        "4%",
+        "$6,400",
+        "34%",
+        "$6,500",
+        "$6,600",
+        "17%",
+        "$100",
+        "360x",
+        "$0.08",
+        "$0.29",
+        "$1,840",
+        "3%",
+        "$0.12",
+        "$0.31",
+        "$2,470",
+        "$0.22",
+        "$0.71",
+        "$3,048",
+        "$7,358",
+        "93%",
+        "1%",
+        "$52"
+      ],
+      "arrow_claims": [],
+      "multiplier_claims": [],
+      "wallets_detected": [],
+      "polymarket_results": [],
+      "claims_verified": 30,
+      "discrepancies": [
+        "Profit claims present, but no wallet/profile evidence could be retrieved"
+      ],
+      "evidence": [
+        "Detected 28 potential profit/performance claim(s)"
+      ],
+      "unverifiable_claims_over_100k": []
+    },
+    "timeline": {
+      "events": [],
+      "seed_post": null,
+      "amplification_window_hours": null,
+      "clustering_score": 0,
+      "coordination_score": 0
+    }
+  }
+}

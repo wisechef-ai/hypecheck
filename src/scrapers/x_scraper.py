@@ -37,10 +37,23 @@ def _safe_date(raw: str | None) -> str | None:
     try:
         return datetime.fromisoformat(raw.replace("Z", "+00:00")).isoformat()
     except ValueError:
+        pass
+    # fxtwitter format: "Sun Mar 15 19:33:00 +0000 2026"
+    for fmt in (
+        "%a %b %d %H:%M:%S %z %Y",
+        "%a, %d %b %Y %H:%M:%S %Z",
+    ):
         try:
-            return datetime.strptime(raw, "%a, %d %b %Y %H:%M:%S %Z").replace(tzinfo=timezone.utc).isoformat()
+            return datetime.strptime(raw, fmt).replace(tzinfo=timezone.utc).isoformat()
         except ValueError:
-            return raw
+            continue
+    return raw
+
+
+FXTWITTER_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
+    "Accept": "application/json",
+}
 
 
 class XScraper:
@@ -49,7 +62,7 @@ class XScraper:
 
     async def fetch_tweet(self, tweet_id: str) -> dict[str, Any]:
         url = FXTWITTER_URL.format(tweet_id=tweet_id)
-        response = await self.client.get(url)
+        response = await self.client.get(url, headers=FXTWITTER_HEADERS)
         if response.status_code != 200:
             return await self._fetch_tweet_via_reader(tweet_id)
         payload = response.json()
@@ -78,6 +91,11 @@ class XScraper:
             for u in tweet.get("entities", {}).get("urls", [])
             if isinstance(u, dict)
         )
+        # fxtwitter stores expanded URLs in raw_text.facets
+        for facet in (tweet.get("raw_text") or {}).get("facets", []):
+            replacement = facet.get("replacement", "")
+            if replacement and replacement.startswith("http"):
+                urls.append(replacement)
         urls = [u for u in urls if u]
 
         related_ids = []
@@ -91,6 +109,11 @@ class XScraper:
             value = tweet.get(key) or payload.get(key)
             if value:
                 related_ids.append(str(value))
+
+        # fxtwitter nests quote tweet under "quote" object
+        quote = tweet.get("quote") or {}
+        if isinstance(quote, dict) and quote.get("id"):
+            related_ids.append(str(quote["id"]))
 
         return {
             "id": str(tweet.get("id") or payload.get("id") or tweet_id),

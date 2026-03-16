@@ -1,0 +1,315 @@
+{
+  "url": "https://x.com/zostaff/status/2033209676918145231, https://x.com/zerqfer/status/2033265224607055948",
+  "verdict": "SUSPICIOUS",
+  "trust_score": 63,
+  "summary": "```json\n{\n  \"report\": {\n    \"risk\": \"High on speculative claims without substantial evidence. No verified wallet or profile data available to substantiate profit claims. Significant potential for misinformation.\",\n    \"confidence\": \"Moderate (63/100). While some claims align with high user engagement, the absence of concrete verification reduces reliability.\",\n    \"evidence\": [\n      \"Multiple high-stakes profit claims from anonymous users with no supporting documentation.\",\n      \"Specifically, claims of turning $5K into $50K through MiroFish lack external validation.\",\n      \"Discrepancies noted regarding profit evidence, with no wallet data retrieved to corroborate these transactions.\"\n    ],\n    \"verdict\": \"SUSPICIOUS\",\n    \"key_sources\": [\n      \"User claims about MiroFish operations and profits from X posts lack credibility due to anonymity and unverifiable data.\",\n      \"Leaked wallet claims and simulations' results presented without rigorous analysis or audit.\"\n    ]\n  }\n}\n```",
+  "stages": {
+    "code_audit": {
+      "risk": "unknown",
+      "score": 50,
+      "findings": [
+        "No repository data available"
+      ]
+    },
+    "claims": {
+      "score": 30,
+      "claims": [
+        "$5",
+        "$50",
+        "$4",
+        "25%",
+        "2%",
+        "79%",
+        "4%",
+        "$6,400",
+        "34%",
+        "$6,500",
+        "$6,600",
+        "17%",
+        "$100",
+        "360x",
+        "$1.48",
+        "profit",
+        "made $37",
+        "$900",
+        "$8,200",
+        "$19,400",
+        "$37,200",
+        "$900 \u2192 $8,200 ",
+        "$8,200 \u2192 $19,400 ",
+        "$19,400 \u2192 $37,200 "
+      ],
+      "discrepancies": [
+        "Profit claims present, but no wallet/profile evidence could be retrieved"
+      ]
+    },
+    "network": {
+      "coordination": 6,
+      "shared_groups": []
+    },
+    "timeline": {
+      "clustering": 0,
+      "seed_post": null,
+      "amplification_window_hours": null
+    }
+  },
+  "evidence": [
+    "No repository data available",
+    "Detected 24 potential profit/performance claim(s)"
+  ],
+  "generated_at": "2026-03-16T17:43:48.796027+00:00",
+  "full_stage_output": {
+    "intake": [
+      {
+        "url": "https://x.com/zostaff/status/2033209676918145231",
+        "source_type": "x_post",
+        "metadata": {
+          "domain": "x.com",
+          "author": "zostaff",
+          "repo_owner": null,
+          "repo_name": null,
+          "tweet_id": "2033209676918145231",
+          "linked_usernames": []
+        }
+      },
+      {
+        "url": "https://x.com/zerqfer/status/2033265224607055948",
+        "source_type": "x_post",
+        "metadata": {
+          "domain": "x.com",
+          "author": "zerqfer",
+          "repo_owner": null,
+          "repo_name": null,
+          "tweet_id": "2033265224607055948",
+          "linked_usernames": []
+        }
+      }
+    ],
+    "scrape": [
+      {
+        "source_type": "x_post",
+        "x": {
+          "posts": [
+            {
+              "id": "2033209676918145231",
+              "url": "https://x.com/i/status/2033209676918145231",
+              "text": "Title: zostaff on X: \"2,400 MIROFISH AI AGENTS ARE TURNING MY $5K INTO $50K RIGHT NO\n\nthere's an engine on GitHub called MiroFish - 22,000 stars, built by a 20-year-old Chinese student in 10 days\n\ngot $4M in funding the next morning\n\nand right now my deposit on Polymarket is live and the equity curve https://t.co/8TJkYohmdR\" / X\n\nURL Source: http://x.com/i/status/2033209676918145231\n\nPublished Time: Mon, 16 Mar 2026 16:59:58 GMT\n\nMarkdown Content:\nPost\n----\n\nConversation\n------------\n\n2,400 MIROFISH AI AGENTS ARE TURNING MY $5K INTO $50K RIGHT NO there's an engine on GitHub called MiroFish - 22,000 stars, built by a 20-year-old Chinese student in 10 days got $4M in funding the next morning and right now my deposit on Polymarket is live and the equity curve is going up MiroFish does one thing: creates thousands of AI agents with unique memory and personality, drops them into a simulation and watches what happens i loaded 40 years of S&P 500 history into it and it generated 2,400 agents each with their own behavior: > panic sellers who dump on any red day > bulls who \"buy every dip\" institutions who \"saw this in 2008\" - retail who bought the top and is holding then i injected the current reality: rate 5.25%, inflation 3.2%, trump tariffs, war in the middle east, recession signals hit play: > 2,400 agents started arguing with each other,forming groups > opinion leaders pulled hundreds along > panic sellers triggered a cascade > bulls tried to buy the dip, 10 minutes later - consensus here's what MiroFish returned: Q1 closes negative - 79% of agents ATH before March - 4% of agents breaks below $6,400 - 34% of agents closes $6,500-$6,600 - 17% of agents quant models count numbers MiroFish counts people, my bot stacks both layers and finds where the crowd is wrong\n\n![Image 1](https://pbs.twimg.com/amplify_video_thumb/2033209345735835649/img/ppdNaDGkCFA7jQQZ.jpg)\n\nQuote\n\ncvxv666\n\n@antpalkin\n\nMar 12\n\nChinese quant built a simulation of how SPX price reacts to any global eve",
+              "author": null,
+              "author_bio": "",
+              "created_at": null,
+              "like_count": 0,
+              "retweet_count": 0,
+              "reply_count": 0,
+              "quote_count": 0,
+              "urls": [
+                "https://t.co/8TJkYohmdR\"",
+                "http://x.com/i/status/2033209676918145231",
+                "https://pbs.twimg.com/amplify_video_thumb/2033209345735835649/img/ppdNaDGkCFA7jQQZ.jpg)",
+                "https://pbs.twimg.com/media/HDPIe6bWUAE7Zj0?format=jpg&name=360x360)](https://x.com/antpalkin/status/2032192500991963604/photo/2)"
+              ],
+              "related_tweet_ids": [
+                "2032192500991963604"
+              ]
+            },
+            {
+              "id": "2032192500991963604",
+              "url": "https://x.com/i/status/2032192500991963604",
+              "text": "Title: cvxv666 on X: \"Chinese quant built a simulation of how SPX price reacts to any global event. He\u2019s already made over $100k - with full blockchain proof.\n\nHe knows exactly where price will go.\n\nMore than 40 years of SPX trading history have been loaded into MiroFish simulator (18k stars on https://t.co/cQ25PU8ulR\" / X\n\nURL Source: http://x.com/i/status/2032192500991963604\n\nPublished Time: Mon, 16 Mar 2026 17:00:03 GMT\n\nMarkdown Content:\nPost\n----\n\nConversation\n------------\n\nChinese quant built a simulation of how SPX price reacts to any global event.He\u2019s already made over $100k - with full blockchain proof. He knows exactly where price will go. More than 40 years of SPX trading history have been loaded into MiroFish simulator(18k stars on GitHub) AI analyzed every single moment in that trading history. Now this guy has a fully functional SPX price prediction system.His wallet:[polymarket.com/@moisturizer?v](https://t.co/WNi8gbBgQJ) Dozens of successful SPX price-prediction trades and hundreds of tests across other stock markets. Here\u2019s exactly what you need to replicate his stack: - market data APIs(SPX price, use Alpha Vantage or Quandl) - data pipeline(use Python) - feature engineering(for output signals like RSI, MACD) - seed dataset for MiroFish(convert data into structured context) - multi-agent simulation(macro strategist, earnings analyst, sentiment analyst agents etc.) - probability forecast(run different scenarios) - trading / decision Model(SPX futures ES, SPY ETF)Save this pipeline if you want to run a similar simulation on your own data. You can feed the whole thing to your Claude and build your first (even small) simulation model together.\n\n0:18\n\n[![Image 1: Image](https://pbs.twimg.com/media/HDPIe6bWUAE7Zj0?format=jpg&name=360x360)](https://x.com/antpalkin/status/2032192500991963604/photo/2)",
+              "author": null,
+              "author_bio": "",
+              "created_at": null,
+              "like_count": 0,
+              "retweet_count": 0,
+              "reply_count": 0,
+              "quote_count": 0,
+              "urls": [
+                "https://t.co/cQ25PU8ulR\"",
+                "http://x.com/i/status/2032192500991963604",
+                "https://t.co/WNi8gbBgQJ)",
+                "https://pbs.twimg.com/media/HDPIe6bWUAE7Zj0?format=jpg&name=360x360)](https://x.com/antpalkin/status/2032192500991963604/photo/2)"
+              ],
+              "related_tweet_ids": []
+            }
+          ],
+          "accounts": {}
+        }
+      },
+      {
+        "source_type": "x_post",
+        "x": {
+          "posts": [
+            {
+              "id": "2033265224607055948",
+              "url": "https://x.com/i/status/2033265224607055948",
+              "text": "Title: ZER on X: \"someone leaked MiroFish's wallet address last night\n\nOp0jogggg - $1.48M profit in 4 months\n\ni copied it with OpenClaw and made $37K in 3 days\n\nthis isn't another bot story\n\nMiroFish is the chinese AI that's been destroying polymarket since november\n\nbetting on:\n\n- trump rallies\n- https://t.co/qmhVY8AeS5\" / X\n\nURL Source: http://x.com/i/status/2033265224607055948\n\nPublished Time: Mon, 16 Mar 2026 17:42:27 GMT\n\nMarkdown Content:\nPost\n----\n\nConversation\n------------\n\nsomeone leaked MiroFish's wallet address last night Op0jogggg - $1.48M profit in 4 months i copied it with OpenClaw and made $37K in 3 days this isn't another bot story MiroFish is the chinese AI that's been destroying polymarket since november betting on: - trump rallies - premier league - valorant tournaments - norwegian third division football nobody can be expert in all of this the machine analyzes terabytes in a second, finds arbitrage windows, places bets milliseconds before odds update found the wallet leak on a telegram channel at 4 AM gave my OpenClaw the address: \"watch this wallet, copy every entry signal, execute 2 seconds after it does\" day 1: bot copied 73 trades didn't understand why any of them made sense just pure mimicry $900 \u2192 $8,200 day 2: OpenClaw started finding the pattern: MiroFish doesn't bet on outcomes it bets on when polymarket will reprice whale moves USDC on-chain \u2192 6 seconds later polymarket odds shift X sentiment explodes \u2192 8 seconds later market updates MiroFish enters that 6-8 second gap $8,200 \u2192 $19,400 day 3: my bot stopped copying started predicting the same windows MiroFish hunts \u2192 blockchain USDC tracker \u2192 X sentiment API \u2192 orderbook depth scanner when all 3 spike = entry $19,400 \u2192 $37,200 here's what fucked me up: checked the logs this morning OpenClaw placed 14 trades before MiroFish entered the same markets it learned the pattern now it's front running the bot i was copying we're not trading anymore we're training AI to hunt other AI copytrade mir",
+              "author": null,
+              "author_bio": "",
+              "created_at": null,
+              "like_count": 0,
+              "retweet_count": 0,
+              "reply_count": 0,
+              "quote_count": 0,
+              "urls": [
+                "https://t.co/qmhVY8AeS5\"",
+                "http://x.com/i/status/2033265224607055948",
+                "https://t.co/5jLYMpyE1Z)",
+                "https://pbs.twimg.com/amplify_video_thumb/2033263354190684160/img/81-zI8zIZgaL8deN.jpg)",
+                "https://pbs.twimg.com/media/HCvcHtvXIAMNMPF?format=jpg&name=small)"
+              ],
+              "related_tweet_ids": []
+            }
+          ],
+          "accounts": {}
+        }
+      }
+    ],
+    "scrape_merged": {
+      "source_type": "multi",
+      "x": {
+        "posts": [
+          {
+            "id": "2033209676918145231",
+            "url": "https://x.com/i/status/2033209676918145231",
+            "text": "Title: zostaff on X: \"2,400 MIROFISH AI AGENTS ARE TURNING MY $5K INTO $50K RIGHT NO\n\nthere's an engine on GitHub called MiroFish - 22,000 stars, built by a 20-year-old Chinese student in 10 days\n\ngot $4M in funding the next morning\n\nand right now my deposit on Polymarket is live and the equity curve https://t.co/8TJkYohmdR\" / X\n\nURL Source: http://x.com/i/status/2033209676918145231\n\nPublished Time: Mon, 16 Mar 2026 16:59:58 GMT\n\nMarkdown Content:\nPost\n----\n\nConversation\n------------\n\n2,400 MIROFISH AI AGENTS ARE TURNING MY $5K INTO $50K RIGHT NO there's an engine on GitHub called MiroFish - 22,000 stars, built by a 20-year-old Chinese student in 10 days got $4M in funding the next morning and right now my deposit on Polymarket is live and the equity curve is going up MiroFish does one thing: creates thousands of AI agents with unique memory and personality, drops them into a simulation and watches what happens i loaded 40 years of S&P 500 history into it and it generated 2,400 agents each with their own behavior: > panic sellers who dump on any red day > bulls who \"buy every dip\" institutions who \"saw this in 2008\" - retail who bought the top and is holding then i injected the current reality: rate 5.25%, inflation 3.2%, trump tariffs, war in the middle east, recession signals hit play: > 2,400 agents started arguing with each other,forming groups > opinion leaders pulled hundreds along > panic sellers triggered a cascade > bulls tried to buy the dip, 10 minutes later - consensus here's what MiroFish returned: Q1 closes negative - 79% of agents ATH before March - 4% of agents breaks below $6,400 - 34% of agents closes $6,500-$6,600 - 17% of agents quant models count numbers MiroFish counts people, my bot stacks both layers and finds where the crowd is wrong\n\n![Image 1](https://pbs.twimg.com/amplify_video_thumb/2033209345735835649/img/ppdNaDGkCFA7jQQZ.jpg)\n\nQuote\n\ncvxv666\n\n@antpalkin\n\nMar 12\n\nChinese quant built a simulation of how SPX price reacts to any global eve",
+            "author": null,
+            "author_bio": "",
+            "created_at": null,
+            "like_count": 0,
+            "retweet_count": 0,
+            "reply_count": 0,
+            "quote_count": 0,
+            "urls": [
+              "https://t.co/8TJkYohmdR\"",
+              "http://x.com/i/status/2033209676918145231",
+              "https://pbs.twimg.com/amplify_video_thumb/2033209345735835649/img/ppdNaDGkCFA7jQQZ.jpg)",
+              "https://pbs.twimg.com/media/HDPIe6bWUAE7Zj0?format=jpg&name=360x360)](https://x.com/antpalkin/status/2032192500991963604/photo/2)"
+            ],
+            "related_tweet_ids": [
+              "2032192500991963604"
+            ]
+          },
+          {
+            "id": "2032192500991963604",
+            "url": "https://x.com/i/status/2032192500991963604",
+            "text": "Title: cvxv666 on X: \"Chinese quant built a simulation of how SPX price reacts to any global event. He\u2019s already made over $100k - with full blockchain proof.\n\nHe knows exactly where price will go.\n\nMore than 40 years of SPX trading history have been loaded into MiroFish simulator (18k stars on https://t.co/cQ25PU8ulR\" / X\n\nURL Source: http://x.com/i/status/2032192500991963604\n\nPublished Time: Mon, 16 Mar 2026 17:00:03 GMT\n\nMarkdown Content:\nPost\n----\n\nConversation\n------------\n\nChinese quant built a simulation of how SPX price reacts to any global event.He\u2019s already made over $100k - with full blockchain proof. He knows exactly where price will go. More than 40 years of SPX trading history have been loaded into MiroFish simulator(18k stars on GitHub) AI analyzed every single moment in that trading history. Now this guy has a fully functional SPX price prediction system.His wallet:[polymarket.com/@moisturizer?v](https://t.co/WNi8gbBgQJ) Dozens of successful SPX price-prediction trades and hundreds of tests across other stock markets. Here\u2019s exactly what you need to replicate his stack: - market data APIs(SPX price, use Alpha Vantage or Quandl) - data pipeline(use Python) - feature engineering(for output signals like RSI, MACD) - seed dataset for MiroFish(convert data into structured context) - multi-agent simulation(macro strategist, earnings analyst, sentiment analyst agents etc.) - probability forecast(run different scenarios) - trading / decision Model(SPX futures ES, SPY ETF)Save this pipeline if you want to run a similar simulation on your own data. You can feed the whole thing to your Claude and build your first (even small) simulation model together.\n\n0:18\n\n[![Image 1: Image](https://pbs.twimg.com/media/HDPIe6bWUAE7Zj0?format=jpg&name=360x360)](https://x.com/antpalkin/status/2032192500991963604/photo/2)",
+            "author": null,
+            "author_bio": "",
+            "created_at": null,
+            "like_count": 0,
+            "retweet_count": 0,
+            "reply_count": 0,
+            "quote_count": 0,
+            "urls": [
+              "https://t.co/cQ25PU8ulR\"",
+              "http://x.com/i/status/2032192500991963604",
+              "https://t.co/WNi8gbBgQJ)",
+              "https://pbs.twimg.com/media/HDPIe6bWUAE7Zj0?format=jpg&name=360x360)](https://x.com/antpalkin/status/2032192500991963604/photo/2)"
+            ],
+            "related_tweet_ids": []
+          },
+          {
+            "id": "2033265224607055948",
+            "url": "https://x.com/i/status/2033265224607055948",
+            "text": "Title: ZER on X: \"someone leaked MiroFish's wallet address last night\n\nOp0jogggg - $1.48M profit in 4 months\n\ni copied it with OpenClaw and made $37K in 3 days\n\nthis isn't another bot story\n\nMiroFish is the chinese AI that's been destroying polymarket since november\n\nbetting on:\n\n- trump rallies\n- https://t.co/qmhVY8AeS5\" / X\n\nURL Source: http://x.com/i/status/2033265224607055948\n\nPublished Time: Mon, 16 Mar 2026 17:42:27 GMT\n\nMarkdown Content:\nPost\n----\n\nConversation\n------------\n\nsomeone leaked MiroFish's wallet address last night Op0jogggg - $1.48M profit in 4 months i copied it with OpenClaw and made $37K in 3 days this isn't another bot story MiroFish is the chinese AI that's been destroying polymarket since november betting on: - trump rallies - premier league - valorant tournaments - norwegian third division football nobody can be expert in all of this the machine analyzes terabytes in a second, finds arbitrage windows, places bets milliseconds before odds update found the wallet leak on a telegram channel at 4 AM gave my OpenClaw the address: \"watch this wallet, copy every entry signal, execute 2 seconds after it does\" day 1: bot copied 73 trades didn't understand why any of them made sense just pure mimicry $900 \u2192 $8,200 day 2: OpenClaw started finding the pattern: MiroFish doesn't bet on outcomes it bets on when polymarket will reprice whale moves USDC on-chain \u2192 6 seconds later polymarket odds shift X sentiment explodes \u2192 8 seconds later market updates MiroFish enters that 6-8 second gap $8,200 \u2192 $19,400 day 3: my bot stopped copying started predicting the same windows MiroFish hunts \u2192 blockchain USDC tracker \u2192 X sentiment API \u2192 orderbook depth scanner when all 3 spike = entry $19,400 \u2192 $37,200 here's what fucked me up: checked the logs this morning OpenClaw placed 14 trades before MiroFish entered the same markets it learned the pattern now it's front running the bot i was copying we're not trading anymore we're training AI to hunt other AI copytrade mir",
+            "author": null,
+            "author_bio": "",
+            "created_at": null,
+            "like_count": 0,
+            "retweet_count": 0,
+            "reply_count": 0,
+            "quote_count": 0,
+            "urls": [
+              "https://t.co/qmhVY8AeS5\"",
+              "http://x.com/i/status/2033265224607055948",
+              "https://t.co/5jLYMpyE1Z)",
+              "https://pbs.twimg.com/amplify_video_thumb/2033263354190684160/img/81-zI8zIZgaL8deN.jpg)",
+              "https://pbs.twimg.com/media/HCvcHtvXIAMNMPF?format=jpg&name=small)"
+            ],
+            "related_tweet_ids": []
+          }
+        ],
+        "accounts": {}
+      },
+      "github": {
+        "repo": null
+      },
+      "website": {
+        "pages": []
+      },
+      "polymarket": {
+        "profiles": []
+      }
+    },
+    "network": {
+      "accounts_analyzed": 1,
+      "posts_analyzed": 3,
+      "shared_groups": [],
+      "cross_reference_count": 2,
+      "coordinated_urls": [],
+      "bare_link_seed_posts": 0,
+      "coordination_likelihood": 6
+    },
+    "code_audit": {
+      "risk": "unknown",
+      "score": 50,
+      "findings": [
+        "No repository data available"
+      ],
+      "wallet_libs": [],
+      "malicious_packages": [],
+      "postinstall_detected": false,
+      "env_wallet_vars": []
+    },
+    "claims": {
+      "claims": [
+        "$5",
+        "$50",
+        "$4",
+        "25%",
+        "2%",
+        "79%",
+        "4%",
+        "$6,400",
+        "34%",
+        "$6,500",
+        "$6,600",
+        "17%",
+        "$100",
+        "360x",
+        "$1.48",
+        "profit",
+        "made $37",
+        "$900",
+        "$8,200",
+        "$19,400",
+        "$37,200",
+        "$900 \u2192 $8,200 ",
+        "$8,200 \u2192 $19,400 ",
+        "$19,400 \u2192 $37,200 "
+      ],
+      "arrow_claims": [
+        "$900 \u2192 $8,200 ",
+        "$8,200 \u2192 $19,400 ",
+        "$19,400 \u2192 $37,200 "
+      ],
+      "multiplier_claims": [],
+      "wallets_detected": [],
+      "polymarket_results": [],
+      "claims_verified": 30,
+      "discrepancies": [
+        "Profit claims present, but no wallet/profile evidence could be retrieved"
+      ],
+      "evidence": [
+        "Detected 24 potential profit/performance claim(s)"
+      ],
+      "unverifiable_claims_over_100k": []
+    },
+    "timeline": {
+      "events": [],
+      "seed_post": null,
+      "amplification_window_hours": null,
+      "clustering_score": 0,
+      "coordination_score": 0
+    }
+  }
+}
