@@ -55,6 +55,11 @@ a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
 .check-btn:disabled{opacity:.4;cursor:not-allowed}
 .check-hint{text-align:center;color:var(--dim);font-size:0.85rem;margin-top:10px}
 
+.url-guidance{background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.15);border-radius:8px;padding:12px 16px;font-size:0.85rem;color:#93c5fd;margin-bottom:12px;line-height:1.5}
+.url-guidance strong{color:var(--blue)}
+.url-guidance.single{background:rgba(234,179,8,0.06);border-color:rgba(234,179,8,0.15);color:#fcd34d}
+.url-guidance.single strong{color:var(--yellow)}
+
 /* Mode toggle */
 .mode-toggle{display:flex;gap:8px;margin-bottom:16px}
 .mode-btn{padding:8px 16px;border:1px solid #333;border-radius:8px;background:var(--bg);color:var(--dim);font-size:0.85rem;cursor:pointer;transition:all .15s}
@@ -206,7 +211,7 @@ footer a{color:var(--dim)}footer a:hover{color:var(--text)}
 <section class="hero">
   <div class="badge">🔍 Open Source · 7-Stage AI Investigation Pipeline</div>
   <h1>🛡️ <span>HypeCheck</span></h1>
-  <p class="subtitle">Paste any URL — tweet, GitHub repo, Polymarket wallet. Get an instant trust report backed by network analysis, code audits, and claim verification.</p>
+  <p class="subtitle">Paste any tweet, GitHub repo, or project URL. Get an instant trust report backed by network analysis, code audits, and claim verification.</p>
 </section>
 
 <!-- Check Form -->
@@ -214,10 +219,13 @@ footer a{color:var(--dim)}footer a:hover{color:var(--text)}
   <div class="check-box">
     <label>Paste URLs to investigate</label>
     <div class="mode-toggle">
-      <button class="mode-btn active" onclick="setMode('single')" id="modeSingle">Single URL</button>
-      <button class="mode-btn" onclick="setMode('campaign')" id="modeCampaign">Campaign Analysis (3+ URLs)</button>
+      <button class="mode-btn" onclick="setMode('single')" id="modeSingle">Quick Check (1 URL)</button>
+      <button class="mode-btn active" onclick="setMode('campaign')" id="modeCampaign">Campaign Analysis (3+ URLs)</button>
     </div>
-    <textarea id="urlInput" placeholder="https://x.com/someone/status/123456789..." rows="3"></textarea>
+    <div class="url-guidance" id="urlGuidance">
+      <strong>📌 For best results, paste 3+ related tweet URLs.</strong> Single URLs work but can't detect coordination patterns. 5+ URLs across different accounts unlocks full network mapping and timeline clustering.
+    </div>
+    <textarea id="urlInput" placeholder="Paste 3+ related tweet URLs (one per line):&#10;https://x.com/account1/status/123...&#10;https://x.com/account2/status/456...&#10;https://x.com/account3/status/789...&#10;&#10;Optionally add a GitHub repo URL too" rows="6"></textarea>
     <button class="check-btn" id="checkBtn" onclick="runCheck()">🔍 Investigate</button>
     <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
     <p class="progress-text" id="progressText" style="display:none"></p>
@@ -344,6 +352,19 @@ footer a{color:var(--dim)}footer a:hover{color:var(--text)}
       </ul>
       <a href="#check" class="plan-btn secondary">Try Now</a>
     </div>
+    <div class="plan">
+      <h3>Pay Per Report</h3>
+      <div class="price">$5<span>/report</span></div>
+      <div class="price-note">no commitment</div>
+      <ul>
+        <li>Full investigation report</li>
+        <li>All 7 pipeline stages</li>
+        <li>Raw evidence data</li>
+        <li>LLM-synthesized narrative</li>
+        <li>Shareable report link</li>
+      </ul>
+      <a href="https://buy.stripe.com/14AcN52m7emTftJd9z2kw03" class="plan-btn secondary">Buy Reports</a>
+    </div>
     <div class="plan featured">
       <h3>Pro API</h3>
       <div class="price">$49<span>/mo</span></div>
@@ -356,7 +377,7 @@ footer a{color:var(--dim)}footer a:hover{color:var(--text)}
         <li>Priority pipeline access</li>
         <li>Saved report history</li>
       </ul>
-      <a href="mailto:adam.krawczyk0698@gmail.com?subject=HypeCheck%20Pro%20API%20Key&body=I%27d%20like%20a%20HypeCheck%20Pro%20API%20key." class="plan-btn primary">Get Pro API Key</a>
+      <a href="https://buy.stripe.com/7sY8wP1i33If2GXd9z2kw02" class="plan-btn primary">Subscribe — $49/mo</a>
     </div>
     <div class="plan">
       <h3>Enterprise</h3>
@@ -397,19 +418,24 @@ footer a{color:var(--dim)}footer a:hover{color:var(--text)}
 
 <script>
 const API = '/api/hypecheck/check';
-let currentMode = 'single';
+let currentMode = 'campaign';
 
 function setMode(mode) {
   currentMode = mode;
   document.getElementById('modeSingle').classList.toggle('active', mode === 'single');
   document.getElementById('modeCampaign').classList.toggle('active', mode === 'campaign');
   const ta = document.getElementById('urlInput');
+  const guide = document.getElementById('urlGuidance');
   if (mode === 'single') {
     ta.placeholder = 'https://x.com/someone/status/123456789...';
     ta.rows = 3;
+    guide.className = 'url-guidance single';
+    guide.innerHTML = '<strong>⚠️ Single URL mode — limited analysis.</strong> One tweet can\'t reveal coordination patterns. You\'ll get a basic trust score but no network mapping or timeline clustering. For full investigations, use Campaign Analysis with 3+ URLs.';
   } else {
     ta.placeholder = 'Paste 3+ related tweet URLs (one per line):\nhttps://x.com/account1/status/123...\nhttps://x.com/account2/status/456...\nhttps://x.com/account3/status/789...\n\nOptionally add a GitHub repo URL too';
     ta.rows = 6;
+    guide.className = 'url-guidance';
+    guide.innerHTML = '<strong>📌 For best results, paste 3+ related tweet URLs.</strong> Single URLs work but can\'t detect coordination patterns. 5+ URLs across different accounts unlocks full network mapping and timeline clustering.';
   }
 }
 
